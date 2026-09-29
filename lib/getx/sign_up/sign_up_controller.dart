@@ -42,7 +42,7 @@ class SignUpController extends GetxController {
         displayName: nameController.text,
         email: emailController.text,
       );
-      Get.offAllNamed(AppRoutes.home);
+      Get.offAllNamed(AppRoutes.partnerApplication);
     } finally {
       isSubmitting.value = false;
     }

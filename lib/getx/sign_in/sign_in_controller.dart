@@ -33,7 +33,7 @@ class SignInController extends GetxController {
         password: passwordController.text,
       );
       clearFields();
-      Get.offAllNamed(AppRoutes.home);
+      Get.offAllNamed(_users.continueRoute);
     } finally {
       isSubmitting.value = false;
     }

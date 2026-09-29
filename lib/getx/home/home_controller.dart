@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../core/services/app_flash.dart';
 import '../../data/repositories/user_repository.dart';
+import '../../routes/app_routes.dart';
 import '../main_shell/main_shell_controller.dart';
 
 class HomeController extends GetxController {
@@ -22,9 +23,16 @@ class HomeController extends GetxController {
     return 'Interior Design · Miami';
   }
 
-  final membershipLabel = 'Membership · Yearly';
-  final membershipStatus = 'Active';
-  final membershipRenews = 'Renews Aug 08, 2027';
+  String get membershipLabel =>
+      _users.currentUser?.membership.homeLabel ?? 'Membership · Yearly';
+
+  String get membershipStatus =>
+      _users.currentUser?.membership.statusLabel ?? 'Active';
+
+  String get membershipRenews {
+    final label = _users.currentUser?.membership.renewsLabel ?? '';
+    return label.isNotEmpty ? label : 'Renews Aug 08, 2027';
+  }
 
   final newMessages = 0.obs;
   final activeProjects = 0.obs;
@@ -35,7 +43,7 @@ class HomeController extends GetxController {
 
   void onNotifications() => AppFlash.info('coming_soon'.tr);
 
-  void onManageMembership() => AppFlash.info('coming_soon'.tr);
+  void onManageMembership() => Get.toNamed(AppRoutes.membership);
 
   void onAddFirstService() {
     if (Get.isRegistered<MainShellController>()) {

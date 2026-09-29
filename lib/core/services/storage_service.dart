@@ -9,6 +9,9 @@ abstract class StorageKeys {
   static const String languageCode = 'language_code';
   /// Next numeric suffix for local `RSP-XXXX` provider ids.
   static const String providerSeq = 'provider_seq';
+  static const String partnerApplication = 'partner_application';
+  /// [PartnerApplicationStatus.name] — see docs/application-status.md.
+  static const String applicationStatus = 'application_status';
 }
 
 /// Thin, typed wrapper around [GetStorage] for simple key-value persistence.
@@ -45,6 +48,18 @@ class StorageService extends GetxService {
   /// Local counter for generating `RSP-XXXX` ids (starts at 41).
   int get providerSeq => _box.read<int>(StorageKeys.providerSeq) ?? 41;
   set providerSeq(int value) => _box.write(StorageKeys.providerSeq, value);
+
+  /// JSON partner application draft / submitted payload.
+  String? get partnerApplication =>
+      _box.read<String>(StorageKeys.partnerApplication);
+  set partnerApplication(String? value) =>
+      _write(StorageKeys.partnerApplication, value);
+
+  /// Partner review / membership gate (`none` | `submitted` | …).
+  String? get applicationStatus =>
+      _box.read<String>(StorageKeys.applicationStatus);
+  set applicationStatus(String? value) =>
+      _write(StorageKeys.applicationStatus, value);
 
   // --- Localization ---
   String? get languageCode => _box.read<String>(StorageKeys.languageCode);

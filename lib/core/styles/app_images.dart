@@ -11,6 +11,7 @@ abstract class AppImages {
 abstract class AppIcons {
   static const String glowTop = 'assets/icons/glow_top.svg';
   static const String aiMagic = 'assets/icons/ai_magic.svg';
+  static const String sparkle = 'assets/icons/icon_sparkle.svg';
   static const String google = 'assets/icons/google.svg';
   static const String apple = 'assets/icons/apple.svg';
   static const String eyeClosed = 'assets/icons/eye_closed.svg';
@@ -27,4 +28,10 @@ abstract class AppIcons {
   static const String navChats = 'assets/icons/nav_chats.svg';
   static const String navProjects = 'assets/icons/nav_projects.svg';
   static const String navProfile = 'assets/icons/nav_profile.svg';
+  static const String iconArrowLeft = 'assets/icons/icon_arrow_left.svg';
+  static const String iconAttachment = 'assets/icons/icon_attachment.svg';
+  static const String iconUpload = 'assets/icons/icon_upload.svg';
+  static const String iconRetry = 'assets/icons/retry.svg';
+  static const String iconDelete = 'assets/icons/delete.svg';
+  static const String iconEdit = 'assets/icons/icon_edit.svg';
 }

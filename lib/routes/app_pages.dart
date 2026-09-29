@@ -1,11 +1,19 @@
 import 'package:get/get.dart';
 
+import '../getx/application_status/application_status_binding.dart';
 import '../getx/main_shell/main_shell_binding.dart';
+import '../getx/membership/membership_binding.dart';
+import '../getx/partner_application/partner_application_binding.dart';
+import '../getx/partner_application/partner_application_review_binding.dart';
 import '../getx/sign_in/sign_in_binding.dart';
 import '../getx/sign_up/sign_up_binding.dart';
 import '../getx/splash/splash_binding.dart';
 import '../getx/welcome/welcome_binding.dart';
+import '../presentation/views/application_status/application_status_view.dart';
 import '../presentation/views/main_shell/main_shell_view.dart';
+import '../presentation/views/membership/membership_view.dart';
+import '../presentation/views/partner_application/partner_application_review_view.dart';
+import '../presentation/views/partner_application/partner_application_view.dart';
 import '../presentation/views/sign_in/sign_in_view.dart';
 import '../presentation/views/sign_up/sign_up_view.dart';
 import '../presentation/views/splash/splash_view.dart';
@@ -33,6 +41,26 @@ class AppPages {
       name: AppRoutes.signUp,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.partnerApplication,
+      page: () => const PartnerApplicationView(),
+      binding: PartnerApplicationBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.partnerApplicationReview,
+      page: () => const PartnerApplicationReviewView(),
+      binding: PartnerApplicationReviewBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.applicationStatus,
+      page: () => const ApplicationStatusView(),
+      binding: ApplicationStatusBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.membership,
+      page: () => const MembershipView(),
+      binding: MembershipBinding(),
     ),
     GetPage(
       name: AppRoutes.home,

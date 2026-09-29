@@ -21,6 +21,7 @@ class SplashController extends GetxController {
 
     final route = switch (AppBoot.splashTarget) {
       BootTarget.welcome => AppRoutes.welcome,
+      BootTarget.applicationStatus => AppRoutes.applicationStatus,
       BootTarget.home => AppRoutes.home,
       BootTarget.session => _users.continueRoute,
     };

@@ -21,6 +21,7 @@ class AppTextField extends StatelessWidget {
     this.inputFormatters,
     this.onToggleObscure,
     this.showObscureToggle = false,
+    this.onSubmitted,
   });
 
   final String label;
@@ -32,23 +33,30 @@ class AppTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final VoidCallback? onToggleObscure;
   final bool showObscureToggle;
+  final ValueChanged<String>? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
-    final style = GoogleFonts.darkerGrotesque(
+    final labelStyle = GoogleFonts.darkerGrotesque(
+      fontWeight: FontWeight.w500,
+      fontSize: context.dw(20),
+      height: 1.2,
+      color: AppColors.text,
+    );
+    final fieldStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w400,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.white,
+      color: AppColors.text,
     );
-    final hintStyle = style.copyWith(
+    final hintStyle = fieldStyle.copyWith(
       color: AppColors.text.withValues(alpha: 0.5),
     );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(label, style: style),
+        Text(label, style: labelStyle),
         SizedBox(height: context.dw(AppSpacing.t08)),
         SizedBox(
           height: context.dw(50),
@@ -58,7 +66,8 @@ class AppTextField extends StatelessWidget {
             keyboardType: keyboardType,
             textInputAction: textInputAction,
             inputFormatters: inputFormatters,
-            style: style,
+            onSubmitted: onSubmitted,
+            style: fieldStyle,
             cursorColor: AppColors.primary,
             decoration: InputDecoration(
               hintText: hint,

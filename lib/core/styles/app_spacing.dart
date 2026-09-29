@@ -7,6 +7,7 @@ class AppSpacing {
 
   static const double t00 = 0;
   static const double t02 = 2;
+  static const double t03 = 3;
   static const double t04 = 4;
   static const double t05 = 5;
   static const double t06 = 6;

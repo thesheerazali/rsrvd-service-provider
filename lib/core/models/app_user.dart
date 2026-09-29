@@ -1,9 +1,14 @@
 import 'dart:convert';
 
+import 'user_membership.dart';
+
 /// User document shape (mirrors Firebase `users/{uid}` later).
 ///
 /// Auth identity is always [uid] (Firebase Auth). [providerId] is a public
 /// viewing code (`RSP-XXXX`) written once at signup — not used for login.
+///
+/// [membership] is the embedded plan / subscription block used by Home and
+/// the choose-plan flow (gateway-agnostic — see [UserMembership]).
 class AppUser {
   const AppUser({
     required this.uid,
@@ -11,6 +16,7 @@ class AppUser {
     required this.displayName,
     required this.email,
     this.occupation = '',
+    this.membership = UserMembership.empty,
   });
 
   /// Firebase Auth UID — login / security.
@@ -22,6 +28,9 @@ class AppUser {
   final String displayName;
   final String email;
   final String occupation;
+
+  /// Current membership / plan snapshot on the user doc.
+  final UserMembership membership;
 
   /// Initials for avatar placeholder (e.g. `Alexander Reyes` → `AR`).
   String get initials {
@@ -39,6 +48,7 @@ class AppUser {
   }
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
+    final membershipRaw = json['membership'];
     return AppUser(
       uid: json['uid'] as String? ?? '',
       providerId: json['provider_id'] as String? ??
@@ -47,6 +57,11 @@ class AppUser {
       displayName: json['display_name'] as String? ?? '',
       email: json['email'] as String? ?? '',
       occupation: json['occupation'] as String? ?? '',
+      membership: UserMembership.fromJson(
+        membershipRaw is Map
+            ? Map<String, dynamic>.from(membershipRaw)
+            : null,
+      ),
     );
   }
 
@@ -56,12 +71,14 @@ class AppUser {
         'display_name': displayName,
         'email': email,
         'occupation': occupation,
+        'membership': membership.toJson(),
       };
 
   AppUser copyWith({
     String? displayName,
     String? email,
     String? occupation,
+    UserMembership? membership,
   }) {
     return AppUser(
       uid: uid,
@@ -69,6 +86,7 @@ class AppUser {
       displayName: displayName ?? this.displayName,
       email: email ?? this.email,
       occupation: occupation ?? this.occupation,
+      membership: membership ?? this.membership,
     );
   }
 

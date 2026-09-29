@@ -42,6 +42,69 @@ const Map<String, String> arSA = {
   'have_account': 'لديك حساب بالفعل؟ ',
   'auth_fill_required': 'يرجى تعبئة جميع الحقول المطلوبة.',
   'password_mismatch': 'كلمتا المرور غير متطابقتين.',
+  'go_back': 'رجوع',
+
+  'pa_contact_name': 'اسم جهة الاتصال الرئيسية',
+  'pa_phone': 'رقم الهاتف*',
+  'pa_business_name': 'اسم النشاط',
+  'pa_city': 'المدينة',
+  'pa_state': 'الولاية',
+  'pa_country': 'الدولة',
+  'pa_experience': 'الخبرة',
+  'pa_bio': 'نبذة مهنية*',
+  'pa_bio_hint': 'اكتب عن نشاطك...',
+  'pa_expertise': 'مجال الخبرة*',
+  'pa_expertise_hint': 'أضف مجال خبرة..',
+  'pa_service_areas': 'مناطق الخدمة*',
+  'pa_service_areas_hint': 'أضف منطقة خدمة',
+  'pa_select_category': 'اختر فئة خدمة واحدة على الأقل.',
+  'pa_select_category_label': 'اختر فئتك',
+  'pa_docs_notice':
+      'تُستخدم مستندات التحقق فقط لفحص RSRVD. لا تُعرض في ملفك العام '
+      'ولا تُشارك مع الأعضاء.',
+  'pa_upload_documents': 'رفع المستندات',
+  'pa_doc_gov_id': 'هوية حكومية',
+  'pa_doc_driving': 'رخصة قيادة',
+  'pa_doc_business': 'مستندات النشاط',
+  'pa_uploaded_count': 'المرفوع (@count)',
+  'pa_nda_required': 'يرجى الموافقة على اتفاقية عدم الإفصاح للمتابعة.',
+  'pa_nda_card_title': 'اتفاقية عدم الإفصاح لشركاء RSRVD (v2.4)',
+  'pa_nda_body':
+      'بالمتابعة، توافق على الحفاظ على سرية معلومات الأعضاء وتفاصيل المشاريع '
+      'ومراسلات المنصة، وعدم التواصل مع أعضاء Elite خارج التطبيق، '
+      'وتفويض RSRVD بالتحقق من بياناتك لقبول الشريك.',
+  'pa_nda_agree':
+      'لقد قرأت وأوافق على اتفاقية عدم الإفصاح لشركاء RSRVD، '
+      'وأنا مخوّل بالتوقيع نيابة عن نشاطي.',
+  'pa_nda_signed_by': 'وقع بواسطة',
+  'pa_nda_date': 'التاريخ',
+  'pa_nda_time': 'الوقت',
+  'pa_nda_version': 'إصدار الاتفاقية',
+
+  'app_status_submitted_eyebrow': 'تم تقديم الطلب',
+  'app_status_submitted_body':
+      'شكراً لتقديم طلبك لتصبح شريك RSRVD. سيراجع فريقنا معلوماتك '
+      'ويتواصل معك بعد مراجعة الطلب.',
+  'app_status_submitted_title': 'تم إرسال طلبك إلى الإدارة',
+  'app_status_submitted_notice':
+      'ملفك غير ظاهر لأعضاء Elite أثناء المراجعة. '
+      'سنُعلمك فور اتخاذ القرار.',
+  'app_status_approved_eyebrow': 'تهانينا',
+  'app_status_approved_title': 'تمت الموافقة على ملفك',
+  'app_status_approved_body':
+      'تمت الموافقة على طلب شريك RSRVD. أكمل عضويتك السنوية '
+      'لتفعيل حساب الشريك ونشر ملفك.',
+  'app_status_continue_membership': 'متابعة إلى العضوية',
+  'app_status_rejected_eyebrow': 'غير موافق عليه',
+  'app_status_rejected_title': 'لم تتم الموافقة على الطلب',
+  'app_status_rejected_body':
+      'لا نقبل شركاء إضافيين في هذه الفئة في الوقت الحالي.',
+  'app_status_resubmit': 'إعادة تقديم الطلب',
+
+  'membership_title': 'اختر خطة',
+  'membership_subtitle':
+      'كن شريك RSRVD موثوقاً وتواصل مع شبكة حصرية من أعضاء Elite.',
+  'membership_select_plan': 'يرجى اختيار خطة للمتابعة.',
 
   'manage': 'إدارة',
   'stat_new_messages': 'رسائل جديدة',

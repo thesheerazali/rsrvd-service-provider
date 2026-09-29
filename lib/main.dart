@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:rsrvd_service_provider/app.dart';
 import 'package:rsrvd_service_provider/core/localization/localization_service.dart';
 import 'package:rsrvd_service_provider/core/services/storage_service.dart';
+import 'package:rsrvd_service_provider/data/repositories/membership_repository.dart';
 import 'package:rsrvd_service_provider/data/repositories/user_repository.dart';
 
 Future<void> main() async {
@@ -14,6 +15,7 @@ Future<void> main() async {
   await StorageService.init();
   Get.put(StorageService(), permanent: true);
   Get.put(UserRepository(), permanent: true);
+  Get.put(MembershipRepository(), permanent: true);
   Get.put(LocalizationService(), permanent: true);
 
   await SystemChrome.setPreferredOrientations([
