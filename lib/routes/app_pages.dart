@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 
-import '../getx/home/home_binding.dart';
+import '../getx/main_shell/main_shell_binding.dart';
 import '../getx/sign_in/sign_in_binding.dart';
 import '../getx/sign_up/sign_up_binding.dart';
 import '../getx/splash/splash_binding.dart';
 import '../getx/welcome/welcome_binding.dart';
-import '../presentation/views/home/home_view.dart';
+import '../presentation/views/main_shell/main_shell_view.dart';
 import '../presentation/views/sign_in/sign_in_view.dart';
 import '../presentation/views/sign_up/sign_up_view.dart';
 import '../presentation/views/splash/splash_view.dart';
@@ -36,8 +36,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
+      page: () => const MainShellView(),
+      binding: MainShellBinding(),
     ),
   ];
 }

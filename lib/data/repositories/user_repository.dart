@@ -91,9 +91,9 @@ class UserRepository extends GetxService {
     final demo = AppUser(
       uid: 'fb_demo_provider_0041',
       providerId: 'RSP-0041',
-      displayName: 'Jordan Hale',
-      email: trimmed.isEmpty ? 'j.hale@atelier.io' : trimmed,
-      occupation: 'Interior Studio',
+      displayName: 'Marchetti Atelier',
+      email: trimmed.isEmpty ? 'studio@marchetti.io' : trimmed,
+      occupation: 'Interior Design · Miami',
     );
     _writeUserDoc(demo);
     _setAuthSession(demo.uid);

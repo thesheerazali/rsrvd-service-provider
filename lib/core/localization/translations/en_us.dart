@@ -1,6 +1,6 @@
 /// English (US) translations — chrome UI strings only.
 const Map<String, String> enUS = {
-  'app_name': 'RSRVD Provider',
+  'app_name': 'RSRVD Partners',
   'loading': 'Loading...',
   'coming_soon': 'Coming soon.',
   'good_morning': 'Good Morning',
@@ -13,12 +13,15 @@ const Map<String, String> enUS = {
   'weeks_ago': '@count weeks ago',
   'months_ago': '@count months ago',
 
-  // Auth — same brand copy as Elite
-  'welcome_eyebrow': 'Reserved for the Exceptional.',
-  'welcome_title': 'A quieter way to hold what matters.',
+  // Welcome — Partners
+  'welcome_title': 'Welcome to\nRSRVD Partners',
   'welcome_body':
-      'Estates, private allocations, vetted specialists and a standing '
-      'concierge, held behind one membership.',
+      'An invitation-only network of vetted professionals serving '
+      'RSRVD Elite Members. No bidding. No job boards. Members come to you.',
+  'welcome_bullet_1': 'Every partner is vetted and verified by RSRVD',
+  'welcome_bullet_2': 'Members discover you and reach out directly',
+  'welcome_bullet_3': 'Projects and chat are secured within the app',
+  'welcome_cta': 'Become an RSRVD Partner',
   'get_started': 'Get Started',
   'sign_in': 'Sign In',
   'sign_up': 'Sign Up',
@@ -41,9 +44,20 @@ const Map<String, String> enUS = {
   'auth_fill_required': 'Please fill in all required fields.',
   'password_mismatch': 'Passwords do not match.',
 
-  // Home stub
-  'home_greeting': 'Welcome, @name',
-  'home_stub_body':
-      'Your provider workspace is ready. Projects and requests land here next.',
+  // Home — Figma `1196:1742`
+  'manage': 'Manage',
+  'stat_new_messages': 'New Messages',
+  'stat_active_projects': 'Active Projects',
+  'stat_pending_contracts': 'Pending Contracts',
+  'stat_completed_projects': 'Completed Projects',
+  'empty_services_title': 'No Service Added yet',
+  'empty_services_body':
+      'Create your first service to showcase your expertise to RSRVD members.',
+  'empty_services_cta': 'Add Your First Service',
+  'tab_home': 'Home',
+  'tab_services': 'Services',
+  'tab_chats': 'Chats',
+  'tab_projects': 'Projects',
+  'tab_profile': 'Profile',
   'sign_out': 'Sign Out',
 };

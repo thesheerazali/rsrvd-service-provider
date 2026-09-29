@@ -6,12 +6,12 @@ import 'blend_mask.dart';
 import 'golden_top_glow.dart';
 
 export 'golden_top_glow.dart' show AppGlowStyle;
-
-/// App-wide screen background — same Figma stack as Elite.
+/// App-wide screen background from Figma Splash / auth.
 ///
+/// Layer order matches Figma:
 /// 1. Ink `#111111`
 /// 2. Soft top gold glow (`glow_top.png`)
-/// 3. Constellation — Color Dodge · 50% · cover + 20% zoom
+/// 3. Constellation photo with **Color Dodge**
 /// 4. [child]
 class AppBackground extends StatelessWidget {
   const AppBackground({
@@ -22,7 +22,11 @@ class AppBackground extends StatelessWidget {
   });
 
   final Widget child;
+
+  /// Top gold nebula.
   final bool showGlow;
+
+  /// [AppGlowStyle.hero] for Splash/Welcome; [AppGlowStyle.auth] elsewhere.
   final AppGlowStyle glowStyle;
 
   @override
@@ -31,7 +35,7 @@ class AppBackground extends StatelessWidget {
       color: AppColors.bg,
       child: Stack(
         fit: StackFit.expand,
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.none,
         children: [
           if (showGlow)
             Positioned.fill(
@@ -49,43 +53,20 @@ class AppBackground extends StatelessWidget {
   }
 }
 
+/// `bg_constellations.png` — Figma blend mode Color Dodge.
 class _ConstellationLayer extends StatelessWidget {
   const _ConstellationLayer();
 
-  static const double _zoom = 1.2;
-
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final w = constraints.maxWidth * _zoom;
-        final h = constraints.maxHeight * _zoom;
-
-        return ClipRect(
-          child: OverflowBox(
-            alignment: Alignment.center,
-            minWidth: w,
-            maxWidth: w,
-            minHeight: h,
-            maxHeight: h,
-            child: BlendMask(
-              blendMode: BlendMode.colorDodge,
-              child: Opacity(
-                opacity: 0.5,
-                child: Image.asset(
-                  AppImages.background,
-                  width: w,
-                  height: h,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.center,
-                  filterQuality: FilterQuality.none,
-                  isAntiAlias: false,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
+    return BlendMask(
+      blendMode: BlendMode.colorDodge,
+      child: Image.asset(
+        AppImages.background,
+        fit: BoxFit.cover,
+        alignment: Alignment.center,
+        filterQuality: FilterQuality.high,
+      ),
     );
   }
 }

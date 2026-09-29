@@ -1,6 +1,6 @@
 /// Arabic (SA) translations — chrome UI strings only.
 const Map<String, String> arSA = {
-  'app_name': 'RSRVD Provider',
+  'app_name': 'شركاء RSRVD',
   'loading': 'جاري التحميل...',
   'coming_soon': 'قريباً.',
   'good_morning': 'صباح الخير',
@@ -13,10 +13,14 @@ const Map<String, String> arSA = {
   'weeks_ago': 'قبل @count أسابيع',
   'months_ago': 'قبل @count أشهر',
 
-  'welcome_eyebrow': 'محجوز للاستثنائيين.',
-  'welcome_title': 'طريقة أكثر هدوءاً للحفاظ على ما يهم.',
+  'welcome_title': 'مرحباً بكم في\nشركاء RSRVD',
   'welcome_body':
-      'عقارات، وتخصيصات خاصة، ومتخصصون موثوقون، وكونسيرج دائم خلف عضوية واحدة',
+      'شبكة بدعوة فقط من محترفين موثوقين يخدمون أعضاء RSRVD Elite. '
+      'لا مزايدات. لا لوحات وظائف. الأعضاء يأتون إليك.',
+  'welcome_bullet_1': 'كل شريك يتم فحصه والتحقق منه من قبل RSRVD',
+  'welcome_bullet_2': 'الأعضاء يكتشفونك ويتواصلون معك مباشرة',
+  'welcome_bullet_3': 'المشاريع والدردشة مؤمّنة داخل التطبيق',
+  'welcome_cta': 'انضم كشريك RSRVD',
   'get_started': 'ابدأ',
   'sign_in': 'تسجيل الدخول',
   'sign_up': 'إنشاء حساب',
@@ -39,8 +43,19 @@ const Map<String, String> arSA = {
   'auth_fill_required': 'يرجى تعبئة جميع الحقول المطلوبة.',
   'password_mismatch': 'كلمتا المرور غير متطابقتين.',
 
-  'home_greeting': 'مرحباً، @name',
-  'home_stub_body':
-      'مساحة مزوّد الخدمة جاهزة. المشاريع والطلبات ستظهر هنا لاحقاً.',
+  'manage': 'إدارة',
+  'stat_new_messages': 'رسائل جديدة',
+  'stat_active_projects': 'مشاريع نشطة',
+  'stat_pending_contracts': 'عقود معلّقة',
+  'stat_completed_projects': 'مشاريع مكتملة',
+  'empty_services_title': 'لم تُضف أي خدمة بعد',
+  'empty_services_body':
+      'أنشئ خدمتك الأولى لعرض خبرتك لأعضاء RSRVD.',
+  'empty_services_cta': 'أضف خدمتك الأولى',
+  'tab_home': 'الرئيسية',
+  'tab_services': 'الخدمات',
+  'tab_chats': 'المحادثات',
+  'tab_projects': 'المشاريع',
+  'tab_profile': 'الملف',
   'sign_out': 'تسجيل الخروج',
 };
