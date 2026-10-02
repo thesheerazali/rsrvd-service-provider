@@ -8,8 +8,8 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/home/home_controller.dart';
+import '../../widgets/empty_services_block.dart';
 import '../../widgets/gold_divider.dart';
-import '../../widgets/primary_button.dart';
 
 /// Partners home — Figma `1196:1742`.
 class HomeView extends GetView<HomeController> {
@@ -37,7 +37,9 @@ class HomeView extends GetView<HomeController> {
                 SizedBox(height: context.dw(AppSpacing.t30)),
                 const GoldDivider(),
                 SizedBox(height: context.dw(AppSpacing.t30)),
-                const _EmptyServices(),
+                EmptyServicesBlock(
+                  onAddPressed: controller.onAddFirstService,
+                ),
               ],
             ),
           ),
@@ -126,7 +128,7 @@ class _MembershipCard extends GetView<HomeController> {
         border: Border.all(color: AppColors.surfaceCard),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Column(
@@ -305,70 +307,13 @@ class _StatCard extends StatelessWidget {
             icon,
             width: context.dw(21),
             height: context.dw(21),
-            colorFilter: const ColorFilter.mode(
-              AppColors.text,
-              BlendMode.srcIn,
-            ),
+            // colorFilter: const ColorFilter.mode(
+            //   AppColors.text,
+            //   BlendMode.srcIn,
+            // ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _EmptyServices extends GetView<HomeController> {
-  const _EmptyServices();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: context.dw(62),
-          height: context.dw(62),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: const Color(0xFFB38922).withValues(alpha: 0.1),
-          ),
-          alignment: Alignment.center,
-          child: Image.asset(
-            AppImages.emptyService,
-            width: context.dw(37),
-            height: context.dw(35),
-            fit: BoxFit.contain,
-          ),
-        ),
-        SizedBox(height: context.dw(AppSpacing.t20)),
-        Text(
-          'empty_services_title'.tr,
-          textAlign: TextAlign.center,
-          style: GoogleFonts.cinzel(
-            fontWeight: FontWeight.w700,
-            fontSize: context.dw(24),
-            height: 1.0,
-            color: AppColors.white,
-          ),
-        ),
-        SizedBox(height: context.dw(AppSpacing.t10)),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.dw(AppSpacing.t20)),
-          child: Text(
-            'empty_services_body'.tr,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.darkerGrotesque(
-              fontWeight: FontWeight.w500,
-              fontSize: context.dw(20),
-              height: 1.0,
-              color: AppColors.text,
-            ),
-          ),
-        ),
-        SizedBox(height: context.dw(AppSpacing.t20)),
-        PrimaryButton(
-          label: 'empty_services_cta'.tr,
-          onPressed: controller.onAddFirstService,
-        ),
-      ],
     );
   }
 }

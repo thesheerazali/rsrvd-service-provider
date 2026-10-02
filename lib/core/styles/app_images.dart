@@ -5,6 +5,7 @@ abstract class AppImages {
   static const String logoSplash = 'assets/images/logo_splash.png';
   static const String logoHeader = 'assets/images/logo_header.png';
   static const String emptyService = 'assets/images/empty_service.png';
+  static const String emptyMessage = 'assets/images/empty_message.png';
 }
 
 /// SVG icon paths — shared chrome + Partners home.
@@ -30,8 +31,19 @@ abstract class AppIcons {
   static const String navProfile = 'assets/icons/nav_profile.svg';
   static const String iconArrowLeft = 'assets/icons/icon_arrow_left.svg';
   static const String iconAttachment = 'assets/icons/icon_attachment.svg';
+  static const String iconChatAttachment = 'assets/icons/attachment.svg';
+  static const String iconDoc = 'assets/icons/doc.svg';
+  static const String iconSend = 'assets/icons/icon_send.svg';
   static const String iconUpload = 'assets/icons/icon_upload.svg';
   static const String iconRetry = 'assets/icons/retry.svg';
   static const String iconDelete = 'assets/icons/delete.svg';
   static const String iconEdit = 'assets/icons/icon_edit.svg';
+  static const String iconAddService = 'assets/icons/icon_add_service.svg';
+  static const String iconBoostEnergy = 'assets/icons/icon_boost_energy.svg';
+  static const String iconSearch = 'assets/icons/icon_search.svg';
+  static const String iconMessageFilter = 'assets/icons/icon_message_filter.svg';
+  static const String contractIcon = 'assets/icons/contract_icon.svg';
+  static const String calendarIcon = 'assets/icons/calendar.svg';
+  static const String clockIcon = 'assets/icons/clock.svg';
+  static const String viewIcon = 'assets/icons/view.svg';
 }

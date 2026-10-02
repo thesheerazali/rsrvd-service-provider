@@ -9,4 +9,7 @@ abstract class AppRoutes {
   static const String applicationStatus = '/application_status';
   static const String membership = '/membership';
   static const String home = '/home';
+  static const String chatDetail = '/chat_detail';
+  static const String createContract = '/create_contract';
+  static const String contractPreview = '/contract_preview';
 }
