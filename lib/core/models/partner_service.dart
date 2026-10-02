@@ -8,6 +8,9 @@ class PartnerService {
     required this.priceLabel,
     this.isPublished = true,
     this.isBoosted = false,
+    this.reviewStatus = PartnerServiceReviewStatus.approved,
+    this.rejectionReason = '',
+    this.imageCount = 0,
   });
 
   final String id;
@@ -20,9 +23,22 @@ class PartnerService {
 
   final bool isPublished;
   final bool isBoosted;
+  final PartnerServiceReviewStatus reviewStatus;
 
-  /// Show Boost CTA when published and not already boosted.
-  bool get canBoost => isPublished && !isBoosted;
+  /// Shown on rejected status screen (Figma reason card).
+  final String rejectionReason;
+
+  /// Demo / local photo slot count (max 6).
+  final int imageCount;
+
+  /// Show Boost CTA when published, approved, and not already boosted.
+  bool get canBoost =>
+      isPublished &&
+      !isBoosted &&
+      reviewStatus == PartnerServiceReviewStatus.approved;
+
+  bool get isPendingReview =>
+      reviewStatus == PartnerServiceReviewStatus.pending;
 
   PartnerService copyWith({
     String? title,
@@ -31,6 +47,9 @@ class PartnerService {
     String? priceLabel,
     bool? isPublished,
     bool? isBoosted,
+    PartnerServiceReviewStatus? reviewStatus,
+    String? rejectionReason,
+    int? imageCount,
   }) {
     return PartnerService(
       id: id,
@@ -40,6 +59,9 @@ class PartnerService {
       priceLabel: priceLabel ?? this.priceLabel,
       isPublished: isPublished ?? this.isPublished,
       isBoosted: isBoosted ?? this.isBoosted,
+      reviewStatus: reviewStatus ?? this.reviewStatus,
+      rejectionReason: rejectionReason ?? this.rejectionReason,
+      imageCount: imageCount ?? this.imageCount,
     );
   }
 
@@ -51,6 +73,9 @@ class PartnerService {
         'price_label': priceLabel,
         'is_published': isPublished,
         'is_boosted': isBoosted,
+        'review_status': reviewStatus.key,
+        'rejection_reason': rejectionReason,
+        'image_count': imageCount,
       };
 
   factory PartnerService.fromJson(Map<String, dynamic> json) {
@@ -62,6 +87,29 @@ class PartnerService {
       priceLabel: json['price_label'] as String? ?? '',
       isPublished: json['is_published'] as bool? ?? true,
       isBoosted: json['is_boosted'] as bool? ?? false,
+      reviewStatus:
+          PartnerServiceReviewStatusX.fromKey(json['review_status'] as String?),
+      rejectionReason: json['rejection_reason'] as String? ?? '',
+      imageCount: json['image_count'] as int? ?? 0,
     );
+  }
+}
+
+/// Backend review gate after publish — same lifecycle idea as partner application.
+enum PartnerServiceReviewStatus { pending, approved, rejected }
+
+extension PartnerServiceReviewStatusX on PartnerServiceReviewStatus {
+  String get key => switch (this) {
+        PartnerServiceReviewStatus.pending => 'pending',
+        PartnerServiceReviewStatus.approved => 'approved',
+        PartnerServiceReviewStatus.rejected => 'rejected',
+      };
+
+  static PartnerServiceReviewStatus fromKey(String? raw) {
+    return switch (raw) {
+      'pending' || 'in_review' => PartnerServiceReviewStatus.pending,
+      'rejected' => PartnerServiceReviewStatus.rejected,
+      _ => PartnerServiceReviewStatus.approved,
+    };
   }
 }

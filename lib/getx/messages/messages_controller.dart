@@ -2,9 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../core/models/app_filter_config.dart';
 import '../../core/models/conversation_thread.dart';
-import '../../core/services/app_flash.dart';
 import '../../data/repositories/messages_repository.dart';
+import '../../presentation/widgets/app_filter_dialog.dart';
 import '../../routes/app_routes.dart';
 import '../main_shell/main_shell_controller.dart';
 
@@ -24,6 +25,7 @@ class MessagesController extends GetxController {
   final debugShowEmpty = false.obs;
   final threads = <ConversationThread>[].obs;
   final isLoading = false.obs;
+  final filterSelection = Rxn<AppFilterSelection>();
 
   bool get showDebugToggle => kDebugMode;
 
@@ -73,7 +75,20 @@ class MessagesController extends GetxController {
 
   void setFilter(MessagesFilter value) => filter.value = value;
 
-  void onFilterTap() => AppFlash.info('coming_soon'.tr);
+  Future<void> onFilterTap() async {
+    final result = await AppFilterDialog.show(
+      config: AppFilterConfig.partnersMessages,
+      initial: filterSelection.value,
+    );
+    if (result == null) return;
+    filterSelection.value = result;
+    final status = result['status'] ?? {};
+    if (status.contains('unread')) {
+      filter.value = MessagesFilter.unread;
+    } else {
+      filter.value = MessagesFilter.all;
+    }
+  }
 
   void onThreadTap(ConversationThread thread) {
     Get.toNamed(AppRoutes.chatDetail, arguments: thread.id);

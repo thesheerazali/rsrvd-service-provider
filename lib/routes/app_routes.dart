@@ -12,4 +12,7 @@ abstract class AppRoutes {
   static const String chatDetail = '/chat_detail';
   static const String createContract = '/create_contract';
   static const String contractPreview = '/contract_preview';
+  static const String createService = '/create_service';
+  static const String serviceReviewStatus = '/service_review_status';
+  static const String boostService = '/boost_service';
 }

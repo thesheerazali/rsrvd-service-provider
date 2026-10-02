@@ -89,7 +89,7 @@ class _ServicesListLayout extends GetView<ServicesController> {
         context.dw(AppSpacing.t30),
       ),
       child: Obx(() {
-        final items = controller.services.toList();
+        final items = controller.visibleServices;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -99,6 +99,7 @@ class _ServicesListLayout extends GetView<ServicesController> {
               if (i > 0) SizedBox(height: context.dw(AppSpacing.t10)),
               AppServiceCard(
                 service: items[i],
+                onTap: () => controller.openServiceStatus(items[i]),
                 onEdit: () => controller.onEditService(items[i]),
                 onDelete: () => controller.onDeleteService(items[i]),
                 onBoost: () => controller.onBoostService(items[i]),

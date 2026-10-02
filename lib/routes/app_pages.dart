@@ -3,22 +3,28 @@ import 'package:get/get.dart';
 import '../getx/application_status/application_status_binding.dart';
 import '../getx/chat_detail/chat_detail_binding.dart';
 import '../getx/create_contract/create_contract_binding.dart';
+import '../getx/boost_service/boost_service_binding.dart';
+import '../getx/create_service/create_service_binding.dart';
 import '../getx/main_shell/main_shell_binding.dart';
 import '../getx/membership/membership_binding.dart';
 import '../getx/partner_application/partner_application_binding.dart';
 import '../getx/partner_application/partner_application_review_binding.dart';
+import '../getx/service_review_status/service_review_status_binding.dart';
 import '../getx/sign_in/sign_in_binding.dart';
 import '../getx/sign_up/sign_up_binding.dart';
 import '../getx/splash/splash_binding.dart';
 import '../getx/welcome/welcome_binding.dart';
 import '../presentation/views/application_status/application_status_view.dart';
+import '../presentation/views/boost_service/boost_service_view.dart';
 import '../presentation/views/chat_detail/chat_detail_view.dart';
 import '../presentation/views/create_contract/contract_preview_view.dart';
 import '../presentation/views/create_contract/create_contract_view.dart';
+import '../presentation/views/create_service/create_service_view.dart';
 import '../presentation/views/main_shell/main_shell_view.dart';
 import '../presentation/views/membership/membership_view.dart';
 import '../presentation/views/partner_application/partner_application_review_view.dart';
 import '../presentation/views/partner_application/partner_application_view.dart';
+import '../presentation/views/service_review_status/service_review_status_view.dart';
 import '../presentation/views/sign_in/sign_in_view.dart';
 import '../presentation/views/sign_up/sign_up_view.dart';
 import '../presentation/views/splash/splash_view.dart';
@@ -85,6 +91,21 @@ class AppPages {
     GetPage(
       name: AppRoutes.contractPreview,
       page: () => const ContractPreviewView(),
+    ),
+    GetPage(
+      name: AppRoutes.createService,
+      page: () => const CreateServiceView(),
+      binding: CreateServiceBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.serviceReviewStatus,
+      page: () => const ServiceReviewStatusView(),
+      binding: ServiceReviewStatusBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.boostService,
+      page: () => const BoostServiceView(),
+      binding: BoostServiceBinding(),
     ),
   ];
 }
