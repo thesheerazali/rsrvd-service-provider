@@ -43,7 +43,7 @@ class HomeController extends GetxController {
 
   void onNotifications() => AppFlash.info('coming_soon'.tr);
 
-  void onManageMembership() => Get.toNamed(AppRoutes.membership);
+  void onManageMembership() => Get.toNamed(AppRoutes.membershipManage);
 
   void onAddFirstService() {
     if (Get.isRegistered<MainShellController>()) {

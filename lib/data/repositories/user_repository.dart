@@ -231,6 +231,59 @@ class UserRepository extends GetxService {
     );
   }
 
+  Future<AppUser> updateProfile({
+    required String displayName,
+    required String email,
+    required String occupation,
+    String? phone,
+    String? experienceYears,
+    List<String>? expertise,
+    List<String>? serviceAreas,
+  }) async {
+    // UI-base / demo: seed a local user doc when session has none yet.
+    final existing = currentUser ?? _ensureDemoUser(email: email);
+    final updated = existing.copyWith(
+      displayName: displayName.trim(),
+      email: email.trim(),
+      occupation: occupation.trim(),
+    );
+    _writeUserDoc(updated);
+    if (!_storage.isLoggedIn) {
+      _storage.authToken = updated.uid;
+    }
+
+    final draft = partnerApplication;
+    if (draft != null) {
+      _storage.partnerApplication = draft
+          .copyWith(
+            contactName: displayName.trim(),
+            businessName: displayName.trim(),
+            phone: phone?.trim() ?? draft.phone,
+            experienceYears:
+                experienceYears?.trim() ?? draft.experienceYears,
+            expertise: expertise ?? draft.expertise,
+            serviceAreas: serviceAreas ?? draft.serviceAreas,
+          )
+          .encode();
+    } else if (phone != null ||
+        experienceYears != null ||
+        expertise != null ||
+        serviceAreas != null) {
+      // Seed a lightweight draft so Profile / Edit stay in sync post-onboarding.
+      _storage.partnerApplication = PartnerApplicationDraft(
+        contactName: displayName.trim(),
+        businessName: displayName.trim(),
+        phone: phone?.trim() ?? '',
+        experienceYears: experienceYears?.trim() ?? '',
+        expertise: expertise ?? const [],
+        serviceAreas: serviceAreas ?? const [],
+      ).encode();
+    }
+
+    AppLog.i('updateProfile uid=${updated.uid}', tag: _tag);
+    return updated;
+  }
+
   Future<void> signOut() async {
     _storage.authToken = null;
     AppLog.i('Signed out (user doc + status kept)', tag: _tag);
@@ -242,6 +295,21 @@ class UserRepository extends GetxService {
 
   void _writeUserDoc(AppUser user) {
     _storage.userProfile = user.encode();
+  }
+
+  /// Local demo user when the UI shell is open without a prior sign-in seed.
+  AppUser _ensureDemoUser({required String email}) {
+    final trimmed = email.trim();
+    final demo = AppUser(
+      uid: 'fb_demo_provider_0041',
+      providerId: 'RSP-0041',
+      displayName: 'Alexa Miguel',
+      email: trimmed.isEmpty ? 'alexa@gmail.com' : trimmed,
+      occupation: 'Architect',
+    );
+    _writeUserDoc(demo);
+    AppLog.i('seeded demo user for profile update', tag: _tag);
+    return demo;
   }
 
   /// Viewing id only — stored on the user document at signup.

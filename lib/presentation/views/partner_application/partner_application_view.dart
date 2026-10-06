@@ -10,6 +10,7 @@ import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/partner_application/partner_application_controller.dart';
 import '../../widgets/app_background.dart';
+import '../../widgets/app_nda_card.dart';
 import '../../widgets/app_removable_chip.dart';
 import '../../widgets/app_select_chip.dart';
 import '../../widgets/app_text_field.dart';
@@ -484,6 +485,8 @@ class _Step3Documents extends GetView<PartnerApplicationController> {
               for (var i = 0; i < controller.documents.length; i++) ...[
                 if (i > 0) SizedBox(height: context.dw(AppSpacing.t12)),
                 AppUploadedDocCard(
+                  iconColor: AppColors.text.withValues(alpha: 0.5),
+                  textColor: AppColors.primary,
                   document: controller.documents[i],
                   onRetry: () =>
                       controller.retryDocument(controller.documents[i].id),
@@ -561,40 +564,8 @@ class _Step4Nda extends GetView<PartnerApplicationController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: context.dw(AppSpacing.t20), vertical: context.dw(AppSpacing.t10)),
-          decoration: BoxDecoration(
-            color: AppColors.surface,
-            borderRadius:
-                BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
-          
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'pa_nda_card_title'.tr,
-                style: GoogleFonts.darkerGrotesque(
-                  fontWeight: FontWeight.w500,
-                  fontSize: context.dw(16),
-                  height: 1.2,
-                  color: AppColors.primary,
-                ),
-              ),
-              SizedBox(height: context.dw(AppSpacing.t12)),
-              Text(
-                'pa_nda_body'.tr,
-                style: GoogleFonts.darkerGrotesque(
-                  fontWeight: FontWeight.w500,
-                  fontSize: context.dw(16),
-                  height: 1.2,
-                  color: AppColors.text,
-                ),
-              ),
-            ],
-          ),
-        ),
-       SizedBox(height: context.dw(AppSpacing.t24)),
+        const AppNdaBodyCard(),
+        SizedBox(height: context.dw(AppSpacing.t24)),
         GestureDetector(
           onTap: controller.toggleNda,
           behavior: HitTestBehavior.opaque,
@@ -662,7 +633,7 @@ class _Step4Nda extends GetView<PartnerApplicationController> {
           return Column(
             children: [
               SizedBox(height: context.dw(AppSpacing.t12)),
-              _NdaSignatureDetails(
+              AppNdaSignatureDetails(
                 signedBy: controller.ndaSignedBy,
                 date: controller.ndaSignedDateLabel,
                 time: controller.ndaSignedTimeLabel,
@@ -672,69 +643,6 @@ class _Step4Nda extends GetView<PartnerApplicationController> {
           );
         }),
       ],
-    );
-  }
-}
-
-class _NdaSignatureDetails extends StatelessWidget {
-  const _NdaSignatureDetails({
-    required this.signedBy,
-    required this.date,
-    required this.time,
-    required this.version,
-  });
-
-  final String signedBy;
-  final String date;
-  final String time;
-  final String version;
-
-  @override
-  Widget build(BuildContext context) {
-    final rows = [
-      ('pa_nda_signed_by'.tr, signedBy),
-      ('pa_nda_date'.tr, date),
-      ('pa_nda_time'.tr, time),
-      ('pa_nda_version'.tr, version),
-    ];
-
-    final style = GoogleFonts.darkerGrotesque(
-      fontWeight: FontWeight.w500,
-      fontSize: context.dw(20),
-      height: 1.2,
-      color: AppColors.text,
-    );
-
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: context.dw(AppSpacing.t20),
-        vertical: context.dw(AppSpacing.t08),
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
-      ),
-      child: Column(
-        children: [
-          for (var i = 0; i < rows.length; i++) ...[
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: context.dw(AppSpacing.t14)),
-              child: Row(
-                children: [
-                  Expanded(child: Text(rows[i].$1, style: style)),
-                  Text(rows[i].$2, style: style),
-                ],
-              ),
-            ),
-            Divider(
-              height: 1,
-              thickness: 1,
-              color: AppColors.surfaceCard,
-            ),
-          ],
-        ],
-      ),
     );
   }
 }

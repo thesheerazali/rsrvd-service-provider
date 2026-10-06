@@ -15,11 +15,17 @@ class AppUploadedDocCard extends StatelessWidget {
     required this.document,
     required this.onRetry,
     required this.onDelete,
+    this.iconColor = AppColors.white,
+    this.textColor = AppColors.white,
+    
   });
 
   final PartnerUploadedDocument document;
   final VoidCallback onRetry;
   final VoidCallback onDelete;
+  final Color? iconColor;
+  final Color? textColor;
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +55,7 @@ class AppUploadedDocCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(16),
                     height: 1.2,
-                    color: AppColors.primary,
+                    color: textColor,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t04)),
@@ -74,17 +80,16 @@ class AppUploadedDocCard extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(context.dw(AppSpacing.t04)),
               child: SvgPicture.asset(
-                AppIcons.iconRetry,
+                AppIcons.iconExchange,
                 width: context.dw(18),
                 height: context.dw(18),
                 colorFilter: ColorFilter.mode(
-                  AppColors.text,
+                  iconColor!,
                   BlendMode.srcIn,
                 ),
               ),
             ),
           ),
-          // SizedBox(width: context.dw(AppSpacing.t10)),
           GestureDetector(
             onTap: onDelete,
             behavior: HitTestBehavior.opaque,
@@ -94,8 +99,8 @@ class AppUploadedDocCard extends StatelessWidget {
                 AppIcons.iconDelete,
                 width: context.dw(18),
                 height: context.dw(18),
-                colorFilter: const ColorFilter.mode(
-                  AppColors.text,
+                colorFilter: ColorFilter.mode(
+                  iconColor!,
                   BlendMode.srcIn,
                 ),
               ),

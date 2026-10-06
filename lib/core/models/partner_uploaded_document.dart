@@ -33,7 +33,7 @@ class PartnerUploadedDocument {
     ];
     final d = uploadedAt;
     final date = '${months[d.month - 1]} ${d.day}, ${d.year}';
-    return '$docType · $format · $date';
+    return '$docType • $format • $date';
   }
 
   Map<String, dynamic> toJson() => {

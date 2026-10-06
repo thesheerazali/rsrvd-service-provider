@@ -6,7 +6,7 @@ import '../../widgets/app_background.dart';
 import '../../widgets/app_bottom_nav.dart';
 import '../home/home_view.dart';
 import '../messages/messages_view.dart';
-import '../placeholder/placeholder_tab_view.dart';
+import '../profile/profile_view.dart';
 import '../projects/projects_view.dart';
 import '../services/services_view.dart';
 
@@ -32,7 +32,7 @@ class MainShellView extends GetView<MainShellController> {
                       ServicesView(),
                       MessagesView(),
                       ProjectsView(),
-                      PlaceholderTabView(titleKey: 'tab_profile'),
+                      ProfileView(),
                     ],
                   ),
                 ),

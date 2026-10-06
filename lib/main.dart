@@ -7,7 +7,10 @@ import 'package:rsrvd_service_provider/core/localization/localization_service.da
 import 'package:rsrvd_service_provider/core/services/storage_service.dart';
 import 'package:rsrvd_service_provider/data/repositories/membership_repository.dart';
 import 'package:rsrvd_service_provider/data/repositories/messages_repository.dart';
+import 'package:rsrvd_service_provider/data/repositories/profile_repository.dart';
 import 'package:rsrvd_service_provider/data/repositories/projects_repository.dart';
+import 'package:rsrvd_service_provider/data/repositories/reviews_repository.dart';
+import 'package:rsrvd_service_provider/data/repositories/settings_repository.dart';
 import 'package:rsrvd_service_provider/data/repositories/user_repository.dart';
 
 Future<void> main() async {
@@ -20,6 +23,9 @@ Future<void> main() async {
   Get.put(MembershipRepository(), permanent: true);
   Get.put(MessagesRepository(), permanent: true);
   Get.put(ProjectsRepository(), permanent: true);
+  Get.put(ProfileRepository(), permanent: true);
+  Get.put(ReviewsRepository(), permanent: true);
+  Get.put(SettingsRepository(), permanent: true);
   Get.put(LocalizationService(), permanent: true);
 
   await SystemChrome.setPreferredOrientations([

@@ -12,6 +12,7 @@ abstract class StorageKeys {
   static const String partnerApplication = 'partner_application';
   /// [PartnerApplicationStatus.name] — see docs/application-status.md.
   static const String applicationStatus = 'application_status';
+  static const String notificationPrefs = 'notification_prefs';
 }
 
 /// Thin, typed wrapper around [GetStorage] for simple key-value persistence.
@@ -60,6 +61,21 @@ class StorageService extends GetxService {
       _box.read<String>(StorageKeys.applicationStatus);
   set applicationStatus(String? value) =>
       _write(StorageKeys.applicationStatus, value);
+
+  /// JSON map of notification toggles (Partner Settings → Notifications).
+  Map<String, dynamic>? get notificationPrefs {
+    final raw = _box.read(StorageKeys.notificationPrefs);
+    if (raw is Map) return Map<String, dynamic>.from(raw);
+    return null;
+  }
+
+  set notificationPrefs(Map<String, dynamic>? value) {
+    if (value == null) {
+      _box.remove(StorageKeys.notificationPrefs);
+    } else {
+      _box.write(StorageKeys.notificationPrefs, value);
+    }
+  }
 
   // --- Localization ---
   String? get languageCode => _box.read<String>(StorageKeys.languageCode);

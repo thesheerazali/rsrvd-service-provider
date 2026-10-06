@@ -2,8 +2,10 @@ import 'package:get/get.dart';
 
 import '../home/home_controller.dart';
 import '../messages/messages_controller.dart';
+import '../profile/profile_controller.dart';
 import '../projects/projects_controller.dart';
 import '../services/services_controller.dart';
+import '../settings/settings_controller.dart';
 import 'main_shell_controller.dart';
 
 class MainShellBinding extends Bindings {
@@ -14,5 +16,7 @@ class MainShellBinding extends Bindings {
     Get.lazyPut(ServicesController.new);
     Get.lazyPut(MessagesController.new);
     Get.lazyPut(ProjectsController.new);
+    Get.lazyPut(ProfileController.new);
+    Get.lazyPut(SettingsController.new);
   }
 }
