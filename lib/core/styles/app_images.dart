@@ -6,6 +6,7 @@ abstract class AppImages {
   static const String logoHeader = 'assets/images/logo_header.png';
   static const String emptyService = 'assets/images/empty_service.png';
   static const String emptyMessage = 'assets/images/empty_message.png';
+  static const String emptyProject = 'assets/images/empty_project.png';
 }
 
 /// SVG icon paths — shared chrome + Partners home.

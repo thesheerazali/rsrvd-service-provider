@@ -128,6 +128,12 @@ const Map<String, String> arSA = {
       'فرصتكم التالية قد تكون على بُعد محادثة. عندما يهتم عضو بخدمتك، '
       'ستظهر المحادثة هنا.',
   'empty_messages_cta': 'أضف المزيد من الخدمات',
+  'projects_title': 'مشاريعي',
+  'projects_subtitle': 'تُنشأ تلقائياً من العقود المقبولة',
+  'empty_projects_title': 'لا مشاريع بعد',
+  'empty_projects_body':
+      'ستظهر ارتباطاتك النشطة هنا عندما يقبل عضو عقداً ويتم تأمين الدفع.',
+  'empty_projects_cta': 'عرض الرسائل',
   'create_contract_cta': 'إنشاء عقد',
   'view_in_projects_cta': 'عرض في المشاريع',
   'create_contract_title': 'إنشاء عقد',

@@ -138,6 +138,14 @@ This obligation survives termination of the partner relationship indefinitely.''
       'member is interested in your service, your conversation will '
       'appear here.',
   'empty_messages_cta': 'Add More Services',
+  // Projects — Figma `1196:4039` / `1196:4121`
+  'projects_title': 'My Projects',
+  'projects_subtitle': 'Created automatically from accepted contracts',
+  'empty_projects_title': 'No projects yet',
+  'empty_projects_body':
+      'Your active engagements will appear here once a member accepts a '
+      'contract and payment is secured.',
+  'empty_projects_cta': 'View Messages',
   'create_contract_cta': 'Create Contract',
   'view_in_projects_cta': 'View In Projects',
   'create_contract_title': 'CREATE CONTRACT',

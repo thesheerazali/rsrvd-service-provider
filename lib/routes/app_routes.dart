@@ -15,4 +15,5 @@ abstract class AppRoutes {
   static const String createService = '/create_service';
   static const String serviceReviewStatus = '/service_review_status';
   static const String boostService = '/boost_service';
+  static const String projectDetail = '/project_detail';
 }

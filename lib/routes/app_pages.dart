@@ -9,6 +9,7 @@ import '../getx/main_shell/main_shell_binding.dart';
 import '../getx/membership/membership_binding.dart';
 import '../getx/partner_application/partner_application_binding.dart';
 import '../getx/partner_application/partner_application_review_binding.dart';
+import '../getx/project_detail/project_detail_binding.dart';
 import '../getx/service_review_status/service_review_status_binding.dart';
 import '../getx/sign_in/sign_in_binding.dart';
 import '../getx/sign_up/sign_up_binding.dart';
@@ -24,6 +25,7 @@ import '../presentation/views/main_shell/main_shell_view.dart';
 import '../presentation/views/membership/membership_view.dart';
 import '../presentation/views/partner_application/partner_application_review_view.dart';
 import '../presentation/views/partner_application/partner_application_view.dart';
+import '../presentation/views/project_detail/project_detail_view.dart';
 import '../presentation/views/service_review_status/service_review_status_view.dart';
 import '../presentation/views/sign_in/sign_in_view.dart';
 import '../presentation/views/sign_up/sign_up_view.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: AppRoutes.boostService,
       page: () => const BoostServiceView(),
       binding: BoostServiceBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.projectDetail,
+      page: () => const ProjectDetailView(),
+      binding: ProjectDetailBinding(),
     ),
   ];
 }
