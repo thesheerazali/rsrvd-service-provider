@@ -11,6 +11,7 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/project_detail/project_detail_controller.dart';
+import '../../widgets/app_back_title_header.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/app_rich_card.dart';
 import '../../widgets/app_spec_rows_card.dart';
@@ -33,7 +34,13 @@ class ProjectDetailView extends GetView<ProjectDetailController> {
           bottom: false,
           child: Column(
             children: [
-              const _Header(),
+              AppBackTitleHeader(
+                title: 'tab_projects'.tr,
+                onBack: controller.goBack,
+                titleWeight: FontWeight.w600,
+                trailing:
+                    kDebugMode ? const _DebugCompletionMenu() : null,
+              ),
               Expanded(
                 child: Obx(() {
                   final loading = controller.isLoading.value;
@@ -337,53 +344,6 @@ class _PostUpdateCard extends GetView<ProjectDetailController> {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Header extends GetView<ProjectDetailController> {
-  const _Header();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: AppColors.surfaceCard, width: 1),
-        ),
-      ),
-      padding: EdgeInsets.fromLTRB(
-        context.dw(AppSpacing.t30),
-        context.dw(AppSpacing.t10),
-        context.dw(AppSpacing.t30),
-        context.dw(AppSpacing.t16),
-      ),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: controller.goBack,
-            child: SvgPicture.asset(
-              AppIcons.iconArrowLeft,
-              width: context.dw(24),
-              height: context.dw(24),
-            ),
-          ),
-          SizedBox(width: context.dw(AppSpacing.t12)),
-          Expanded(
-            child: Text(
-              'tab_projects'.tr,
-              style: GoogleFonts.darkerGrotesque(
-                fontWeight: FontWeight.w600,
-                fontSize: context.dw(24),
-                height: 1.2,
-                color: AppColors.white.withValues(alpha: 0.8),
-              ),
-            ),
-          ),
-          if (kDebugMode) const _DebugCompletionMenu(),
         ],
       ),
     );

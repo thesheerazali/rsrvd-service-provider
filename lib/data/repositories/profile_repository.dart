@@ -26,19 +26,21 @@ class ProfileRepository extends GetxService {
         'Alexa Miguel';
     final email = _firstNonEmpty([user?.email]) ?? 'alexa@gmail.com';
     final phone = _firstNonEmpty([draft?.phone]) ?? '+1 234 560 7890';
-    final primaryCategory = _primaryCategory(user?.occupation) ?? 'Architect';
-    final experience = _experienceDisplay(draft?.experienceYears) ?? '08 years';
     final expertiseList = draft?.expertise.isNotEmpty == true
         ? draft!.expertise
         : const ['Renovation', 'Art Curation'];
     final serviceAreasList = draft?.serviceAreas.isNotEmpty == true
         ? draft!.serviceAreas
         : const ['Zürich', 'Geneva', 'Basel'];
-    final city = draft?.city.trim() ?? '';
-    final subtitle = [
-      if (primaryCategory.isNotEmpty) primaryCategory,
-      if (city.isNotEmpty) city,
-    ].join(' · ');
+    final primaryCategory = _primaryCategory(user?.occupation) ?? 'Architect';
+    final location = _location(
+      occupation: user?.occupation,
+      city: draft?.city,
+      serviceAreas: serviceAreasList,
+    );
+    // Figma identity line under name: `Architect · Zurich`.
+    final subtitle = '$primaryCategory · $location';
+    final experience = _experienceDisplay(draft?.experienceYears) ?? '08 years';
     final initials = (user?.initials.isNotEmpty == true)
         ? user!.initials
         : _initialsFrom(name);
@@ -49,7 +51,7 @@ class ProfileRepository extends GetxService {
 
     return ProfileFeed(
       displayName: name,
-      subtitle: subtitle.isNotEmpty ? subtitle : 'Architect · Zurich',
+      subtitle: subtitle,
       initials: initials.isNotEmpty ? initials : 'AM',
       bio: bio,
       email: email,
@@ -64,8 +66,31 @@ class ProfileRepository extends GetxService {
   String? _primaryCategory(String? occupation) {
     final fromOcc = occupation?.trim();
     if (fromOcc == null || fromOcc.isEmpty) return null;
-    // occupation may be "Architect · Zurich" from onboarding.
+    // occupation may be "Architect · Zurich" from onboarding / home card.
     return fromOcc.split('·').first.trim();
+  }
+
+  /// City for the identity subtitle — draft city, then occupation tail, then
+  /// first service area, then Figma demo default.
+  String _location({
+    String? occupation,
+    String? city,
+    required List<String> serviceAreas,
+  }) {
+    final fromCity = city?.trim() ?? '';
+    if (fromCity.isNotEmpty) return fromCity;
+
+    final occ = occupation?.trim() ?? '';
+    if (occ.contains('·')) {
+      final loc = occ.split('·').skip(1).join('·').trim();
+      if (loc.isNotEmpty) return loc;
+    }
+
+    if (serviceAreas.isNotEmpty) {
+      final area = serviceAreas.first.trim();
+      if (area.isNotEmpty) return area;
+    }
+    return 'Zurich';
   }
 
   String? _experienceDisplay(String? raw) {

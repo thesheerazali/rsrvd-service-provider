@@ -8,6 +8,7 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/settings/settings_controller.dart';
+import '../../widgets/app_back_title_header.dart';
 import '../../widgets/app_background.dart';
 
 /// Profile → Settings — Figma `1196:3205`.
@@ -24,7 +25,11 @@ class SettingsView extends GetView<SettingsController> {
           bottom: false,
           child: Column(
             children: [
-              const _SettingsHeader(),
+              AppBackTitleHeader(
+                title: 'settings_title'.tr,
+                onBack: controller.goBack,
+                titleWeight: FontWeight.w600,
+              ),
               Expanded(
                 child: ListView(
                   padding: EdgeInsets.fromLTRB(
@@ -122,50 +127,6 @@ class SettingsView extends GetView<SettingsController> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SettingsHeader extends GetView<SettingsController> {
-  const _SettingsHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: AppColors.surfaceCard, width: 1),
-        ),
-      ),
-      padding: EdgeInsets.fromLTRB(
-        context.dw(AppSpacing.t30),
-        context.dw(AppSpacing.t10),
-        context.dw(AppSpacing.t30),
-        context.dw(AppSpacing.t16),
-      ),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: controller.goBack,
-            child: SvgPicture.asset(
-              AppIcons.iconArrowLeft,
-              width: context.dw(24),
-              height: context.dw(24),
-            ),
-          ),
-          SizedBox(width: context.dw(AppSpacing.t12)),
-          Text(
-            'settings_title'.tr,
-            style: GoogleFonts.darkerGrotesque(
-              fontWeight: FontWeight.w600,
-              fontSize: context.dw(24),
-              height: 1.2,
-              color: AppColors.white.withValues(alpha: 0.8),
-            ),
-          ),
-        ],
       ),
     );
   }

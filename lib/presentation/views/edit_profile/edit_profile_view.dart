@@ -9,6 +9,7 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/edit_profile/edit_profile_controller.dart';
+import '../../widgets/app_back_title_header.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/app_removable_chip.dart';
 import '../../widgets/app_text_field.dart';
@@ -27,7 +28,11 @@ class EditProfileView extends GetView<EditProfileController> {
         child: SafeArea(
           child: Column(
             children: [
-              const _Header(),
+              AppBackTitleHeader(
+                title: 'edit_profile_title'.tr,
+                onBack: controller.goBack,
+                titleWeight: FontWeight.w600,
+              ),
               Expanded(
                 child: ListView(
                   padding: EdgeInsets.fromLTRB(
@@ -136,50 +141,6 @@ abstract class _FieldInput {
   static final phone = [
     FilteringTextInputFormatter.allow(RegExp(r'[0-9+\s\-()]')),
   ];
-}
-
-class _Header extends GetView<EditProfileController> {
-  const _Header();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: AppColors.surfaceCard, width: 1),
-        ),
-      ),
-      padding: EdgeInsets.fromLTRB(
-        context.dw(AppSpacing.t30),
-        context.dw(AppSpacing.t10),
-        context.dw(AppSpacing.t30),
-        context.dw(AppSpacing.t16),
-      ),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: controller.goBack,
-            child: SvgPicture.asset(
-              AppIcons.iconArrowLeft,
-              width: context.dw(24),
-              height: context.dw(24),
-            ),
-          ),
-          SizedBox(width: context.dw(AppSpacing.t12)),
-          Text(
-            'edit_profile_title'.tr,
-            style: GoogleFonts.darkerGrotesque(
-              fontWeight: FontWeight.w600,
-              fontSize: context.dw(24),
-              height: 1.2,
-              color: AppColors.white.withValues(alpha: 0.8),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 class _AvatarEditor extends GetView<EditProfileController> {

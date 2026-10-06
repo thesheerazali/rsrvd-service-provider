@@ -189,7 +189,7 @@ class _BioCard extends GetView<ProfileController> {
         child: Text(
           controller.bio.value,
           style: GoogleFonts.darkerGrotesque(
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
             fontSize: context.dw(20),
             height: 22 / 20,
             color: AppColors.text,
