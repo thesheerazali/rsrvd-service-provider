@@ -115,6 +115,9 @@ class EditProfileController extends GetxController {
   void removeServiceArea(String value) => serviceAreas.remove(value);
 
   Future<void> saveChanges() async {
+    addExpertise(expertiseInputController.text);
+    addServiceArea(serviceAreaInputController.text);
+
     final name = nameController.text.trim();
     final email = emailController.text.trim();
     final phone = phoneController.text.trim();

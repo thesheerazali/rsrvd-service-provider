@@ -22,5 +22,5 @@ abstract class AppBoot {
 
   /// Change this one line to jump splash → welcome / status / home.
   /// Set back to [BootTarget.session] before release.
-  static const BootTarget splashTarget = BootTarget.home;
+  static const BootTarget splashTarget = BootTarget.session;
 }

@@ -213,6 +213,7 @@ class PartnerApplicationController extends GetxController {
   }
 
   void onPrimaryCta() {
+    if (currentStep.value == 0) _commitPendingChips();
     if (!_validateCurrentStep()) return;
     if (isLastStep) {
       Get.toNamed(AppRoutes.partnerApplicationReview);
@@ -220,6 +221,12 @@ class PartnerApplicationController extends GetxController {
     }
     currentStep.value++;
     AppLog.i('advance → step ${currentStep.value + 1}', tag: _tag);
+  }
+
+  /// Chip fields only commit on keyboard Done — also flush typed text on Continue.
+  void _commitPendingChips() {
+    addExpertise(expertiseInputController.text);
+    addServiceArea(serviceAreaInputController.text);
   }
 
   void editSection(int step) {

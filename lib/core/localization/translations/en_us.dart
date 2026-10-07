@@ -62,9 +62,9 @@ const Map<String, String> enUS = {
   'pa_bio': 'Professional Bio*',
   'pa_bio_hint': 'Write about your business...',
   'pa_expertise': 'Area of Expertise*',
-  'pa_expertise_hint': 'Add area of expertise..',
+  'pa_expertise_hint': 'e.g. Interior Design — press Done to add',
   'pa_service_areas': 'Service Areas*',
-  'pa_service_areas_hint': 'Add area of services',
+  'pa_service_areas_hint': 'e.g. Zurich — press Done to add',
   'pa_select_category': 'Select at least one service category.',
   'pa_select_category_label': 'Select Your Category',
   'pa_docs_notice':

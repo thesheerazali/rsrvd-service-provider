@@ -26,7 +26,6 @@ class PartnerApplicationReviewView
       body: AppBackground(
         glowStyle: AppGlowStyle.auth,
         child: SafeArea(
-          bottom: false,
           child: Column(
             children: [
               const _Header(),

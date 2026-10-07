@@ -38,7 +38,6 @@ class PartnerApplicationView extends GetView<PartnerApplicationController> {
       body: AppBackground(
         glowStyle: AppGlowStyle.auth,
         child: SafeArea(
-          bottom: false,
           child: Column(
             children: [
               const _Header(),

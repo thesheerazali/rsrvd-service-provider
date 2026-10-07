@@ -60,9 +60,9 @@ const Map<String, String> arSA = {
   'pa_bio': 'نبذة مهنية*',
   'pa_bio_hint': 'اكتب عن نشاطك...',
   'pa_expertise': 'مجال الخبرة*',
-  'pa_expertise_hint': 'أضف مجال خبرة..',
+  'pa_expertise_hint': 'مثال: تصميم داخلي — اضغط تم للإضافة',
   'pa_service_areas': 'مناطق الخدمة*',
-  'pa_service_areas_hint': 'أضف منطقة خدمة',
+  'pa_service_areas_hint': 'مثال: زيورخ — اضغط تم للإضافة',
   'pa_select_category': 'اختر فئة خدمة واحدة على الأقل.',
   'pa_select_category_label': 'اختر فئتك',
   'pa_docs_notice':
