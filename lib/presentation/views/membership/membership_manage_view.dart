@@ -39,21 +39,21 @@ class MembershipManageView extends GetView<MembershipManageController> {
                   ),
                   children: [
                     const _StatusCard(),
-                    SizedBox(height: context.dw(AppSpacing.t30)),
+                    SizedBox(height: context.dw(AppSpacing.t15)),
                     const _DetailsList(),
-                    SizedBox(height: context.dw(AppSpacing.t30)),
+                    SizedBox(height: context.dw(AppSpacing.t15)),
                     Text(
                       'membership_included'.tr,
                       style: GoogleFonts.cinzel(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                         fontSize: context.dw(24),
-                        height: 1.0,
+                        height: 1.2,
                         color: AppColors.primary,
                       ),
                     ),
-                    SizedBox(height: context.dw(AppSpacing.t16)),
+                    SizedBox(height: context.dw(AppSpacing.t10)),
                     const _IncludedCard(),
-                    SizedBox(height: context.dw(AppSpacing.t30)),
+                    SizedBox(height: context.dw(AppSpacing.t32)),
                     PrimaryButton(
                       label: 'membership_payment_history'.tr,
                       onPressed: controller.openPaymentHistory,
@@ -79,7 +79,7 @@ class _StatusCard extends GetView<MembershipManageController> {
       padding: EdgeInsets.all(context.dw(AppSpacing.t20)),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
+        borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusLg)),
         border: Border.all(color: AppColors.surfaceCard, width: 0.5),
       ),
       child: Column(
@@ -98,8 +98,8 @@ class _StatusCard extends GetView<MembershipManageController> {
           Text(
             controller.statusLabel,
             style: GoogleFonts.cinzel(
-              fontWeight: FontWeight.w700,
-              fontSize: context.dw(32),
+              fontWeight: FontWeight.w500,
+              fontSize: context.dw(20),
               height: 1.0,
               color: AppColors.primary,
             ),
@@ -135,7 +135,7 @@ class _DetailsList extends GetView<MembershipManageController> {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: context.dw(AppSpacing.t20)),
+   
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
@@ -193,7 +193,7 @@ class _DetailRow extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(vertical: context.dw(AppSpacing.t16)),
+          padding: EdgeInsets.symmetric(vertical: context.dw(AppSpacing.t16) , horizontal: context.dw(AppSpacing.t20)),
           child: Row(
             children: [
               Expanded(child: Text(label, style: labelStyle)),
@@ -247,10 +247,10 @@ class _BulletRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: context.dw(8)),
+          padding: EdgeInsets.only(top: context.dw(12)),
           child: Container(
-            width: context.dw(5),
-            height: context.dw(5),
+            width: context.dw(2),
+            height: context.dw(2),
             decoration: const BoxDecoration(
               color: AppColors.white,
               shape: BoxShape.circle,
@@ -263,8 +263,8 @@ class _BulletRow extends StatelessWidget {
             text,
             style: GoogleFonts.darkerGrotesque(
               fontWeight: FontWeight.w500,
-              fontSize: context.dw(16),
-              height: 1.3,
+              fontSize: context.dw(20),
+              height: 22 / 20,
               color: AppColors.white,
             ),
           ),

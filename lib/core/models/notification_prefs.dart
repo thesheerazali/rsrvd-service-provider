@@ -1,68 +1,51 @@
-/// Partner notification preference toggles — mirrors Elite `1196:17544` UI.
+/// Partner notification preference toggles — Elite Settings content.
 class NotificationPrefs {
   const NotificationPrefs({
-    this.serviceUpdates = true,
-    this.newOpportunities = false,
-    this.memberRequests = true,
-    this.messageUpdates = true,
-    this.projectUpdates = false,
-    this.reviewRatings = false,
-    this.membershipUpdates = true,
-    this.accountSecurity = true,
+    this.newMemberMessages = true,
+    this.contractActivity = false,
+    this.paymentsAndReleases = true,
+    this.projectStatusUpdates = true,
+    this.membershipAndRenewals = false,
   });
 
-  final bool serviceUpdates;
-  final bool newOpportunities;
-  final bool memberRequests;
-  final bool messageUpdates;
-  final bool projectUpdates;
-  final bool reviewRatings;
-  final bool membershipUpdates;
-  final bool accountSecurity;
+  final bool newMemberMessages;
+  final bool contractActivity;
+  final bool paymentsAndReleases;
+  final bool projectStatusUpdates;
+  final bool membershipAndRenewals;
 
   factory NotificationPrefs.fromJson(Map<String, dynamic> json) {
     return NotificationPrefs(
-      serviceUpdates: json['service_updates'] as bool? ?? true,
-      newOpportunities: json['new_opportunities'] as bool? ?? false,
-      memberRequests: json['member_requests'] as bool? ?? true,
-      messageUpdates: json['message_updates'] as bool? ?? true,
-      projectUpdates: json['project_updates'] as bool? ?? false,
-      reviewRatings: json['review_ratings'] as bool? ?? false,
-      membershipUpdates: json['membership_updates'] as bool? ?? true,
-      accountSecurity: json['account_security'] as bool? ?? true,
+      newMemberMessages: json['new_member_messages'] as bool? ?? true,
+      contractActivity: json['contract_activity'] as bool? ?? false,
+      paymentsAndReleases: json['payments_and_releases'] as bool? ?? true,
+      projectStatusUpdates: json['project_status_updates'] as bool? ?? true,
+      membershipAndRenewals: json['membership_and_renewals'] as bool? ?? false,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'service_updates': serviceUpdates,
-        'new_opportunities': newOpportunities,
-        'member_requests': memberRequests,
-        'message_updates': messageUpdates,
-        'project_updates': projectUpdates,
-        'review_ratings': reviewRatings,
-        'membership_updates': membershipUpdates,
-        'account_security': accountSecurity,
+        'new_member_messages': newMemberMessages,
+        'contract_activity': contractActivity,
+        'payments_and_releases': paymentsAndReleases,
+        'project_status_updates': projectStatusUpdates,
+        'membership_and_renewals': membershipAndRenewals,
       };
 
   NotificationPrefs copyWith({
-    bool? serviceUpdates,
-    bool? newOpportunities,
-    bool? memberRequests,
-    bool? messageUpdates,
-    bool? projectUpdates,
-    bool? reviewRatings,
-    bool? membershipUpdates,
-    bool? accountSecurity,
+    bool? newMemberMessages,
+    bool? contractActivity,
+    bool? paymentsAndReleases,
+    bool? projectStatusUpdates,
+    bool? membershipAndRenewals,
   }) {
     return NotificationPrefs(
-      serviceUpdates: serviceUpdates ?? this.serviceUpdates,
-      newOpportunities: newOpportunities ?? this.newOpportunities,
-      memberRequests: memberRequests ?? this.memberRequests,
-      messageUpdates: messageUpdates ?? this.messageUpdates,
-      projectUpdates: projectUpdates ?? this.projectUpdates,
-      reviewRatings: reviewRatings ?? this.reviewRatings,
-      membershipUpdates: membershipUpdates ?? this.membershipUpdates,
-      accountSecurity: accountSecurity ?? this.accountSecurity,
+      newMemberMessages: newMemberMessages ?? this.newMemberMessages,
+      contractActivity: contractActivity ?? this.contractActivity,
+      paymentsAndReleases: paymentsAndReleases ?? this.paymentsAndReleases,
+      projectStatusUpdates: projectStatusUpdates ?? this.projectStatusUpdates,
+      membershipAndRenewals:
+          membershipAndRenewals ?? this.membershipAndRenewals,
     );
   }
 }

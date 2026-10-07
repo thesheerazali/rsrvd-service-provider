@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../core/styles/app_colors.dart';
 import '../../data/repositories/user_repository.dart';
 import '../../presentation/widgets/app_confirm_dialog.dart';
 import '../../routes/app_routes.dart';
@@ -56,6 +57,8 @@ class SettingsController extends GetxController {
       message: 'This action can not be undone.',
       confirmLabel: 'Yes, Delete',
       cancelLabel: 'Cancel',
+      confirmColor: AppColors.error,
+      cancelColor: AppColors.error,
     );
     if (confirmed != true) return;
     await _userRepository.signOut();

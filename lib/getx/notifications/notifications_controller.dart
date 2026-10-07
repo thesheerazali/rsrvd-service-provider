@@ -21,29 +21,20 @@ class NotificationsController extends GetxController {
 
   void goBack() => Get.back();
 
-  Future<void> setServiceUpdates(bool v) =>
-      _update(prefs.value.copyWith(serviceUpdates: v));
+  Future<void> setNewMemberMessages(bool v) =>
+      _update(prefs.value.copyWith(newMemberMessages: v));
 
-  Future<void> setNewOpportunities(bool v) =>
-      _update(prefs.value.copyWith(newOpportunities: v));
+  Future<void> setContractActivity(bool v) =>
+      _update(prefs.value.copyWith(contractActivity: v));
 
-  Future<void> setMemberRequests(bool v) =>
-      _update(prefs.value.copyWith(memberRequests: v));
+  Future<void> setPaymentsAndReleases(bool v) =>
+      _update(prefs.value.copyWith(paymentsAndReleases: v));
 
-  Future<void> setMessageUpdates(bool v) =>
-      _update(prefs.value.copyWith(messageUpdates: v));
+  Future<void> setProjectStatusUpdates(bool v) =>
+      _update(prefs.value.copyWith(projectStatusUpdates: v));
 
-  Future<void> setProjectUpdates(bool v) =>
-      _update(prefs.value.copyWith(projectUpdates: v));
-
-  Future<void> setReviewRatings(bool v) =>
-      _update(prefs.value.copyWith(reviewRatings: v));
-
-  Future<void> setMembershipUpdates(bool v) =>
-      _update(prefs.value.copyWith(membershipUpdates: v));
-
-  Future<void> setAccountSecurity(bool v) =>
-      _update(prefs.value.copyWith(accountSecurity: v));
+  Future<void> setMembershipAndRenewals(bool v) =>
+      _update(prefs.value.copyWith(membershipAndRenewals: v));
 
   Future<void> _update(NotificationPrefs next) async {
     prefs.value = next;

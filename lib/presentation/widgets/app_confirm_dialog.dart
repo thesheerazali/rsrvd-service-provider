@@ -22,6 +22,8 @@ class AppConfirmDialog extends StatelessWidget {
     this.eyebrow = 'Confirm',
     this.cancelLabel = 'Cancel',
     this.titleColor,
+    this.confirmColor,
+    this.cancelColor,
     this.onConfirm,
     this.onCancel,
   });
@@ -33,6 +35,10 @@ class AppConfirmDialog extends StatelessWidget {
   final String cancelLabel;
   /// Defaults to white (Elite confirm). Publish success uses [AppColors.primary].
   final Color? titleColor;
+  /// Defaults to [AppColors.accent] (filled primary CTA).
+  final Color? confirmColor;
+  /// Defaults to [AppColors.accent] (outlined cancel).
+  final Color? cancelColor;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
 
@@ -44,6 +50,8 @@ class AppConfirmDialog extends StatelessWidget {
     String eyebrow = 'Confirm',
     String cancelLabel = 'Cancel',
     Color? titleColor,
+    Color? confirmColor,
+    Color? cancelColor,
     bool barrierDismissible = true,
   }) {
     return Get.dialog<bool>(
@@ -54,6 +62,8 @@ class AppConfirmDialog extends StatelessWidget {
         confirmLabel: confirmLabel,
         cancelLabel: cancelLabel,
         titleColor: titleColor,
+        confirmColor: confirmColor,
+        cancelColor: cancelColor,
         onConfirm: () => Get.back(result: true),
         onCancel: () => Get.back(result: false),
       ),
@@ -176,11 +186,13 @@ class AppConfirmDialog extends StatelessWidget {
                       PrimaryButton(
                         label: confirmLabel,
                         onPressed: onConfirm,
+                        color: confirmColor,
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
                       _DialogSecondaryButton(
                         label: cancelLabel,
                         onPressed: onCancel,
+                        color: cancelColor,
                       ),
                     ],
                   ),
@@ -199,13 +211,16 @@ class _DialogSecondaryButton extends StatelessWidget {
   const _DialogSecondaryButton({
     required this.label,
     required this.onPressed,
+    this.color,
   });
 
   final String label;
   final VoidCallback? onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
+    final accent = color ?? AppColors.accent;
     return SizedBox(
       width: double.infinity,
       height: context.dw(50),
@@ -213,8 +228,8 @@ class _DialogSecondaryButton extends StatelessWidget {
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.transparent,
-          foregroundColor: AppColors.accent,
-          side: const BorderSide(color: AppColors.accent),
+          foregroundColor: accent,
+          side: BorderSide(color: accent),
           elevation: 0,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(

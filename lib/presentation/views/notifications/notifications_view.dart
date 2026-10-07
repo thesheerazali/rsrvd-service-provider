@@ -10,7 +10,7 @@ import '../../widgets/app_back_title_header.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/app_figma_switch.dart';
 
-/// Settings → Notifications — same Elite layout; Partner labels.
+/// Settings → Notifications — Elite content.
 class NotificationsView extends GetView<NotificationsController> {
   const NotificationsView({super.key});
 
@@ -40,51 +40,33 @@ class NotificationsView extends GetView<NotificationsController> {
                     ),
                     children: [
                       _ToggleCard(
-                        label: 'notif_service_updates'.tr,
-                        value: p.serviceUpdates,
-                        onChanged: controller.setServiceUpdates,
+                        label: 'notif_new_member_messages'.tr,
+                        value: p.newMemberMessages,
+                        onChanged: controller.setNewMemberMessages,
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
                       _ToggleCard(
-                        label: 'notif_new_opportunities'.tr,
-                        value: p.newOpportunities,
-                        onChanged: controller.setNewOpportunities,
+                        label: 'notif_contract_activity'.tr,
+                        value: p.contractActivity,
+                        onChanged: controller.setContractActivity,
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
                       _ToggleCard(
-                        label: 'notif_member_requests'.tr,
-                        value: p.memberRequests,
-                        onChanged: controller.setMemberRequests,
+                        label: 'notif_payments_releases'.tr,
+                        value: p.paymentsAndReleases,
+                        onChanged: controller.setPaymentsAndReleases,
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
                       _ToggleCard(
-                        label: 'notif_message_updates'.tr,
-                        value: p.messageUpdates,
-                        onChanged: controller.setMessageUpdates,
+                        label: 'notif_project_status'.tr,
+                        value: p.projectStatusUpdates,
+                        onChanged: controller.setProjectStatusUpdates,
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
                       _ToggleCard(
-                        label: 'notif_project_updates'.tr,
-                        value: p.projectUpdates,
-                        onChanged: controller.setProjectUpdates,
-                      ),
-                      SizedBox(height: context.dw(AppSpacing.t10)),
-                      _ToggleCard(
-                        label: 'notif_review_ratings'.tr,
-                        value: p.reviewRatings,
-                        onChanged: controller.setReviewRatings,
-                      ),
-                      SizedBox(height: context.dw(AppSpacing.t10)),
-                      _ToggleCard(
-                        label: 'notif_membership_updates'.tr,
-                        value: p.membershipUpdates,
-                        onChanged: controller.setMembershipUpdates,
-                      ),
-                      SizedBox(height: context.dw(AppSpacing.t10)),
-                      _ToggleCard(
-                        label: 'notif_account_security'.tr,
-                        value: p.accountSecurity,
-                        onChanged: controller.setAccountSecurity,
+                        label: 'notif_membership_renewals'.tr,
+                        value: p.membershipAndRenewals,
+                        onChanged: controller.setMembershipAndRenewals,
                       ),
                     ],
                   );

@@ -15,6 +15,7 @@ class PrimaryButton extends StatelessWidget {
     required this.onPressed,
     this.enabled = true,
     this.outlined = false,
+    this.color,
   });
 
   final String label;
@@ -22,8 +23,12 @@ class PrimaryButton extends StatelessWidget {
   final bool enabled;
   final bool outlined;
 
+  /// Defaults to [AppColors.accent].
+  final Color? color;
+
   @override
   Widget build(BuildContext context) {
+    final accent = color ?? AppColors.accent;
     final radius = BorderRadius.circular(context.dw(AppSpacing.radiusPill));
     final textStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w600,
@@ -38,13 +43,10 @@ class PrimaryButton extends StatelessWidget {
           ? OutlinedButton(
               onPressed: enabled ? onPressed : null,
               style: OutlinedButton.styleFrom(
-                foregroundColor: AppColors.accent,
-                disabledForegroundColor:
-                    AppColors.accent.withValues(alpha: 0.4),
+                foregroundColor: accent,
+                disabledForegroundColor: accent.withValues(alpha: 0.4),
                 side: BorderSide(
-                  color: enabled
-                      ? AppColors.accent
-                      : AppColors.accent.withValues(alpha: 0.4),
+                  color: enabled ? accent : accent.withValues(alpha: 0.4),
                 ),
                 shape: RoundedRectangleBorder(borderRadius: radius),
                 textStyle: textStyle,
@@ -54,14 +56,13 @@ class PrimaryButton extends StatelessWidget {
           : ElevatedButton(
               onPressed: enabled ? onPressed : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.accent,
-                disabledBackgroundColor:
-                    AppColors.accent.withValues(alpha: 0.4),
+                backgroundColor: accent,
+                disabledBackgroundColor: accent.withValues(alpha: 0.4),
                 foregroundColor: AppColors.white,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: radius,
-                  side: const BorderSide(color: AppColors.accent),
+                  side: BorderSide(color: accent),
                 ),
                 textStyle: textStyle,
               ),
