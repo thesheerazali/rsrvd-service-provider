@@ -26,6 +26,8 @@ class PartnerApplicationReviewView
       body: AppBackground(
         glowStyle: AppGlowStyle.auth,
         child: SafeArea(
+          // Android edge-to-edge keeps nav inset in viewPadding (padding can be 0).
+          maintainBottomViewPadding: true,
           child: Column(
             children: [
               const _Header(),

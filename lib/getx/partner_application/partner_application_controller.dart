@@ -26,7 +26,7 @@ class PartnerApplicationController extends GetxController {
   static const List<String> stepTitles = [
     'Basic Information',
     'Service Categories',
-    'Verification & Documents',
+    'Verification &\nDocuments',
     'RSRVD Partner NDA',
   ];
 

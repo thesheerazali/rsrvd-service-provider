@@ -26,7 +26,8 @@ const Map<String, String> enUS = {
   'sign_in': 'Sign In',
   'sign_up': 'Sign Up',
   'welcome_back': 'Welcome back',
-  'create_your_account': 'Create your account',
+  'create_your_account': 'Create your\naccount',
+  'create_your_account_hint': 'Create your account',
   'email': 'Email',
   'email_required': 'Email*',
   'email_hint': 'you@privatemail.com',
@@ -96,7 +97,7 @@ This obligation survives termination of the partner relationship indefinitely.''
       'review your information and contact you once your application has '
       'been reviewed.',
   'app_status_submitted_title':
-      'Your application is submitted to the admin',
+      'Your application is\nsubmitted to the admin',
   'app_status_submitted_notice':
       'Your profile is not visible to Elite Members while under review. '
       "You'll be notified the moment a decision is made.",

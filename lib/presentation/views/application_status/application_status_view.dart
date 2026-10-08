@@ -124,7 +124,7 @@ class _StatusBody extends StatelessWidget {
     // Elite Welcome / ID body — DG Regular 24 / lh 1.0.
     final bodyStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w600,
-      fontSize: context.dw(20),
+      fontSize: context.dw(18),
       letterSpacing: 0,
       height: 1.0,
       color: AppColors.text,
@@ -146,7 +146,7 @@ class _StatusBody extends StatelessWidget {
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
-              'app_status_submitted_title'.tr.toUpperCase(),
+              'app_status_submitted_title'.tr,
               textAlign: TextAlign.center,
               style: titleStyle,
             ),

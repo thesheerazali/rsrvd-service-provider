@@ -111,6 +111,7 @@ class ProjectDetailView extends GetView<ProjectDetailController> {
                             const GoldDivider(),
                             SizedBox(height: context.dw(AppSpacing.t30)),
                             _FooterActions(item: item),
+                            SizedBox(height: context.dw(AppSpacing.t40)),
                           ],
                         ),
                       ),

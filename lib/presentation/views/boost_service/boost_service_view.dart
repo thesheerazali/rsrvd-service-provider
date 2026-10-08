@@ -64,33 +64,31 @@ class BoostServiceView extends GetView<BoostServiceController> {
                         child: Obx(() {
                           final selectedId = controller.selectedPlanId.value;
                           final plans = controller.plans.toList();
-                          return ListView.separated(
+                          final submitting = controller.isSubmitting.value;
+                          final hasSelection = selectedId.isNotEmpty;
+                          return ListView(
                             padding: EdgeInsets.zero,
-                            itemCount: plans.length,
-                            separatorBuilder: (_, _) =>
-                                SizedBox(height: context.dw(AppSpacing.t10)),
-                            itemBuilder: (context, index) {
-                              final plan = plans[index];
-                              return _BoostPlanCard(
-                                plan: plan,
-                                selected: selectedId == plan.id,
-                                onTap: () => controller.selectPlan(plan.id),
-                              );
-                            },
+                            children: [
+                              for (var i = 0; i < plans.length; i++) ...[
+                                if (i > 0)
+                                  SizedBox(height: context.dw(AppSpacing.t10)),
+                                _BoostPlanCard(
+                                  plan: plans[i],
+                                  selected: selectedId == plans[i].id,
+                                  onTap: () =>
+                                      controller.selectPlan(plans[i].id),
+                                ),
+                              ],
+                              SizedBox(height: context.dw(AppSpacing.t30)),
+                              PrimaryButton(
+                                label: 'boost_service_continue'.tr,
+                                enabled: !submitting && hasSelection,
+                                onPressed: controller.continueWithSelected,
+                              ),
+                            ],
                           );
                         }),
                       ),
-                      SizedBox(height: context.dw(AppSpacing.t30)),
-                      Obx(() {
-                        final submitting = controller.isSubmitting.value;
-                        final hasSelection =
-                            controller.selectedPlanId.value.isNotEmpty;
-                        return PrimaryButton(
-                          label: 'boost_service_continue'.tr,
-                          enabled: !submitting && hasSelection,
-                          onPressed: controller.continueWithSelected,
-                        );
-                      }),
                     ],
                   ),
                 ),

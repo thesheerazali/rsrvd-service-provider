@@ -43,9 +43,9 @@ class AppBottomNav extends StatelessWidget {
           ),
         ),
         padding: EdgeInsets.fromLTRB(
-          AppSpacing.t30,
+          AppSpacing.t12,
           0,
-          AppSpacing.t30,
+          AppSpacing.t12,
           bottom > 0 ? bottom : AppSpacing.t10,
         ),
         child: Row(

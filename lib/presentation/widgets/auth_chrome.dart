@@ -42,7 +42,7 @@ class AuthHeader extends StatelessWidget {
           title.toUpperCase(),
           textAlign: TextAlign.center,
           style: GoogleFonts.cinzel(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w700,
             fontSize: context.dw(32),
             height: 1.2,
             color: AppColors.white,

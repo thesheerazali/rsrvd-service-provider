@@ -38,6 +38,7 @@ class PartnerApplicationView extends GetView<PartnerApplicationController> {
       body: AppBackground(
         glowStyle: AppGlowStyle.auth,
         child: SafeArea(
+          maintainBottomViewPadding: true,
           child: Column(
             children: [
               const _Header(),
@@ -61,7 +62,7 @@ class PartnerApplicationView extends GetView<PartnerApplicationController> {
                           color: AppColors.white,
                         ),
                       ),
-                      SizedBox(height: context.dw(AppSpacing.t20)),
+                      SizedBox(height: context.dw(AppSpacing.t30)),
                       _StepProgress(
                         currentStep: step,
                         totalSteps: PartnerApplicationController.totalSteps,

@@ -29,7 +29,7 @@ class SignUpView extends GetView<SignUpController> {
               children: [
                 AuthHeader(
                   eyebrow: 'sign_up'.tr,
-                  title: 'create_your_account'.tr,
+                  title: 'create_your_account'.tr.toUpperCase(),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t30)),
                 AppTextField(

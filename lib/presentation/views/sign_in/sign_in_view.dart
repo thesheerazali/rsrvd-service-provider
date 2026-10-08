@@ -86,7 +86,7 @@ class SignInView extends GetView<SignInController> {
                 SizedBox(height: context.dw(AppSpacing.t30)),
                 AuthFooterLink(
                   leading: 'no_account'.tr,
-                  action: 'create_your_account'.tr,
+                  action: 'create_your_account_hint'.tr,
                   onTap: controller.goSignUp,
                 ),
               ],
