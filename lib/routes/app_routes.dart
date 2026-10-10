@@ -3,6 +3,8 @@ abstract class AppRoutes {
   static const String welcome = '/welcome';
   static const String signIn = '/sign_in';
   static const String signUp = '/sign_up';
+  static const String forgotPassword = '/forgot_password';
+  static const String idVerification = '/id_verification';
   static const String partnerApplication = '/partner_application';
   static const String partnerApplicationReview =
       '/partner_application_review';

@@ -44,7 +44,7 @@ class SignInController extends GetxController {
     passwordController.clear();
   }
 
-  void forgotPassword() => AppFlash.info('coming_soon'.tr);
+  void forgotPassword() => Get.toNamed(AppRoutes.forgotPassword);
 
   void goSignUp() => Get.toNamed(AppRoutes.signUp);
 

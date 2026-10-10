@@ -20,6 +20,8 @@ import '../getx/project_detail/project_detail_binding.dart';
 import '../getx/reviews/reviews_binding.dart';
 import '../getx/service_review_status/service_review_status_binding.dart';
 import '../getx/settings/settings_binding.dart';
+import '../getx/forgot_password/forgot_password_binding.dart';
+import '../getx/id_verification/id_verification_binding.dart';
 import '../getx/sign_in/sign_in_binding.dart';
 import '../getx/sign_up/sign_up_binding.dart';
 import '../getx/signed_nda/signed_nda_binding.dart';
@@ -47,6 +49,8 @@ import '../presentation/views/privacy_policy/privacy_policy_view.dart';
 import '../presentation/views/project_detail/project_detail_view.dart';
 import '../presentation/views/service_review_status/service_review_status_view.dart';
 import '../presentation/views/settings/settings_view.dart';
+import '../presentation/views/forgot_password/forgot_password_view.dart';
+import '../presentation/views/id_verification/id_verification_view.dart';
 import '../presentation/views/sign_in/sign_in_view.dart';
 import '../presentation/views/sign_up/sign_up_view.dart';
 import '../presentation/views/signed_nda/signed_nda_view.dart';
@@ -76,6 +80,16 @@ class AppPages {
       name: AppRoutes.signUp,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.forgotPassword,
+      page: () => const ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.idVerification,
+      page: () => const IdVerificationView(),
+      binding: IdVerificationBinding(),
     ),
     GetPage(
       name: AppRoutes.partnerApplication,
