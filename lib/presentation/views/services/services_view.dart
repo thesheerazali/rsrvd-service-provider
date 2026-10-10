@@ -200,7 +200,7 @@ class _DebugEmptyToggle extends GetView<ServicesController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final empty = controller.debugShowEmpty.value;
+      final empty = controller.services.isEmpty;
       return Center(
         child: GestureDetector(
           onTap: controller.toggleDebugEmpty,

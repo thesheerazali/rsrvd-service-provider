@@ -59,6 +59,7 @@ class _EmptyLayout extends GetView<MessagesController> {
             child: Center(
               child: AppEmptyState(
                 imageAsset: AppImages.emptyMessage,
+                titleColor: AppColors.primary,
                 title: 'empty_messages_title'.tr,
                 body: 'empty_messages_body'.tr,
                 ctaLabel: 'empty_messages_cta'.tr,

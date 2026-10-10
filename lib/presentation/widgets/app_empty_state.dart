@@ -17,6 +17,8 @@ class AppEmptyState extends StatelessWidget {
     required this.onCtaPressed,
     this.imageWidth = 37,
     this.imageHeight = 35,
+    this.titleColor = AppColors.white,
+
   });
 
   final String imageAsset;
@@ -26,6 +28,7 @@ class AppEmptyState extends StatelessWidget {
   final VoidCallback onCtaPressed;
   final double imageWidth;
   final double imageHeight;
+  final Color? titleColor;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class AppEmptyState extends StatelessWidget {
             fontWeight: FontWeight.w700,
             fontSize: context.dw(24),
             height: 1.0,
-            color: AppColors.white,
+            color: titleColor,
           ),
         ),
         SizedBox(height: context.dw(AppSpacing.t10)),

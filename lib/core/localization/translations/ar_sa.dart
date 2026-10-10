@@ -124,6 +124,9 @@ const Map<String, String> arSA = {
   'stat_active_projects': 'مشاريع نشطة',
   'stat_pending_contracts': 'عقود معلّقة',
   'stat_completed_projects': 'مشاريع مكتملة',
+  'home_average_rating': 'متوسط التقييم',
+  'home_reviews_link': '@count مراجعات ←',
+  'home_needs_attention': 'يتطلب الانتباه',
   'empty_services_title': 'لم تُضف أي خدمة بعد',
   'empty_services_body':
       'أنشئ خدمتك الأولى لعرض خبرتك لأعضاء RSRVD.',

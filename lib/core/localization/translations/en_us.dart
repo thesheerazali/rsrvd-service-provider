@@ -134,6 +134,9 @@ This obligation survives termination of the partner relationship indefinitely.''
   'stat_active_projects': 'Active Projects',
   'stat_pending_contracts': 'Pending Contracts',
   'stat_completed_projects': 'Completed Projects',
+  'home_average_rating': 'Average Rating',
+  'home_reviews_link': '@count Reviews →',
+  'home_needs_attention': 'Needs Attention',
   'empty_services_title': 'No Service Added yet',
   'empty_services_body':
       'Create your first service to showcase your expertise to RSRVD members.',

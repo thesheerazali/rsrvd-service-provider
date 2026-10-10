@@ -54,10 +54,19 @@ class ServicesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    services.assignAll(_demoServices);
+    // Start empty so Home / Services show first-run empty UI.
   }
 
-  void toggleDebugEmpty() => debugShowEmpty.toggle();
+  /// Debug: load demo cards or clear back to empty.
+  void toggleDebugEmpty() {
+    if (services.isEmpty) {
+      debugShowEmpty.value = false;
+      services.assignAll(_demoServices);
+    } else {
+      services.clear();
+      debugShowEmpty.value = false;
+    }
+  }
 
   void onAddService() => Get.toNamed(AppRoutes.createService);
 

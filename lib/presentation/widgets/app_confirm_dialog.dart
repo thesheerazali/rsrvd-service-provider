@@ -24,6 +24,7 @@ class AppConfirmDialog extends StatelessWidget {
     this.titleColor,
     this.confirmColor,
     this.cancelColor,
+    this.confirmFirst = true,
     this.onConfirm,
     this.onCancel,
   });
@@ -39,6 +40,8 @@ class AppConfirmDialog extends StatelessWidget {
   final Color? confirmColor;
   /// Defaults to [AppColors.accent] (outlined cancel).
   final Color? cancelColor;
+  /// When false, outlined cancel sits above the filled confirm (Cancel Project).
+  final bool confirmFirst;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
 
@@ -52,6 +55,7 @@ class AppConfirmDialog extends StatelessWidget {
     Color? titleColor,
     Color? confirmColor,
     Color? cancelColor,
+    bool confirmFirst = true,
     bool barrierDismissible = true,
   }) {
     return Get.dialog<bool>(
@@ -64,6 +68,7 @@ class AppConfirmDialog extends StatelessWidget {
         titleColor: titleColor,
         confirmColor: confirmColor,
         cancelColor: cancelColor,
+        confirmFirst: confirmFirst,
         onConfirm: () => Get.back(result: true),
         onCancel: () => Get.back(result: false),
       ),
@@ -178,22 +183,36 @@ class AppConfirmDialog extends StatelessWidget {
                         style: GoogleFonts.darkerGrotesque(
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(18),
-                          height: 1.0,
+                          height: 1.2,
                           color: AppColors.text,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t12)),
-                      PrimaryButton(
-                        label: confirmLabel,
-                        onPressed: onConfirm,
-                        color: confirmColor,
-                      ),
-                      SizedBox(height: context.dw(AppSpacing.t10)),
-                      _DialogSecondaryButton(
-                        label: cancelLabel,
-                        onPressed: onCancel,
-                        color: cancelColor,
-                      ),
+                      if (confirmFirst) ...[
+                        PrimaryButton(
+                          label: confirmLabel,
+                          onPressed: onConfirm,
+                          color: confirmColor,
+                        ),
+                        SizedBox(height: context.dw(AppSpacing.t10)),
+                        _DialogSecondaryButton(
+                          label: cancelLabel,
+                          onPressed: onCancel,
+                          color: cancelColor,
+                        ),
+                      ] else ...[
+                        _DialogSecondaryButton(
+                          label: cancelLabel,
+                          onPressed: onCancel,
+                          color: cancelColor,
+                        ),
+                        SizedBox(height: context.dw(AppSpacing.t10)),
+                        PrimaryButton(
+                          label: confirmLabel,
+                          onPressed: onConfirm,
+                          color: confirmColor,
+                        ),
+                      ],
                     ],
                   ),
                 ),

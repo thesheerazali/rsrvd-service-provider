@@ -8,10 +8,11 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/home/home_controller.dart';
+import '../../widgets/app_partner_project_card.dart';
 import '../../widgets/empty_services_block.dart';
 import '../../widgets/gold_divider.dart';
 
-/// Partners home — Figma `1196:1742`.
+/// Partners home — empty `1196:1742` / populated Figma `1047:13941`.
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
@@ -28,20 +29,35 @@ class HomeView extends GetView<HomeController> {
               context.dw(AppSpacing.t30),
               context.dw(AppSpacing.t30),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const _MembershipCard(),
-                SizedBox(height: context.dw(AppSpacing.t30)),
-                const _StatsGrid(),
-                SizedBox(height: context.dw(AppSpacing.t30)),
-                const GoldDivider(),
-                SizedBox(height: context.dw(AppSpacing.t30)),
-                EmptyServicesBlock(
-                  onAddPressed: controller.onAddFirstService,
-                ),
-              ],
-            ),
+            child: Obx(() {
+              final populated = controller.showPopulated;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const _MembershipCard(),
+                  SizedBox(height: context.dw(AppSpacing.t30)),
+                  const _StatsGrid(),
+                  SizedBox(height: context.dw(AppSpacing.t30)),
+                  if (populated) ...[
+                    const _AverageRatingCard(),
+                    SizedBox(height: context.dw(AppSpacing.t30)),
+                    const GoldDivider(),
+                    SizedBox(height: context.dw(AppSpacing.t30)),
+                    const _NeedsAttentionSection(),
+                  ] else ...[
+                    const GoldDivider(),
+                    SizedBox(height: context.dw(AppSpacing.t30)),
+                    EmptyServicesBlock(
+                      onAddPressed: controller.onAddFirstService,
+                    ),
+                  ],
+                  if (controller.showDebugToggle) ...[
+                    SizedBox(height: context.dw(AppSpacing.t24)),
+                    const _DebugEmptyToggle(),
+                  ],
+                ],
+              );
+            }),
           ),
         ),
       ],
@@ -307,13 +323,155 @@ class _StatCard extends StatelessWidget {
             icon,
             width: context.dw(21),
             height: context.dw(21),
-            // colorFilter: const ColorFilter.mode(
-            //   AppColors.text,
-            //   BlendMode.srcIn,
-            // ),
           ),
         ],
       ),
     );
+  }
+}
+
+/// Figma `1047:14015` — Average Rating + reviews link.
+class _AverageRatingCard extends GetView<HomeController> {
+  const _AverageRatingCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: controller.openReviews,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.dw(AppSpacing.t20),
+          vertical: context.dw(21),
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.bg,
+          borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusLg)),
+          border: Border.all(color: AppColors.surfaceCard),
+        ),
+        child: Obx(
+          () => Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'home_average_rating'.tr,
+                      style: GoogleFonts.darkerGrotesque(
+                        fontWeight: FontWeight.w500,
+                        fontSize: context.dw(16),
+                        height: 1.0,
+                        color: AppColors.text,
+                      ),
+                    ),
+                    SizedBox(height: context.dw(AppSpacing.t10)),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star_rounded,
+                          size: context.dw(16),
+                          color: AppColors.primary,
+                        ),
+                        SizedBox(width: context.dw(AppSpacing.t05)),
+                        Text(
+                          controller.averageRating.value,
+                          style: GoogleFonts.darkerGrotesque(
+                            fontWeight: FontWeight.w500,
+                            fontSize: context.dw(20),
+                            height: 1.0,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                controller.reviewsLinkLabel,
+                style: GoogleFonts.darkerGrotesque(
+                  fontWeight: FontWeight.w600,
+                  fontSize: context.dw(18),
+                  height: 1.2,
+                  color: AppColors.primary,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NeedsAttentionSection extends GetView<HomeController> {
+  const _NeedsAttentionSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final items = controller.needsAttention.toList();
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            'home_needs_attention'.tr,
+            style: GoogleFonts.cinzel(
+              fontWeight: FontWeight.w700,
+              fontSize: context.dw(24),
+              height: 1.2,
+              color: AppColors.white.withValues(alpha: 0.8),
+            ),
+          ),
+          SizedBox(height: context.dw(AppSpacing.t10)),
+          for (var i = 0; i < items.length; i++) ...[
+            if (i > 0) SizedBox(height: context.dw(AppSpacing.t10)),
+            AppPartnerProjectCard(
+              item: items[i],
+              onTap: () => controller.openProject(items[i]),
+            ),
+          ],
+        ],
+      );
+    });
+  }
+}
+
+class _DebugEmptyToggle extends GetView<HomeController> {
+  const _DebugEmptyToggle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final populated = controller.debugForcePopulated.value;
+      return Center(
+        child: GestureDetector(
+          onTap: controller.toggleDebugEmpty,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.dw(AppSpacing.t12),
+              vertical: context.dw(AppSpacing.t06),
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.surfaceCard.withValues(alpha: 0.7),
+              borderRadius:
+                  BorderRadius.circular(context.dw(AppSpacing.radiusPill)),
+              border: Border.all(
+                color: AppColors.white.withValues(alpha: 0.15),
+              ),
+            ),
+            child: Text(
+              populated ? 'Debug: empty state' : 'Debug: show populated',
+              style: GoogleFonts.darkerGrotesque(
+                fontWeight: FontWeight.w500,
+                fontSize: context.dw(12),
+                color: AppColors.muted,
+              ),
+            ),
+          ),
+        ),
+      );
+    });
   }
 }

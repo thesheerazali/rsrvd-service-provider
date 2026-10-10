@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../core/models/project_detail.dart';
 import '../../core/services/app_flash.dart';
 import '../../core/services/app_log.dart';
+import '../../core/styles/app_colors.dart';
 import '../../data/repositories/projects_repository.dart';
 import '../../presentation/widgets/app_confirm_dialog.dart';
 import '../../routes/app_routes.dart';
@@ -95,13 +96,15 @@ class ProjectDetailController extends GetxController {
 
   Future<void> cancelProject() async {
     final confirmed = await AppConfirmDialog.show(
-      eyebrow: 'Cancel Project',
-      title: 'Cancel this project?',
+      eyebrow: 'Completion',
+      title: 'Are you sure you want to cancel this project?',
       message:
-          'This engagement will move to Cancelled. You can still chat with '
-          'the member about next steps.',
+          "If you cancel the project, the payment amount will be reversed "
+          "and returned to the member's account.",
       confirmLabel: 'Cancel Project',
       cancelLabel: 'Keep Project',
+      titleColor: AppColors.primary,
+      confirmFirst: false,
     );
     if (confirmed != true) return;
     AppFlash.info('Cancel flow lands with API');
