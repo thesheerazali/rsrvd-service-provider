@@ -4,32 +4,35 @@ class ServiceBoostPlan {
     required this.id,
     required this.title,
     required this.description,
+    this.recommended = false,
   });
 
   final String id;
 
-  /// e.g. `$50 FOR 24 HOURS BOOST`
+  /// e.g. `3 DAYS - $297`
   final String title;
   final String description;
+  final bool recommended;
 
   static const List<ServiceBoostPlan> catalog = [
     ServiceBoostPlan(
-      id: 'boost_24h',
-      title: r'$50 FOR 24 HOURS BOOST',
+      id: 'boost_3d',
+      title: r'3 Days - $297',
       description:
-          'Appear on top of search results in your category for 24 hours',
-    ),
-    ServiceBoostPlan(
-      id: 'boost_4d',
-      title: r'$150 FOR 4 DAYS BOOST',
-      description:
-          'Appear on top of search results in your category for 4 days',
+          'Appear on top of search results in your category for 3 days',
     ),
     ServiceBoostPlan(
       id: 'boost_7d',
-      title: r'$250 FOR 7 DAYS BOOST',
+      title: r'7 Days - $649',
       description:
           'Appear on top of search results in your category for 7 days',
+      recommended: true,
+    ),
+    ServiceBoostPlan(
+      id: 'boost_14d',
+      title: r'14 Days - $1,199',
+      description:
+          'Appear on top of search results in your category for 14 days',
     ),
   ];
 }

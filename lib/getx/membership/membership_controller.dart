@@ -31,8 +31,7 @@ class MembershipController extends GetxController {
     return null;
   }
 
-  String get continueLabel =>
-      selectedPlan?.continueCtaLabel ?? 'Continue with Annual';
+  String get continueLabel => 'membership_continue_payment'.tr;
 
   @override
   void onInit() {

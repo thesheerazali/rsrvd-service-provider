@@ -160,7 +160,7 @@ class _SettingsGroup extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFF181818),
+        color: AppColors.primary.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
         boxShadow: [
           BoxShadow(
@@ -199,7 +199,7 @@ class _SettingsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelColor = data.labelColor ?? AppColors.text;
+    final labelColor = data.labelColor ?? AppColors.white;
     final isError = data.labelColor != null;
 
     return GestureDetector(

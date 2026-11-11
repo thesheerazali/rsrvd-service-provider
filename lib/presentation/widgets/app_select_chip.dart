@@ -45,7 +45,7 @@ class AppSelectChipWrap extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: context.dw(AppSpacing.t20),
-                    vertical: context.dw(6.5),
+                    vertical: context.dw(8.5),
                   ),
                   child: Text(
                     item.label,
@@ -56,8 +56,8 @@ class AppSelectChipWrap extends StatelessWidget {
                       fontSize: context.dw(20),
                       height: 1.0,
                       color: selectedIds.contains(item.id)
-                          ? AppColors.white
-                          : AppColors.primary
+                          ? AppColors.onPrimary
+                          : AppColors.accentGold
                     ),
                   ),
                 ),

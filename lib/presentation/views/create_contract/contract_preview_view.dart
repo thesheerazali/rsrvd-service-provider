@@ -46,7 +46,7 @@ class ContractPreviewView extends GetView<CreateContractController> {
                         style: GoogleFonts.darkerGrotesque(
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(20),
-                          color: AppColors.text,
+                          color: AppColors.white,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
@@ -81,8 +81,8 @@ class ContractPreviewView extends GetView<CreateContractController> {
                             style: GoogleFonts.darkerGrotesque(
                               fontWeight: FontWeight.w600,
                               fontSize: context.dw(24),
-                              height: 1.2,
-                              color: AppColors.primary,
+                              height: 1,
+                              color: AppColors.accentGold,
                             ),
                           ),
                         ),

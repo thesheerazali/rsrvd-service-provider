@@ -44,7 +44,7 @@ class CreateContractView extends GetView<CreateContractController> {
                         style: GoogleFonts.darkerGrotesque(
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(20),
-                          color: AppColors.text,
+                          color: AppColors.white,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
@@ -133,7 +133,7 @@ class CreateContractView extends GetView<CreateContractController> {
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(20),
                           height: 1.2,
-                          color: AppColors.text,
+                          color: AppColors.white,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t08)),
@@ -154,7 +154,7 @@ class CreateContractView extends GetView<CreateContractController> {
                               fontWeight: FontWeight.w400,
                               fontSize: context.dw(20),
                               height: 1.2,
-                              color: AppColors.text,
+                              color: AppColors.white,
                             ),
                           ),
                         ),
@@ -169,37 +169,39 @@ class CreateContractView extends GetView<CreateContractController> {
                           child: Container(
                             padding: EdgeInsets.all(context.dw(AppSpacing.t16)),
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(250, 74, 24, 0.05),
+                              color: AppColors.primary.withValues(alpha: 0.05),
                               borderRadius: BorderRadius.circular(
                                 context.dw(AppSpacing.radiusMd),
                               ),
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SvgPicture.asset(
-                                  AppIcons.iconDoc,
-                                  width: context.dw(20),
-                                  height: context.dw(20),
-                                ),
-                                SizedBox(width: context.dw(AppSpacing.t10)),
-                                Expanded(
+                                // SvgPicture.asset(
+                                //   AppIcons.iconDoc,
+                                //   width: context.dw(20),
+                                //   height: context.dw(20),
+                                // ),
+                                // SizedBox(width: context.dw(AppSpacing.t10)),
+                                Center(
                                   child: Text(
                                     name,
                                     style: GoogleFonts.darkerGrotesque(
                                       fontWeight: FontWeight.w500,
                                       fontSize: context.dw(16),
-                                      color: AppColors.text,
+                                      color: AppColors.white,
                                     ),
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: controller.removeAttachment,
-                                  child: Icon(
-                                    Icons.close,
-                                    size: context.dw(18),
-                                    color: AppColors.muted,
-                                  ),
-                                ),
+                                // GestureDetector(
+                                //   onTap: controller.removeAttachment,
+                                //   child: Icon(
+                                //     Icons.close,
+                                //     size: context.dw(18),
+                                //     color: AppColors.muted,
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
@@ -244,13 +246,13 @@ class _AppDropdownField extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final fieldStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w400,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
 
     return Column(

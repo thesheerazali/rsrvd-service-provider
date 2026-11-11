@@ -4,6 +4,7 @@ class ProfileFeed {
     required this.displayName,
     required this.subtitle,
     required this.initials,
+    this.logoUrl = '',
     required this.bio,
     required this.email,
     required this.phone,
@@ -18,6 +19,9 @@ class ProfileFeed {
   /// e.g. `Architect · Zurich`
   final String subtitle;
   final String initials;
+
+  /// Business logo URL from the user profile.
+  final String logoUrl;
   final String bio;
   final String email;
   final String phone;

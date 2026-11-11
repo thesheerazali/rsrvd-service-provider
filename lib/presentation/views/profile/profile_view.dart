@@ -8,6 +8,7 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/profile/profile_controller.dart';
+import '../../widgets/app_business_logo.dart';
 
 /// Partners Profile tab — Figma `1196:3096`.
 class ProfileView extends GetView<ProfileController> {
@@ -47,7 +48,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t30)),
-                const _BioCard(),
+               const _BioCard(),
                 SizedBox(height: context.dw(AppSpacing.t30)),
                 const _OverviewSpecsCard(),
               ],
@@ -86,7 +87,7 @@ class _ProfileHeader extends GetView<ProfileController> {
                 fontWeight: FontWeight.w600,
                 fontSize: context.dw(24),
                 height: 1.2,
-                color: AppColors.text.withValues(alpha: 0.8),
+                color: AppColors.white.withValues(alpha: 0.8),
               ),
             ),
           ),
@@ -111,27 +112,13 @@ class _IdentityRow extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final size = context.dw(56);
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: size,
-            height: size,
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              color: Color(0xFF181818),
-              shape: BoxShape.circle,
-            ),
-            child: Text(
-              controller.initials.value,
-              style: GoogleFonts.cinzel(
-                fontWeight: FontWeight.w500,
-                fontSize: context.dw(20),
-                height: 1.0,
-                color: AppColors.primary,
-              ),
-            ),
+          AppBusinessLogo(
+            size: context.dw(56),
+            logoUrl: controller.logoUrl.value,
+            initials: controller.initials.value,
           ),
           SizedBox(width: context.dw(AppSpacing.t10)),
           Expanded(
@@ -154,7 +141,7 @@ class _IdentityRow extends GetView<ProfileController> {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(20),
                     height: 1.0,
-                    color: AppColors.text.withValues(alpha: 0.5),
+                    color: AppColors.white.withValues(alpha: 0.5),
                   ),
                 ),
               ],
@@ -176,7 +163,7 @@ class _BioCard extends GetView<ProfileController> {
         width: double.infinity,
         padding: EdgeInsets.all(context.dw(AppSpacing.t20)),
         decoration: BoxDecoration(
-          color: const Color(0xFF181818),
+          color: AppColors.primary.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusMd)),
           boxShadow: [
             BoxShadow(
@@ -192,7 +179,7 @@ class _BioCard extends GetView<ProfileController> {
             fontWeight: FontWeight.w500,
             fontSize: context.dw(20),
             height: 22 / 20,
-            color: AppColors.text,
+            color: AppColors.white,
           ),
         ),
       );
@@ -211,7 +198,7 @@ class _OverviewSpecsCard extends GetView<ProfileController> {
       return Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color(0xFF181818),
+          color: AppColors.primary.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
           boxShadow: [
             BoxShadow(
@@ -240,7 +227,7 @@ class _OverviewSpecsCard extends GetView<ProfileController> {
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(18),
                           height: 1.2,
-                          color: AppColors.text,
+                          color: AppColors.white,
                         ),
                       ),
                     ),

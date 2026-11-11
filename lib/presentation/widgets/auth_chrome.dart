@@ -34,7 +34,7 @@ class AuthHeader extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontSize: context.dw(24),
             height: 1.2,
-            color: AppColors.text,
+            color: AppColors.white, // secondary label
           ),
         ),
         SizedBox(height: context.dw(AppSpacing.t08)),
@@ -45,7 +45,7 @@ class AuthHeader extends StatelessWidget {
             fontWeight: FontWeight.w700,
             fontSize: context.dw(32),
             height: 1.2,
-            color: AppColors.white,
+            color: AppColors.text,
           ),
         ),
       ],
@@ -118,7 +118,7 @@ class SocialAuthRow extends StatelessWidget {
   }
 }
 
-/// Footer link — action text is brand primary (`#CC5500`), per Figma.
+/// Footer link — leading white, action cream (`textStrong`), per Elite branding.
 class AuthFooterLink extends StatelessWidget {
   const AuthFooterLink({
     super.key,
@@ -151,7 +151,7 @@ class AuthFooterLink extends StatelessWidget {
               text: action,
               style: const TextStyle(
                 fontWeight: FontWeight.w700,
-                color: AppColors.primary,
+                color: AppColors.textStrong,
               ),
             ),
           ],

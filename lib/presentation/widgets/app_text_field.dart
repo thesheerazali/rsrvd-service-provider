@@ -51,16 +51,16 @@ class AppTextField extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final fieldStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w400,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final hintStyle = fieldStyle.copyWith(
-      color: AppColors.text.withValues(alpha: 0.5),
+      color: AppColors.white.withValues(alpha: 0.5),
     );
 
     final field = TextField(
@@ -86,7 +86,7 @@ class AppTextField extends StatelessWidget {
                   prefixText!,
                   style: fieldStyle.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: AppColors.text,
+                    color: AppColors.white,
                   ),
                 ),
               ),

@@ -5,7 +5,7 @@ import '../styles/app_colors.dart';
 import '../styles/app_spacing.dart';
 import '../styles/typography.dart';
 
-/// Dark-first theme matching the RSRVD Figma (ink `#111111` + primary `#CC5500`).
+/// Dark-first theme matching the RSRVD Figma (walnut `#1D130B` + gold `#C9B48F`).
 final ThemeData lightTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
@@ -16,7 +16,7 @@ final ThemeData lightTheme = ThemeData(
     primary: AppColors.primary,
     onPrimary: AppColors.onPrimary,
     secondary: AppColors.accent,
-    onSecondary: AppColors.white,
+    onSecondary: AppColors.onPrimary,
     surface: AppColors.surface,
     onSurface: AppColors.text,
     error: AppColors.error,
@@ -41,7 +41,7 @@ final ThemeData lightTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.accentGold,
       foregroundColor: AppColors.onPrimary,
       minimumSize: const Size.fromHeight(50),
       shape: RoundedRectangleBorder(

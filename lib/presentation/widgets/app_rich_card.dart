@@ -18,11 +18,12 @@ class AppRichCard extends StatelessWidget {
     super.key,
     required this.card,
     this.onCta,
+    this.priceColor = AppColors.primary,
   });
 
   final ChatRichCard card;
   final ValueChanged<ChatRichCard>? onCta;
-
+  final Color priceColor;
   @override
   Widget build(BuildContext context) {
     final toneColor = switch (card.statusTone) {
@@ -40,7 +41,7 @@ class AppRichCard extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(14),
       height: 1,
-      color: AppColors.text.withValues(alpha: 1),
+      color: AppColors.white.withValues(alpha: 1),
     );
 
     final inner = Column(
@@ -52,7 +53,7 @@ class AppRichCard extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontSize: context.dw(16),
             height: 1.0,
-            color: AppColors.text.withValues(alpha: 0.5),
+            color: AppColors.white.withValues(alpha: 0.5),
           ),
         ),
         SizedBox(height: context.dw(AppSpacing.t10)),
@@ -77,13 +78,13 @@ class AppRichCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(16),
               height: 1,
-              color: AppColors.text,
+              color: AppColors.white,
             ),
           ),
         ],
         if (card.priceLine.isNotEmpty) ...[
           SizedBox(height: context.dw(AppSpacing.t10)),
-          _PriceLine(priceLine: card.priceLine),
+          _PriceLine(priceLine: card.priceLine, color: priceColor),
         ],
         if (card.dateLine.isNotEmpty) ...[
           SizedBox(height: context.dw(AppSpacing.t10)),
@@ -110,7 +111,7 @@ class AppRichCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(context.dw(AppSpacing.t10)),
             decoration: BoxDecoration(
-              color: AppColors.surfaceCard,
+              color: AppColors.primary.withValues(alpha: 0.1),
               borderRadius:
                   BorderRadius.circular(context.dw(AppSpacing.radiusMd)),
             ),
@@ -130,10 +131,12 @@ class AppRichCard extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: context.dw(16),
                       height: 1,
-                      color: AppColors.text,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
+                SizedBox(width: context.dw(5)),
+               SvgPicture.asset(AppIcons.downloadIcon, width: context.dw(16), height: context.dw(16),)
               ],
             ),
           ),
@@ -229,7 +232,7 @@ class AppRichCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(14),
               height: 1.0,
-              color: AppColors.text.withValues(alpha: 0.6),
+              color: AppColors.white.withValues(alpha: 0.6),
             ),
           ),
         if (card.overlayLabel.isNotEmpty)
@@ -252,17 +255,17 @@ class AppRichCard extends StatelessWidget {
 
 /// `$20000` in primary; `/Fixed Price` muted — Figma contract preview.
 class _PriceLine extends StatelessWidget {
-  const _PriceLine({required this.priceLine});
+  const _PriceLine({required this.priceLine, this.color = AppColors.primary});
 
   final String priceLine;
-
+  final Color color;
   @override
   Widget build(BuildContext context) {
     final base = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w700,
       fontSize: context.dw(16),
       height: 1.2,
-      color: AppColors.primary,
+      color: color,
     );
     final slash = priceLine.indexOf('/');
     if (slash <= 0 || slash >= priceLine.length - 1) {

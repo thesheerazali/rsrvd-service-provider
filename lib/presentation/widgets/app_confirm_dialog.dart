@@ -89,23 +89,12 @@ class AppConfirmDialog extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.55),
-              blurRadius: context.dw(40),
-              offset: Offset(0, context.dw(12)),
-            ),
-            BoxShadow(
-              color: AppColors.primaryDark.withValues(alpha: 0.22),
-              blurRadius: context.dw(48),
-              spreadRadius: context.dw(-4),
-            ),
-          ],
+          // boxShadow disabled to match Elite branding dialog.
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(radius),
           child: ColoredBox(
-            color: AppColors.surface,
+            color: AppColors.bg,
             child: Stack(
               clipBehavior: Clip.hardEdge,
               children: [
@@ -161,7 +150,7 @@ class AppConfirmDialog extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(16),
                           height: 1.0,
-                          color: AppColors.text.withValues(alpha: 0.5),
+                          color: AppColors.white.withValues(alpha: 0.5),
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
@@ -169,11 +158,11 @@ class AppConfirmDialog extends StatelessWidget {
                         title.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: GoogleFonts.cinzel(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                           fontSize: context.dw(24),
                           height: 1.0,
                           letterSpacing: 0,
-                          color: titleColor ?? AppColors.white,
+                          color: titleColor ?? AppColors.text,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
@@ -183,8 +172,8 @@ class AppConfirmDialog extends StatelessWidget {
                         style: GoogleFonts.darkerGrotesque(
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(18),
-                          height: 1.2,
-                          color: AppColors.text,
+                          height: 1.0,
+                          color: AppColors.white,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t12)),
@@ -239,7 +228,7 @@ class _DialogSecondaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = color ?? AppColors.accent;
+    final accent = color ?? AppColors.accentGold;
     return SizedBox(
       width: double.infinity,
       height: context.dw(50),

@@ -40,7 +40,7 @@ class AppEmptyState extends StatelessWidget {
           height: context.dw(62),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFFB38922).withValues(alpha: 0.1),
+            color: AppColors.primarySurface,
           ),
           alignment: Alignment.center,
           child: Image.asset(
@@ -71,7 +71,7 @@ class AppEmptyState extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(20),
               height: 1.0,
-              color: AppColors.text,
+              color: AppColors.white,
             ),
           ),
         ),

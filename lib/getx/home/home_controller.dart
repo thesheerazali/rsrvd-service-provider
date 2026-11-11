@@ -24,6 +24,15 @@ class HomeController extends GetxController {
     return 'Interior Design · Miami';
   }
 
+  /// Business logo from partner profile (`users/{uid}.logo_url`).
+  String get businessLogoUrl => _users.currentUser?.logoUrl.trim() ?? '';
+
+  String get businessInitials {
+    final fromUser = _users.currentUser?.initials ?? '';
+    if (fromUser.isNotEmpty) return fromUser;
+    return 'MA';
+  }
+
   String get membershipLabel =>
       _users.currentUser?.membership.homeLabel ?? 'Membership · Yearly';
 

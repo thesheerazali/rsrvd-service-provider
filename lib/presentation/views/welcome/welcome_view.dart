@@ -24,8 +24,8 @@ class WelcomeView extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     final bodyStyle = GoogleFonts.darkerGrotesque(
-      fontWeight: FontWeight.w500,
-      fontSize: context.dw(20),
+      fontWeight: FontWeight.w600,
+      fontSize: context.dw(18),
       height: 1,
       color: AppColors.white,
     );
@@ -53,7 +53,7 @@ class WelcomeView extends GetView<WelcomeController> {
                     fontWeight: FontWeight.w700,
                     fontSize: context.dw(32),
                     height: 1.2,
-                    color: AppColors.white,
+                    color: AppColors.primary,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t10)),
@@ -61,19 +61,16 @@ class WelcomeView extends GetView<WelcomeController> {
                   'welcome_body'.tr,
                   textAlign: TextAlign.start,
                   style: GoogleFonts.darkerGrotesque(
-      fontWeight: FontWeight.w400,
-      fontSize: context.dw(24),
-      height: 1,
-      color: Colors.white,
-    ),
+                    fontWeight: FontWeight.w400,
+                    fontSize: context.dw(24),
+                    height: 1,
+                    color: Colors.white,
+                  ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t30)),
                 for (var i = 0; i < _bullets.length; i++) ...[
                   if (i > 0) SizedBox(height: context.dw(AppSpacing.t10)),
-                  _WelcomeBullet(
-                    text: _bullets[i].tr,
-                    style: bodyStyle,
-                  ),
+                  _WelcomeBullet(text: _bullets[i].tr, style: bodyStyle),
                 ],
                 SizedBox(height: context.dw(AppSpacing.t30)),
                 PrimaryButton(
@@ -90,10 +87,7 @@ class WelcomeView extends GetView<WelcomeController> {
 }
 
 class _WelcomeBullet extends StatelessWidget {
-  const _WelcomeBullet({
-    required this.text,
-    required this.style,
-  });
+  const _WelcomeBullet({required this.text, required this.style});
 
   final String text;
   final TextStyle style;
@@ -107,8 +101,8 @@ class _WelcomeBullet extends StatelessWidget {
           padding: EdgeInsets.only(top: context.dw(3)),
           child: SvgPicture.asset(
             AppIcons.aiMagic,
-            width: context.dw(18),
-            height: context.dw(15),
+            width: context.dw(21),
+            height: context.dw(21),
             colorFilter: const ColorFilter.mode(
               AppColors.white,
               BlendMode.srcIn,

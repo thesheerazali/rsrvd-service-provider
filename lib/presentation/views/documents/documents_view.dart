@@ -38,7 +38,7 @@ class DocumentsView extends GetView<DocumentsController> {
                         style: GoogleFonts.darkerGrotesque(
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(18),
-                          color: AppColors.text.withValues(alpha: 0.5),
+                          color: AppColors.white.withValues(alpha: 0.5),
                         ),
                       ),
                     );
@@ -56,8 +56,8 @@ class DocumentsView extends GetView<DocumentsController> {
                     itemBuilder: (context, index) {
                       final doc = docs[index];
                       return AppUploadedDocCard(
-                        iconColor: AppColors.primary,
-                        textColor: AppColors.white,
+                        iconColor: AppColors.accentGold,
+                        textColor: AppColors.primary,
                         document: doc,
                         onRetry: () => controller.retryDocument(doc.id),
                         onDelete: () => controller.removeDocument(doc.id),

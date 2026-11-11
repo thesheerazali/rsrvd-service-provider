@@ -80,7 +80,8 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = selected ? AppColors.primary : AppColors.text;
+    // Figma Home: selected = `#C9B48F`; inactive = `#FAFAFA` @ 50% opacity.
+    final color = selected ? AppColors.primary : AppColors.white;
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,

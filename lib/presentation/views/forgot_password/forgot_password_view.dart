@@ -39,7 +39,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     fontSize: context.dw(32),
                     height: 1.2,
                     letterSpacing: 0,
-                    color: AppColors.white,
+                    color: AppColors.primary,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t15)),

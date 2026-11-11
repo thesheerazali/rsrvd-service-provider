@@ -70,10 +70,10 @@ class ProjectDetailView extends GetView<ProjectDetailController> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             if (item.showIssueBanner) ...[
-                              _IssueRaisedBanner(note: item.issueNote),
+                             _IssueRaisedBanner(note: item.issueNote),
                               SizedBox(height: context.dw(AppSpacing.t20)),
                             ],
-                            _TitleCard(item: item),
+                           _TitleCard(item: item),
                             if (item.showPostUpdate) ...[
                               SizedBox(height: context.dw(AppSpacing.t30)),
                               const _PostUpdateCard(),
@@ -86,6 +86,7 @@ class ProjectDetailView extends GetView<ProjectDetailController> {
                               selectedIndex: tab,
                               onSelected: controller.selectTab,
                             ),
+                            
                           ],
                         ),
                       ),
@@ -160,9 +161,9 @@ class _FooterActions extends GetView<ProjectDetailController> {
                   'Cancel Project',
                   style: GoogleFonts.darkerGrotesque(
                     fontWeight: FontWeight.w600,
-                    fontSize: context.dw(18),
+                    fontSize: context.dw(24),
                     height: 1.2,
-                    color: AppColors.primary,
+                    color: AppColors.accentGold.withValues(alpha: 0.5),
                   ),
                 ),
               ),
@@ -298,7 +299,7 @@ class _PostUpdateCard extends GetView<ProjectDetailController> {
                       fontWeight: FontWeight.w400,
                       fontSize: context.dw(18),
                       height: 1.0,
-                      color: AppColors.text,
+                      color: AppColors.white,
                     ),
                     cursorColor: AppColors.primary,
                     decoration: InputDecoration(
@@ -309,7 +310,7 @@ class _PostUpdateCard extends GetView<ProjectDetailController> {
                         fontWeight: FontWeight.w400,
                         fontSize: context.dw(18),
                         height: 1.0,
-                        color: AppColors.text.withValues(alpha: 0.5),
+                        color: AppColors.white.withValues(alpha: 0.5),
                       ),
                     ),
                     onSubmitted: (_) => controller.postUpdate(),
@@ -329,7 +330,7 @@ class _PostUpdateCard extends GetView<ProjectDetailController> {
                       borderRadius: BorderRadius.circular(
                         context.dw(AppSpacing.radiusSm),
                       ),
-                      border: Border.all(color: AppColors.primary),
+                      border: Border.all(color: AppColors.accentGold),
                     ),
                     child: Text(
                       'Add',
@@ -337,7 +338,7 @@ class _PostUpdateCard extends GetView<ProjectDetailController> {
                         fontWeight: FontWeight.w600,
                         fontSize: context.dw(16),
                         height: 1.0,
-                        color: AppColors.primary,
+                        color: AppColors.accentGold,
                       ),
                     ),
                   ),
@@ -431,11 +432,11 @@ class _TitleCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(18),
                     height: 1.0,
-                    color: AppColors.text.withValues(alpha: 0.5),
+                    color: AppColors.white.withValues(alpha: 0.5),
                   ),
                 ),
               ),
-              _StatusPill(tone: item.statusTone, label: item.status),
+             _StatusPill(tone: item.statusTone, label: item.status),
             ],
           ),
           SizedBox(height: context.dw(AppSpacing.t07)),
@@ -446,7 +447,7 @@ class _TitleCard extends StatelessWidget {
               fontSize: context.dw(24),
               height: 1.0,
               letterSpacing: 0,
-              color: AppColors.white,
+              color: AppColors.primary,
             ),
           ),
           if (item.subtitle.isNotEmpty) ...[
@@ -594,8 +595,8 @@ class _TabPill extends StatelessWidget {
             fontSize: context.dw(20),
             height: 1.0,
             color: selected
-                ? AppColors.white
-                : AppColors.primary.withValues(alpha: 0.8),
+                ? AppColors.onPrimary
+                : AppColors.accentGold,
           ),
         ),
       ),
@@ -613,7 +614,7 @@ class _OverviewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        AppSpecRowsCard(rows: item.overviewRows),
+      AppSpecRowsCard(rows: item.overviewRows),
         if (item.showCompletionBanner) ...[
           SizedBox(height: context.dw(AppSpacing.t20)),
           const _AwaitingConfirmationBanner(),
@@ -701,7 +702,7 @@ class _ActivitiesBody extends StatelessWidget {
         style: GoogleFonts.darkerGrotesque(
           fontWeight: FontWeight.w500,
           fontSize: context.dw(20),
-          color: AppColors.text.withValues(alpha: 0.5),
+          color: AppColors.white.withValues(alpha: 0.5),
         ),
       );
     }
@@ -748,7 +749,7 @@ class _ActivityRow extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontSize: context.dw(14),
             height: 1.0,
-            color: AppColors.text.withValues(alpha: 0.5),
+            color: AppColors.white.withValues(alpha: 0.5),
           ),
         ),
       ],
@@ -774,7 +775,7 @@ class _DocumentsBody extends StatelessWidget {
         style: GoogleFonts.darkerGrotesque(
           fontWeight: FontWeight.w500,
           fontSize: context.dw(20),
-          color: AppColors.text.withValues(alpha: 0.5),
+          color: AppColors.white.withValues(alpha: 0.5),
         ),
       );
     }
@@ -832,7 +833,7 @@ class _DocumentRow extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   fontSize: context.dw(14),
                   height: 1.0,
-                  color: AppColors.text.withValues(alpha: 0.5),
+                  color: AppColors.white.withValues(alpha: 0.5),
                 ),
               ),
             ],
@@ -848,10 +849,13 @@ class _DocumentRow extends StatelessWidget {
               fontWeight: FontWeight.w600,
               fontSize: context.dw(16),
               height: 1.2,
-              color: AppColors.primary,
+              color: AppColors.accentGold,
             ),
           ),
+
         ),
+        SizedBox(width: context.dw(AppSpacing.t12)),
+        SvgPicture.asset(AppIcons.downloadIcon, width: context.dw(16), height: context.dw(16),),
       ],
     );
   }
@@ -881,7 +885,7 @@ class _PaymentCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(14),
               height: 1.0,
-              color: AppColors.text.withValues(alpha: 0.5),
+              color: AppColors.white.withValues(alpha: 0.5),
             ),
           ),
           SizedBox(height: context.dw(AppSpacing.t10)),
@@ -987,7 +991,7 @@ class _AdminNotesCard extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontSize: context.dw(14),
                 height: 1.0,
-                color: AppColors.text.withValues(alpha: 0.5),
+                color: AppColors.white.withValues(alpha: 0.5),
               ),
             ),
             SizedBox(height: context.dw(AppSpacing.t05)),

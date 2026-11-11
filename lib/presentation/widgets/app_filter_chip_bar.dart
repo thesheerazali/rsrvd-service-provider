@@ -54,8 +54,8 @@ class AppFilterChipBar extends StatelessWidget {
                   fontSize: context.dw(20),
                   height: 1.0,
                   color: selected
-                      ? AppColors.white
-                      : AppColors.primary.withValues(alpha: 0.8),
+                      ? AppColors.onPrimary
+                      : AppColors.accentGold,
                 ),
               ),
             ),

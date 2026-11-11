@@ -164,7 +164,7 @@ class _ChatTopBar extends GetView<ChatDetailController> {
                   fontWeight: FontWeight.w500,
                   fontSize: context.dw(24),
                   height: 1.2,
-                  color: AppColors.text,
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -181,13 +181,13 @@ class _ChatTopBar extends GetView<ChatDetailController> {
                   border: Border.all(
                     color: AppColors.primary.withValues(alpha: 0.5),
                   ),
-                  color: const Color.fromRGBO(250, 74, 24, 0.05),
+                  color: AppColors.primary.withValues(alpha: 0.05),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(viewProjects ? AppIcons.viewIcon : AppIcons.contractIcon),
+                    SvgPicture.asset(viewProjects ? AppIcons.viewIcon : AppIcons.contractIcon, colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),),
                     SizedBox(width: context.dw(10)),
                     Text(
                       viewProjects
@@ -234,7 +234,7 @@ class _CounterpartBlock extends StatelessWidget {
             style: GoogleFonts.cinzel(
               fontWeight: FontWeight.w500,
               fontSize: context.dw(14),
-              color: AppColors.primary,
+              color: AppColors.accentGold,
             ),
           ),
         ),
@@ -281,7 +281,7 @@ class _SubjectCard extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontSize: context.dw(14),
               height: 1.0,
-              color: AppColors.text,
+              color: AppColors.white,
             ),
           ),
           SizedBox(height: context.dw(5)),
@@ -302,7 +302,7 @@ class _SubjectCard extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: context.dw(14),
                 height: 1.0,
-                color: AppColors.text,
+                color: AppColors.white,
               ),
             ),
           ],
@@ -355,7 +355,7 @@ class _MessageBubble extends StatelessWidget {
                   fontSize: context.dw(16),
                   height: 1.0,
                   letterSpacing: -0.16,
-                  color: AppColors.text.withValues(alpha: 0.8),
+                  color: AppColors.white.withValues(alpha: 0.8),
                 ),
               ),
             ],
@@ -383,7 +383,7 @@ class _BubbleContent extends StatelessWidget {
         children: [
           _TextBody(message: message),
           SizedBox(height: context.dw(AppSpacing.t16)),
-          AppRichCard(card: card, onCta: onCta),
+          AppRichCard(card: card, onCta: onCta, priceColor: AppColors.accentGold),
         ],
       );
     }
@@ -405,7 +405,7 @@ class _TextBody extends StatelessWidget {
       fontWeight: FontWeight.w400,
       fontSize: context.dw(20),
       height: 22 / 20,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     if (message.emphasisSuffix.isEmpty) {
       return Text(message.body, style: base);
@@ -462,7 +462,7 @@ class _Composer extends GetView<ChatDetailController> {
                   width: context.dw(21),
                   height: context.dw(21),
                   colorFilter: const ColorFilter.mode(
-                    AppColors.primary,
+                    AppColors.accentGold,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -476,7 +476,7 @@ class _Composer extends GetView<ChatDetailController> {
                   fontWeight: FontWeight.w400,
                   fontSize: context.dw(18),
                   height: 1.2,
-                  color: AppColors.text,
+                  color: AppColors.white,
                 ),
                 cursorColor: AppColors.primary,
                 textInputAction: TextInputAction.send,
@@ -489,7 +489,7 @@ class _Composer extends GetView<ChatDetailController> {
                     fontWeight: FontWeight.w400,
                     fontSize: context.dw(18),
                     height: 1.2,
-                    color: AppColors.text.withValues(alpha: 0.5),
+                    color: AppColors.white.withValues(alpha: 0.5),
                   ),
                 ),
               ),

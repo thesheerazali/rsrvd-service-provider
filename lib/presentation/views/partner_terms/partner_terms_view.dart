@@ -68,7 +68,7 @@ class _TermsSection extends StatelessWidget {
             fontWeight: FontWeight.w700,
             fontSize: context.dw(20),
             height: 1.0,
-            color: AppColors.white,
+            color: AppColors.primary,
           ),
         ),
         SizedBox(height: context.dw(AppSpacing.t10)),
@@ -76,7 +76,7 @@ class _TermsSection extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.all(context.dw(AppSpacing.t20)),
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: AppColors.primary.withValues(alpha: 0.05),
             borderRadius:
                 BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
             border: Border.all(color: AppColors.surfaceCard, width: 0.5),

@@ -63,7 +63,7 @@ class ApplicationStatusView extends GetView<ApplicationStatusController> {
                     child: Column(
                       children: [
                         const Spacer(),
-                       _StatusBody(status: s),
+                      _StatusBody(status: s),
                         if (s == PartnerApplicationStatus.approved) ...[
                           SizedBox(height: context.dw(AppSpacing.t30)),
                           PrimaryButton(
@@ -112,14 +112,14 @@ class _StatusBody extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(18),
       height: 1,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     // Elite Welcome / ID title — Cinzel Medium 32.
     final titleStyle = GoogleFonts.cinzel(
       fontWeight: FontWeight.w700,
       fontSize: context.dw(24),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     // Elite Welcome / ID body — DG Regular 24 / lh 1.0.
     final bodyStyle = GoogleFonts.darkerGrotesque(
@@ -127,17 +127,17 @@ class _StatusBody extends StatelessWidget {
       fontSize: context.dw(18),
       letterSpacing: 0,
       height: 1.0,
-      color: AppColors.text,
+      color: AppColors.white,
     );
 
     return switch (status) {
       PartnerApplicationStatus.submitted => Column(
           children: [
-            Text(
-              'app_status_submitted_eyebrow'.tr,
-              textAlign: TextAlign.center,
-              style: eyebrowStyle,
-            ),
+            // Text(
+            //   'app_status_submitted_eyebrow'.tr,
+            //   textAlign: TextAlign.center,
+            //   style: eyebrowStyle,
+            // ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
               'app_status_submitted_body'.tr,
@@ -146,9 +146,9 @@ class _StatusBody extends StatelessWidget {
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
-              'app_status_submitted_title'.tr,
+              'app_status_submitted_title'.tr.toUpperCase(),
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: titleStyle.copyWith(color: AppColors.primary),
             ),
             SizedBox(height: context.dw(AppSpacing.t30)),
             AppNoticeBanner(
@@ -168,7 +168,7 @@ class _StatusBody extends StatelessWidget {
             Text(
               'app_status_approved_title'.tr.toUpperCase(),
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: titleStyle.copyWith(color: AppColors.primary),
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
@@ -192,7 +192,7 @@ class _StatusBody extends StatelessWidget {
             Text(
               'app_status_rejected_title'.tr.toUpperCase(),
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: titleStyle.copyWith(color: AppColors.primary),
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(

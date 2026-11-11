@@ -59,7 +59,7 @@ class PartnerApplicationView extends GetView<PartnerApplicationController> {
                           fontWeight: FontWeight.w700,
                           fontSize: context.dw(24),
                           height: 1.2,
-                          color: AppColors.white,
+                          color: AppColors.primary,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t30)),
@@ -93,7 +93,7 @@ class PartnerApplicationView extends GetView<PartnerApplicationController> {
                               fontWeight: FontWeight.w600,
                               fontSize: context.dw(24),
                               height: 1.2,
-                              color: AppColors.primary.withValues(alpha: 0.5),
+                              color: AppColors.accentGold,
                             ),
                           ),
                         ),
@@ -129,7 +129,7 @@ class _Header extends GetView<PartnerApplicationController> {
         context.dw(AppSpacing.t16),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: controller.goBack,
@@ -141,7 +141,7 @@ class _Header extends GetView<PartnerApplicationController> {
                 width: context.dw(24),
                 height: context.dw(24),
                 colorFilter: ColorFilter.mode(
-                  AppColors.text.withValues(alpha: 0.8),
+                  AppColors.white.withValues(alpha: 0.8),
                   BlendMode.srcIn,
                 ),
               ),
@@ -159,7 +159,7 @@ class _Header extends GetView<PartnerApplicationController> {
                       fontWeight: FontWeight.w600,
                       fontSize: context.dw(24),
                       height: 1.2,
-                      color: AppColors.text.withValues(alpha: 0.8),
+                      color: AppColors.white.withValues(alpha: 0.8),
                     ),
                   ),
                   Text(
@@ -168,7 +168,7 @@ class _Header extends GetView<PartnerApplicationController> {
                       fontWeight: FontWeight.w500,
                       fontSize: context.dw(18),
                       height: 1.2,
-                      color: AppColors.text.withValues(alpha: 0.8),
+                      color: AppColors.white.withValues(alpha: 0.8),
                     ),
                   ),
                 ],
@@ -220,16 +220,16 @@ class _Step1BasicInfo extends GetView<PartnerApplicationController> {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final fieldStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w400,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final hintStyle = fieldStyle.copyWith(
-      color: AppColors.text.withValues(alpha: 0.5),
+      color: AppColors.white.withValues(alpha: 0.5),
     );
 
     return Column(
@@ -340,18 +340,17 @@ class _Step1BasicInfo extends GetView<PartnerApplicationController> {
         ),
         SizedBox(height: context.dw(AppSpacing.t20)),
         AppTextField(
-          label: 'pa_expertise'.tr,
-          hint: 'pa_expertise_hint'.tr,
-          controller: controller.expertiseInputController,
-          textInputAction: TextInputAction.done,
-          onSubmitted: controller.addExpertise,
+          label: 'pa_license_number'.tr,
+          hint: 'pa_license_number_hint'.tr,
+          controller: controller.licenseNumberController,
+          textInputAction: TextInputAction.next,
         ),
-        SizedBox(height: context.dw(AppSpacing.t08)),
-        Obx(
-          () => AppRemovableChipWrap(
-            values: controller.expertise.toList(),
-            onRemove: controller.removeExpertise,
-          ),
+        SizedBox(height: context.dw(AppSpacing.t20)),
+        AppTextField(
+          label: 'pa_insurance_information'.tr,
+          hint: 'pa_insurance_information_hint'.tr,
+          controller: controller.insuranceInformationController,
+          textInputAction: TextInputAction.next,
         ),
         SizedBox(height: context.dw(AppSpacing.t20)),
         AppTextField(
@@ -388,7 +387,7 @@ class _Step2Categories extends GetView<PartnerApplicationController> {
             fontWeight: FontWeight.w500,
             fontSize: context.dw(20),
             height: 1.2,
-            color: AppColors.text,
+            color: AppColors.white,
           ),
         ),
         SizedBox(height: context.dw(AppSpacing.t16)),
@@ -399,6 +398,23 @@ class _Step2Categories extends GetView<PartnerApplicationController> {
             onSelected: controller.toggleCategory,
           ),
         ),
+        Obx(() {
+          if (!controller.isOtherCategorySelected) {
+            return const SizedBox.shrink();
+          }
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: context.dw(AppSpacing.t20)),
+              AppTextField(
+                label: 'pa_other_category'.tr,
+                hint: 'pa_other_category_hint'.tr,
+                controller: controller.otherCategoryController,
+                textInputAction: TextInputAction.done,
+              ),
+            ],
+          );
+        }),
       ],
     );
   }
@@ -420,7 +436,7 @@ class _Step3Documents extends GetView<PartnerApplicationController> {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
 
     return Column(
@@ -440,7 +456,7 @@ class _Step3Documents extends GetView<PartnerApplicationController> {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(16),
               height: 1,
-              color: AppColors.primary,
+              color: AppColors.accentGold,
             ),
           ),
         ),
@@ -485,8 +501,8 @@ class _Step3Documents extends GetView<PartnerApplicationController> {
               for (var i = 0; i < controller.documents.length; i++) ...[
                 if (i > 0) SizedBox(height: context.dw(AppSpacing.t12)),
                 AppUploadedDocCard(
-                  iconColor: AppColors.text.withValues(alpha: 0.5),
-                  textColor: AppColors.primary,
+                  iconColor: AppColors.white.withValues(alpha: 0.5),
+                  textColor: AppColors.accentGold,
                   document: controller.documents[i],
                   onRetry: () =>
                       controller.retryDocument(controller.documents[i].id),
@@ -530,7 +546,7 @@ class _UploadTile extends StatelessWidget {
               width: context.dw(18),
               height: context.dw(18),
               colorFilter: const ColorFilter.mode(
-                AppColors.text,
+                AppColors.white,
                 BlendMode.srcIn,
               ),
             ),
@@ -544,7 +560,7 @@ class _UploadTile extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   fontSize: context.dw(18),
                   height: 1.2,
-                  color: AppColors.text,
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -593,18 +609,18 @@ class _Step4Nda extends GetView<PartnerApplicationController> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: AppColors.primary,
+                          color: AppColors.accentGold,
                           width: 1.5,
                         ),
                         color: accepted
-                            ? AppColors.primary
+                            ? AppColors.accentGold
                             : Colors.transparent,
                       ),
                       child: accepted
                           ? Icon(
                               Icons.check,
                               size: context.dw(8),
-                              color: AppColors.white,
+                              color: AppColors.onPrimary,
                             )
                           : null,
                     ),
@@ -616,7 +632,7 @@ class _Step4Nda extends GetView<PartnerApplicationController> {
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(16),
                           height: 1,
-                          color: AppColors.primary,
+                          color: AppColors.accentGold,
                         ),
                       ),
                     ),

@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../core/styles/app_colors.dart';
-import '../../core/styles/app_images.dart';
-import 'blend_mask.dart';
 import 'golden_top_glow.dart';
 
 export 'golden_top_glow.dart' show AppGlowStyle;
-/// App-wide screen background from Figma Splash / auth.
+
+/// App-wide screen background — solid dark walnut (`#1D130B`).
 ///
-/// Layer order matches Figma:
-/// 1. Ink `#111111`
-/// 2. Soft top gold glow (`glow_top.png`)
-/// 3. Constellation photo with **Color Dodge**
-/// 4. [child]
+/// Branding update: no constellation speckles / glow layers.
+/// Previous layers kept commented for easy restore if design reverts.
 class AppBackground extends StatelessWidget {
   const AppBackground({
     super.key,
@@ -23,7 +19,7 @@ class AppBackground extends StatelessWidget {
 
   final Widget child;
 
-  /// Top gold nebula.
+  /// Top gold nebula (disabled — solid bg only).
   final bool showGlow;
 
   /// [AppGlowStyle.hero] for Splash/Welcome; [AppGlowStyle.auth] elsewhere.
@@ -37,15 +33,16 @@ class AppBackground extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          if (showGlow)
-            Positioned.fill(
-              child: IgnorePointer(
-                child: GoldenTopGlow(style: glowStyle),
-              ),
-            ),
-          const Positioned.fill(
-            child: IgnorePointer(child: _ConstellationLayer()),
-          ),
+          // Client: solid walnut only — no dots / glow.
+          // if (showGlow)
+          //   Positioned.fill(
+          //     child: IgnorePointer(
+          //       child: GoldenTopGlow(style: glowStyle),
+          //     ),
+          //   ),
+          // const Positioned.fill(
+          //   child: IgnorePointer(child: _ConstellationLayer()),
+          // ),
           child,
         ],
       ),
@@ -53,20 +50,20 @@ class AppBackground extends StatelessWidget {
   }
 }
 
-/// `bg_constellations.png` — Figma blend mode Color Dodge.
-class _ConstellationLayer extends StatelessWidget {
-  const _ConstellationLayer();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlendMask(
-      blendMode: BlendMode.colorDodge,
-      child: Image.asset(
-        AppImages.background,
-        fit: BoxFit.cover,
-        alignment: Alignment.center,
-        filterQuality: FilterQuality.high,
-      ),
-    );
-  }
-}
+// /// `bg_constellations.png` — Figma blend mode Color Dodge.
+// class _ConstellationLayer extends StatelessWidget {
+//   const _ConstellationLayer();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlendMask(
+//       blendMode: BlendMode.colorDodge,
+//       child: Image.asset(
+//         AppImages.background,
+//         fit: BoxFit.cover,
+//         alignment: Alignment.center,
+//         filterQuality: FilterQuality.high,
+//       ),
+//     );
+//   }
+// }

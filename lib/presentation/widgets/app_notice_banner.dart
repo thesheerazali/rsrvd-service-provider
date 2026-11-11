@@ -15,7 +15,7 @@ class AppNoticeBanner extends StatelessWidget {
   });
 
   /// Banner fill `rgba(250, 74, 24, 0.05)`.
-  static const Color fill = Color(0x0DFA4A18);
+  static  Color fill = AppColors.primary.withValues(alpha: 0.05);
 
   final String message;
   final TextAlign textAlign;
@@ -39,7 +39,7 @@ class AppNoticeBanner extends StatelessWidget {
           fontWeight: FontWeight.w500,
           fontSize: context.dw(16),
           height: 1.2,
-          color: AppColors.primary,
+          color: AppColors.accentGold,
         ),
       ),
     );

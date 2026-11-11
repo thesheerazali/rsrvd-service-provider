@@ -16,6 +16,7 @@ class AppUser {
     required this.displayName,
     required this.email,
     this.occupation = '',
+    this.logoUrl = '',
     this.membership = UserMembership.empty,
   });
 
@@ -28,6 +29,9 @@ class AppUser {
   final String displayName;
   final String email;
   final String occupation;
+
+  /// Business logo / profile photo URL from partner profile.
+  final String logoUrl;
 
   /// Current membership / plan snapshot on the user doc.
   final UserMembership membership;
@@ -57,6 +61,9 @@ class AppUser {
       displayName: json['display_name'] as String? ?? '',
       email: json['email'] as String? ?? '',
       occupation: json['occupation'] as String? ?? '',
+      logoUrl: json['logo_url'] as String? ??
+          json['photo_url'] as String? ??
+          '',
       membership: UserMembership.fromJson(
         membershipRaw is Map
             ? Map<String, dynamic>.from(membershipRaw)
@@ -71,6 +78,7 @@ class AppUser {
         'display_name': displayName,
         'email': email,
         'occupation': occupation,
+        'logo_url': logoUrl,
         'membership': membership.toJson(),
       };
 
@@ -78,6 +86,7 @@ class AppUser {
     String? displayName,
     String? email,
     String? occupation,
+    String? logoUrl,
     UserMembership? membership,
   }) {
     return AppUser(
@@ -86,6 +95,7 @@ class AppUser {
       displayName: displayName ?? this.displayName,
       email: email ?? this.email,
       occupation: occupation ?? this.occupation,
+      logoUrl: logoUrl ?? this.logoUrl,
       membership: membership ?? this.membership,
     );
   }

@@ -30,6 +30,8 @@ class PartnerApplicationController extends GetxController {
     'RSRVD Partner NDA',
   ];
 
+  static const String otherCategoryId = 'other';
+
   static const List<({String id, String label})> serviceCategories = [
     (id: 'attorneys', label: 'Attorneys'),
     (id: 'cpas', label: 'CPAs'),
@@ -44,6 +46,7 @@ class PartnerApplicationController extends GetxController {
     (id: 'private_trainers', label: 'Private Trainers'),
     (id: 'private_cars', label: 'Private Car Specialists'),
     (id: 'family_office', label: 'Family Office Support'),
+    (id: otherCategoryId, label: 'Other'),
   ];
 
   final contactNameController = TextEditingController();
@@ -54,11 +57,12 @@ class PartnerApplicationController extends GetxController {
   final countryController = TextEditingController();
   final experienceController = TextEditingController();
   final bioController = TextEditingController();
-  final expertiseInputController = TextEditingController();
+  final licenseNumberController = TextEditingController();
+  final insuranceInformationController = TextEditingController();
   final serviceAreaInputController = TextEditingController();
+  final otherCategoryController = TextEditingController();
 
   final currentStep = 0.obs;
-  final expertise = <String>[].obs;
   final serviceAreas = <String>[].obs;
   final selectedCategoryIds = <String>[].obs;
   final documents = <PartnerUploadedDocument>[].obs;
@@ -108,17 +112,23 @@ class PartnerApplicationController extends GetxController {
     return raw;
   }
 
-  String get expertiseDisplay =>
-      expertise.isEmpty ? '-' : expertise.join(', ');
-
   String get serviceAreasDisplay =>
       serviceAreas.isEmpty ? '-' : serviceAreas.join(', ');
 
+  bool get isOtherCategorySelected =>
+      selectedCategoryIds.contains(otherCategoryId);
+
   String get categoryDisplay {
-    final labels = serviceCategories
-        .where((c) => selectedCategoryIds.contains(c.id))
-        .map((c) => c.label)
-        .toList();
+    final labels = <String>[];
+    for (final c in serviceCategories) {
+      if (!selectedCategoryIds.contains(c.id)) continue;
+      if (c.id == otherCategoryId) {
+        final custom = otherCategoryController.text.trim();
+        labels.add(custom.isNotEmpty ? custom : c.label);
+      } else {
+        labels.add(c.label);
+      }
+    }
     return labels.isEmpty ? '-' : labels.join(', ');
   }
 
@@ -193,8 +203,10 @@ class PartnerApplicationController extends GetxController {
       countryController,
       experienceController,
       bioController,
-      expertiseInputController,
+      licenseNumberController,
+      insuranceInformationController,
       serviceAreaInputController,
+      otherCategoryController,
     ];
     SchedulerBinding.instance.addPostFrameCallback((_) {
       for (final c in controllers) {
@@ -225,7 +237,6 @@ class PartnerApplicationController extends GetxController {
 
   /// Chip fields only commit on keyboard Done — also flush typed text on Continue.
   void _commitPendingChips() {
-    addExpertise(expertiseInputController.text);
     addServiceArea(serviceAreaInputController.text);
   }
 
@@ -242,7 +253,6 @@ class PartnerApplicationController extends GetxController {
       case 0:
         if (phoneController.text.trim().isEmpty ||
             bioController.text.trim().isEmpty ||
-            expertise.isEmpty ||
             serviceAreas.isEmpty) {
           AppFlash.error('auth_fill_required'.tr);
           return false;
@@ -251,6 +261,11 @@ class PartnerApplicationController extends GetxController {
       case 1:
         if (selectedCategoryIds.isEmpty) {
           AppFlash.error('pa_select_category'.tr);
+          return false;
+        }
+        if (isOtherCategorySelected &&
+            otherCategoryController.text.trim().isEmpty) {
+          AppFlash.error('pa_other_category_required'.tr);
           return false;
         }
         return true;
@@ -290,22 +305,15 @@ class PartnerApplicationController extends GetxController {
       country: countryController.text.trim(),
       experienceYears: experienceController.text.trim(),
       bio: bioController.text.trim(),
-      expertise: List<String>.from(expertise),
+      licenseNumber: licenseNumberController.text.trim(),
+      insuranceInformation: insuranceInformationController.text.trim(),
       serviceAreas: List<String>.from(serviceAreas),
       categoryIds: List<String>.from(selectedCategoryIds),
+      otherCategory: otherCategoryController.text.trim(),
       documents: List<PartnerUploadedDocument>.from(documents),
       ndaAccepted: ndaAccepted.value,
     );
   }
-
-  void addExpertise(String raw) {
-    final value = raw.trim();
-    if (value.isEmpty) return;
-    if (!expertise.contains(value)) expertise.add(value);
-    expertiseInputController.clear();
-  }
-
-  void removeExpertise(String value) => expertise.remove(value);
 
   void addServiceArea(String raw) {
     final value = raw.trim();
@@ -319,6 +327,7 @@ class PartnerApplicationController extends GetxController {
   void toggleCategory(String id) {
     if (selectedCategoryIds.contains(id)) {
       selectedCategoryIds.remove(id);
+      if (id == otherCategoryId) otherCategoryController.clear();
     } else {
       selectedCategoryIds.add(id);
     }

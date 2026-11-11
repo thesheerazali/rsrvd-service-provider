@@ -73,12 +73,19 @@ const Map<String, String> arSA = {
   'pa_experience': 'الخبرة',
   'pa_bio': 'نبذة مهنية*',
   'pa_bio_hint': 'اكتب عن نشاطك...',
+  'pa_license_number': 'رقم الرخصة',
+  'pa_license_number_hint': 'أدخل رقم الرخصة',
+  'pa_insurance_information': 'معلومات التأمين',
+  'pa_insurance_information_hint': 'أدخل معلومات التأمين',
   'pa_expertise': 'مجال الخبرة*',
   'pa_expertise_hint': 'مثال: تصميم داخلي — اضغط تم للإضافة',
   'pa_service_areas': 'مناطق الخدمة*',
   'pa_service_areas_hint': 'مثال: زيورخ — اضغط تم للإضافة',
   'pa_select_category': 'اختر فئة خدمة واحدة على الأقل.',
   'pa_select_category_label': 'اختر فئتك',
+  'pa_other_category': 'خدمة أخرى*',
+  'pa_other_category_hint': 'صف خدمتك',
+  'pa_other_category_required': 'يرجى وصف خدمتك الأخرى.',
   'pa_docs_notice':
       'تُستخدم مستندات التحقق فقط لفحص RSRVD. لا تُعرض في ملفك العام '
       'ولا تُشارك مع الأعضاء.',
@@ -88,7 +95,7 @@ const Map<String, String> arSA = {
   'pa_doc_business': 'مستندات النشاط',
   'pa_uploaded_count': 'المرفوع (@count)',
   'pa_nda_required': 'يرجى الموافقة على اتفاقية عدم الإفصاح للمتابعة.',
-  'pa_nda_card_title': 'اتفاقية عدم الإفصاح لشركاء RSRVD (v2.4)',
+  'pa_nda_card_title': 'اتفاقية عدم الإفصاح لشركاء RSRVD',
   'pa_nda_body':
       'بالمتابعة، توافق على الحفاظ على سرية معلومات الأعضاء وتفاصيل المشاريع '
       'ومراسلات المنصة، وعدم التواصل مع أعضاء Elite خارج التطبيق، '
@@ -104,8 +111,9 @@ const Map<String, String> arSA = {
   'app_status_submitted_eyebrow': 'تم تقديم الطلب',
   'app_status_submitted_body':
       'شكراً لتقديم طلبك لتصبح شريك RSRVD. سيراجع فريقنا معلوماتك '
-      'ويتواصل معك بعد مراجعة الطلب.',
-  'app_status_submitted_title': 'تم إرسال طلبك إلى الإدارة',
+      'ويتواصل معك قريباً بشأن الخطوات التالية.',
+  'app_status_submitted_title':
+      'تم تقديم طلبك إلى\nمجلس مراجعة شبكة RSRVD',
   'app_status_submitted_notice':
       'ملفك غير ظاهر لأعضاء Elite أثناء المراجعة. '
       'سنُعلمك فور اتخاذ القرار.',
@@ -125,6 +133,7 @@ const Map<String, String> arSA = {
   'membership_subtitle':
       'كن شريك RSRVD موثوقاً وتواصل مع شبكة حصرية من أعضاء Elite.',
   'membership_select_plan': 'يرجى اختيار خطة للمتابعة.',
+  'membership_continue_payment': 'المتابعة إلى الدفع',
   'membership_annual_fee': 'الرسوم السنوية',
   'membership_monthly_fee': 'الرسوم الشهرية',
   'membership_started': 'تاريخ البدء',

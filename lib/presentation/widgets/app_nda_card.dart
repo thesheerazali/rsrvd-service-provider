@@ -31,7 +31,7 @@ class AppNdaBodyCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(16),
               height: 1.2,
-              color: AppColors.primary,
+              color: AppColors.accentGold,
             ),
           ),
           SizedBox(height: context.dw(AppSpacing.t12)),
@@ -41,7 +41,7 @@ class AppNdaBodyCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: context.dw(16),
               height: 1.2,
-              color: AppColors.text,
+              color: AppColors.white,
             ),
           ),
         ],
@@ -79,7 +79,7 @@ class AppNdaSignatureDetails extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
 
     return Container(

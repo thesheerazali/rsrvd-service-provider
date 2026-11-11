@@ -46,7 +46,7 @@ class PartnerApplicationReviewView
                         fontWeight: FontWeight.w700,
                         fontSize: context.dw(24),
                         height: 1.2,
-                        color: AppColors.white,
+                        color: AppColors.primary,
                       ),
                     ),
                     SizedBox(height: sectionGap),
@@ -92,7 +92,18 @@ class PartnerApplicationReviewView
                           ),
                         ),
                         ('Experience', controller.experienceDisplay),
-                        ('Area of Expertise', controller.expertiseDisplay),
+                        (
+                          'License Number',
+                          controller.displayOrDash(
+                            controller.licenseNumberController.text,
+                          ),
+                        ),
+                        (
+                          'Insurance Information',
+                          controller.displayOrDash(
+                            controller.insuranceInformationController.text,
+                          ),
+                        ),
                         ('Service Areas', controller.serviceAreasDisplay),
                       ],
                     ),
@@ -219,7 +230,7 @@ class _Header extends StatelessWidget {
                 width: context.dw(24),
                 height: context.dw(24),
                 colorFilter: ColorFilter.mode(
-                  AppColors.text.withValues(alpha: 0.8),
+                  AppColors.white.withValues(alpha: 0.8),
                   BlendMode.srcIn,
                 ),
               ),
@@ -236,7 +247,7 @@ class _Header extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     fontSize: context.dw(24),
                     height: 1.2,
-                    color: AppColors.text.withValues(alpha: 0.8),
+                    color: AppColors.white.withValues(alpha: 0.8),
                   ),
                 ),
                 Text(
@@ -245,7 +256,7 @@ class _Header extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(18),
                     height: 1.2,
-                    color: AppColors.text.withValues(alpha: 0.8),
+                    color: AppColors.white.withValues(alpha: 0.8),
                   ),
                 ),
               ],
@@ -297,7 +308,7 @@ class _ReviewCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(20),
                     height: 1,
-                    color: AppColors.primary,
+                    color: AppColors.accentGold,
                   ),
                 ),
               ),
@@ -334,7 +345,7 @@ class _ReviewRow extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(18),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final valueStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w500,

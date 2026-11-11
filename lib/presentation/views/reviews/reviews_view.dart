@@ -54,7 +54,7 @@ class ReviewsView extends GetView<ReviewsController> {
                           fontWeight: FontWeight.w700,
                           fontSize: context.dw(24),
                           height: 1.2,
-                          color: AppColors.white.withValues(alpha: 0.8),
+                          color: AppColors.primary
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),

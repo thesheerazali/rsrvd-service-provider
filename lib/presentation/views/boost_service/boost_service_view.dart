@@ -42,7 +42,7 @@ class BoostServiceView extends GetView<BoostServiceController> {
                           fontWeight: FontWeight.w600,
                           fontSize: context.dw(24),
                           height: 1.0,
-                          color: AppColors.white,
+                          color: AppColors.primary,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
@@ -55,7 +55,7 @@ class BoostServiceView extends GetView<BoostServiceController> {
                             fontWeight: FontWeight.w500,
                             fontSize: context.dw(20),
                             height: 1.0,
-                            color: AppColors.text.withValues(alpha: 0.6),
+                            color: AppColors.white.withValues(alpha: 0.6),
                           ),
                         );
                       }),
@@ -124,7 +124,7 @@ class _BoostPlanCard extends StatelessWidget {
           color: AppColors.bg,
           borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusLg)),
           border: Border.all(
-            color: selected ? AppColors.primary : AppColors.surfaceCard,
+            color: selected ? AppColors.accentGold : AppColors.surfaceCard,
           ),
         ),
         child: Column(
@@ -146,7 +146,7 @@ class _BoostPlanCard extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontSize: context.dw(16),
                 height: 1,
-                color: AppColors.text,
+                color: AppColors.white,
               ),
             ),
           ],

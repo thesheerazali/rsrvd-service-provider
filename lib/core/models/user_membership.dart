@@ -83,6 +83,12 @@ class UserMembership {
   bool get isActive => status == MembershipStatus.active;
 
   String get homeLabel {
+    final name = planName?.trim() ?? '';
+    if (name.isNotEmpty) {
+      final short =
+          name.replaceFirst(RegExp(r'^RSRVD\s+', caseSensitive: false), '');
+      return 'Membership · $short';
+    }
     if (interval == MembershipBillingInterval.monthly) {
       return 'Membership · Monthly';
     }

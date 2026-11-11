@@ -14,13 +14,12 @@ const Map<String, String> enUS = {
   'months_ago': '@count months ago',
 
   // Welcome — Partners
-  'welcome_title': 'Welcome to\nRSRVD Partners',
+  'welcome_title': 'Welcome to RSRVD Trusted Service Providers',
   'welcome_body':
-      'An invitation-only network of vetted professionals serving '
-      'RSRVD Elite Members. No bidding. No job boards. Members come to you.',
-  'welcome_bullet_1': 'Every partner is vetted and verified by RSRVD',
+      'An invitation-only network of trusted professionals serving RSRVD\'s elite members. Connect directly with members seeking quality, reliable service providers. Build meaningful relationships, respond to service requests, and grow your business through a private network designed around trust, discretion, and opportunity.',
+  'welcome_bullet_1': 'Every trusted professional is verified by RSRVD.',
   'welcome_bullet_2': 'Members discover you and reach out directly',
-  'welcome_bullet_3': 'Projects and chat are secured within the app',
+  'welcome_bullet_3': 'Projects and chats are secured within the app',
   'welcome_cta': 'Become an RSRVD Partner',
   'get_started': 'Get Started',
   'sign_in': 'Sign In',
@@ -76,12 +75,19 @@ const Map<String, String> enUS = {
   'pa_experience': 'Experience',
   'pa_bio': 'Professional Bio*',
   'pa_bio_hint': 'Write about your business...',
+  'pa_license_number': 'License Number',
+  'pa_license_number_hint': 'Enter license number',
+  'pa_insurance_information': 'Insurance Information',
+  'pa_insurance_information_hint': 'Enter insurance information',
   'pa_expertise': 'Area of Expertise*',
   'pa_expertise_hint': 'e.g. Interior Design — press Done to add',
   'pa_service_areas': 'Service Areas*',
   'pa_service_areas_hint': 'e.g. Zurich — press Done to add',
   'pa_select_category': 'Select at least one service category.',
   'pa_select_category_label': 'Select Your Category',
+  'pa_other_category': 'Other Service*',
+  'pa_other_category_hint': 'Describe your service',
+  'pa_other_category_required': 'Please describe your other service.',
   'pa_docs_notice':
       'Verification documents are used solely for RSRVD vetting. They are '
       'never shown on your public profile or shared with members.',
@@ -91,7 +97,7 @@ const Map<String, String> enUS = {
   'pa_doc_business': 'Business Documents',
   'pa_uploaded_count': 'Uploaded (@count)',
   'pa_nda_required': 'Please agree to the Partner NDA to continue.',
-  'pa_nda_card_title': 'RSRVD Partner Non-Disclosure Agreement (v2.4)',
+  'pa_nda_card_title': 'RSRVD Partner Non-Disclosure Agreement',
   'pa_nda_body':
       '''This Agreement is entered into between RSRVD and the undersigned partner. The partner  acknowledges that all member identities, residences, itineraries,  requirements, communications and related information disclosed through  the RSRVD platform are strictly confidential.
 The partner agrees not to disclose, publish, photograph, reference or  otherwise make public any member information, property detail or  engagement without the prior written consent of both the member and  RSRVD.
@@ -107,14 +113,13 @@ This obligation survives termination of the partner relationship indefinitely.''
   // Application status gate (Submitted / Approved / Rejected)
   'app_status_submitted_eyebrow': 'Application Submitted',
   'app_status_submitted_body':
-      'Thank you for applying to become an RSRVD Partner. Our team will '
-      'review your information and contact you once your application has '
-      'been reviewed.',
+      'Thank you for applying to become a RSRVD Partner. Our team will '
+      'review your information and contact you soon regarding next steps.',
   'app_status_submitted_title':
-      'Your application is\nsubmitted to the admin',
+      'Your application is\nsubmitted to the RSRVD\nNetwork Review Board',
   'app_status_submitted_notice':
-      'Your profile is not visible to Elite Members while under review. '
-      "You'll be notified the moment a decision is made.",
+      'Your profile is not visible to Elite Members while under '
+      "review. You'll be notified the moment a decision is made.",
   'app_status_approved_eyebrow': 'Congratulations',
   'app_status_approved_title': 'Your profile is approved',
   'app_status_approved_body':
@@ -128,12 +133,13 @@ This obligation survives termination of the partner relationship indefinitely.''
       'We are not accepting additional partners in this category at this time.',
   'app_status_resubmit': 'Resubmit Application',
 
-  // Membership — Figma `1196:132` (choose) + manage (Settings)
+  // Membership — Choose A Plan (Access / Featured / National) + manage
   'membership_title': 'Choose A Plan',
   'membership_subtitle':
       'Become a trusted RSRVD partner and connect with an exclusive '
       'network of Elite Members.',
   'membership_select_plan': 'Please select a plan to continue.',
+  'membership_continue_payment': 'Continue to payment',
   'membership_annual_fee': 'Annual fee',
   'membership_monthly_fee': 'Monthly fee',
   'membership_started': 'Started',
@@ -212,18 +218,18 @@ This obligation survives termination of the partner relationship indefinitely.''
   'service_status_pending_eyebrow': 'In Review',
   'service_status_pending_title': 'Service under review',
   'service_status_pending_body':
-      'Your service submission is being reviewed. We’ll notify you once it’s approved.',
+      'Your service submission is being reviewed.\nWe’ll notify you once it’s approved.',
   'service_status_pending_notice':
       'Members won’t see this service until it’s approved.',
   'service_status_approved_eyebrow': 'Approved',
   'service_status_approved_title': 'Your service request has been approved',
   'service_status_approved_body':
-      'Your RSRVD service application has been approved. Members can view and explore these services.',
+      'Your RSRVD service application has been\napproved. Members can view and explore\nthese services.',
   'service_status_continue_home': 'Continue to home',
   'service_status_rejected_eyebrow': 'Not Approved',
   'service_status_rejected_title': 'Service not approved',
   'service_status_rejected_body':
-      'We need a few more details before we can approve your service application. Please review and update your information.',
+      'We need a few more details before we can\napprove your service application. Please\nreview and update your information.',
   'service_status_reason_label': 'Reason',
   'service_status_resubmit': 'Resubmit Application',
   'tab_home': 'Home',

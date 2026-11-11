@@ -100,35 +100,35 @@ class _StatusBody extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(18),
       height: 1,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final titleStyle = GoogleFonts.cinzel(
       fontWeight: FontWeight.w700,
       fontSize: context.dw(24),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final bodyStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w600,
       fontSize: context.dw(20),
       letterSpacing: 0,
       height: 1.0,
-      color: AppColors.text,
+      color: AppColors.white,
     );
 
     return switch (status) {
       PartnerServiceReviewStatus.pending => Column(
           children: [
-            Text(
-              'service_status_pending_eyebrow'.tr,
-              textAlign: TextAlign.center,
-              style: eyebrowStyle,
-            ),
-            SizedBox(height: context.dw(AppSpacing.t10)),
+            // Text(
+            //   'service_status_pending_eyebrow'.tr,
+            //   textAlign: TextAlign.center,
+            //   style: eyebrowStyle,
+            // ),
+            // SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
               'service_status_pending_title'.tr.toUpperCase(),
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: titleStyle.copyWith(color: AppColors.primary),
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
@@ -145,16 +145,16 @@ class _StatusBody extends StatelessWidget {
         ),
       PartnerServiceReviewStatus.approved => Column(
           children: [
-            Text(
-              'service_status_approved_eyebrow'.tr,
-              textAlign: TextAlign.center,
-              style: eyebrowStyle,
-            ),
-            SizedBox(height: context.dw(AppSpacing.t10)),
+            // Text(
+            //   'service_status_approved_eyebrow'.tr,
+            //   textAlign: TextAlign.center,
+            //   style: eyebrowStyle,
+            // ),
+            // SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
               'service_status_approved_title'.tr.toUpperCase(),
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: titleStyle.copyWith(color: AppColors.primary),
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
@@ -168,22 +168,28 @@ class _StatusBody extends StatelessWidget {
         ),
       PartnerServiceReviewStatus.rejected => Column(
           children: [
-            Text(
-              'service_status_rejected_eyebrow'.tr,
-              textAlign: TextAlign.center,
-              style: eyebrowStyle,
-            ),
-            SizedBox(height: context.dw(AppSpacing.t10)),
+          
             Text(
               'service_status_rejected_title'.tr.toUpperCase(),
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: GoogleFonts.cinzel(
+                fontWeight: FontWeight.w700,
+                fontSize: context.dw(24),
+                height: 1.2,
+                color: AppColors.primary,
+              ),
             ),
             SizedBox(height: context.dw(AppSpacing.t10)),
             Text(
               'service_status_rejected_body'.tr,
               textAlign: TextAlign.center,
-              style: bodyStyle,
+              style: GoogleFonts.darkerGrotesque(
+                fontWeight: FontWeight.w600,
+                fontSize: context.dw(18),
+                letterSpacing: 0,
+                height: 1.0,
+                color: AppColors.white,
+              ),
             ),
             SizedBox(height: context.dw(AppSpacing.t30)),
             Container(
@@ -204,7 +210,7 @@ class _StatusBody extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       fontSize: context.dw(16),
                       height: 1.2,
-                      color: AppColors.primary,
+                      color: AppColors.accentGold,
                     ),
                   ),
                   SizedBox(height: context.dw(AppSpacing.t10)),
@@ -214,7 +220,7 @@ class _StatusBody extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: context.dw(16),
                       height: 1.25,
-                      color: AppColors.text,
+                      color: AppColors.white.withValues(alpha: 0.6),
                     ),
                   ),
                 ],

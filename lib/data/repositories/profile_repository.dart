@@ -53,6 +53,7 @@ class ProfileRepository extends GetxService {
       displayName: name,
       subtitle: subtitle,
       initials: initials.isNotEmpty ? initials : 'AM',
+      logoUrl: user?.logoUrl.trim() ?? '',
       bio: bio,
       email: email,
       phone: phone,

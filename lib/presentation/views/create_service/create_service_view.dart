@@ -43,7 +43,7 @@ class CreateServiceView extends GetView<CreateServiceController> {
                             fontWeight: FontWeight.w600,
                             fontSize: context.dw(24),
                             height: 1.0,
-                            color: AppColors.white,
+                            color: AppColors.primary,
                           ),
                         );
                       }),
@@ -86,7 +86,7 @@ class CreateServiceView extends GetView<CreateServiceController> {
                           fontWeight: FontWeight.w500,
                           fontSize: context.dw(20),
                           height: 1.2,
-                          color: AppColors.text,
+                          color: AppColors.white,
                         ),
                       ),
                       SizedBox(height: context.dw(AppSpacing.t10)),
@@ -227,13 +227,13 @@ class _AppDropdownField extends StatelessWidget {
       fontWeight: FontWeight.w500,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
     final fieldStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w400,
       fontSize: context.dw(20),
       height: 1.2,
-      color: AppColors.text,
+      color: AppColors.white,
     );
 
     return Column(

@@ -171,6 +171,7 @@ class CreateServiceController extends GetxController {
         cancelLabel: 'View all Services',
         titleColor: AppColors.primary,
         barrierDismissible: false,
+        
       );
 
       Get.until(

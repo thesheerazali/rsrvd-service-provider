@@ -14,9 +14,12 @@ class PartnerApplicationDraft {
     this.country = '',
     this.experienceYears = '',
     this.bio = '',
+    this.licenseNumber = '',
+    this.insuranceInformation = '',
     this.expertise = const [],
     this.serviceAreas = const [],
     this.categoryIds = const [],
+    this.otherCategory = '',
     this.documents = const [],
     this.ndaAccepted = false,
   });
@@ -29,9 +32,12 @@ class PartnerApplicationDraft {
   final String country;
   final String experienceYears;
   final String bio;
+  final String licenseNumber;
+  final String insuranceInformation;
   final List<String> expertise;
   final List<String> serviceAreas;
   final List<String> categoryIds;
+  final String otherCategory;
   final List<PartnerUploadedDocument> documents;
   final bool ndaAccepted;
 
@@ -44,9 +50,12 @@ class PartnerApplicationDraft {
     String? country,
     String? experienceYears,
     String? bio,
+    String? licenseNumber,
+    String? insuranceInformation,
     List<String>? expertise,
     List<String>? serviceAreas,
     List<String>? categoryIds,
+    String? otherCategory,
     List<PartnerUploadedDocument>? documents,
     bool? ndaAccepted,
   }) {
@@ -59,9 +68,13 @@ class PartnerApplicationDraft {
       country: country ?? this.country,
       experienceYears: experienceYears ?? this.experienceYears,
       bio: bio ?? this.bio,
+      licenseNumber: licenseNumber ?? this.licenseNumber,
+      insuranceInformation:
+          insuranceInformation ?? this.insuranceInformation,
       expertise: expertise ?? this.expertise,
       serviceAreas: serviceAreas ?? this.serviceAreas,
       categoryIds: categoryIds ?? this.categoryIds,
+      otherCategory: otherCategory ?? this.otherCategory,
       documents: documents ?? this.documents,
       ndaAccepted: ndaAccepted ?? this.ndaAccepted,
     );
@@ -76,9 +89,12 @@ class PartnerApplicationDraft {
         'country': country,
         'experience_years': experienceYears,
         'bio': bio,
+        'license_number': licenseNumber,
+        'insurance_information': insuranceInformation,
         'expertise': expertise,
         'service_areas': serviceAreas,
         'category_ids': categoryIds,
+        'other_category': otherCategory,
         'documents': documents.map((d) => d.toJson()).toList(),
         'nda_accepted': ndaAccepted,
       };
@@ -110,9 +126,12 @@ class PartnerApplicationDraft {
       country: json['country'] as String? ?? '',
       experienceYears: json['experience_years'] as String? ?? '',
       bio: json['bio'] as String? ?? '',
+      licenseNumber: json['license_number'] as String? ?? '',
+      insuranceInformation: json['insurance_information'] as String? ?? '',
       expertise: list(json['expertise']),
       serviceAreas: list(json['service_areas']),
       categoryIds: list(json['category_ids']),
+      otherCategory: json['other_category'] as String? ?? '',
       documents: docs(json['documents']),
       ndaAccepted: json['nda_accepted'] as bool? ?? false,
     );

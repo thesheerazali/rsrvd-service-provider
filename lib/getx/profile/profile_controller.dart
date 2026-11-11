@@ -15,6 +15,7 @@ class ProfileController extends GetxController {
   final displayName = ''.obs;
   final subtitle = ''.obs;
   final initials = ''.obs;
+  final logoUrl = ''.obs;
   final bio = ''.obs;
   final email = ''.obs;
   final phone = ''.obs;
@@ -46,6 +47,7 @@ class ProfileController extends GetxController {
       displayName.value = feed.displayName;
       subtitle.value = feed.subtitle;
       initials.value = feed.initials;
+      logoUrl.value = feed.logoUrl;
       bio.value = feed.bio;
       email.value = feed.email;
       phone.value = feed.phone;

@@ -67,7 +67,7 @@ class AppUploadedDocCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(16),
                     height: 1.2,
-                    color: AppColors.text,
+                    color: AppColors.white,
                   ),
                 ),
               ],

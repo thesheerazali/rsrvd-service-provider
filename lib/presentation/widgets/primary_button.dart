@@ -5,9 +5,10 @@ import '../../core/extensions/extensions.dart';
 import '../../core/styles/app_colors.dart';
 import '../../core/styles/app_spacing.dart';
 
-/// Figma primary CTA — orange pill, 50h, full width.
+/// Figma primary CTA — cream pill `#F5EEE0`, dark walnut label, 50h, full width.
 ///
-/// Set [outlined] for secondary actions (transparent fill, orange border + text).
+/// Set [outlined] for secondary actions (transparent fill, gold border + text).
+/// Optional [color] overrides the default cream/gold fill (e.g. destructive).
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
@@ -23,16 +24,18 @@ class PrimaryButton extends StatelessWidget {
   final bool enabled;
   final bool outlined;
 
-  /// Defaults to [AppColors.accent].
+  /// Defaults to cream [AppColors.accentGold] (filled) / gold border (outlined).
   final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    final accent = color ?? AppColors.accent;
     final radius = BorderRadius.circular(context.dw(AppSpacing.radiusPill));
+    final fill = color ?? AppColors.accentGold;
+    final outline = color ?? AppColors.accentGold;
     final textStyle = GoogleFonts.darkerGrotesque(
       fontWeight: FontWeight.w600,
       fontSize: context.dw(24),
+      color: outlined ? AppColors.accentGold : AppColors.onPrimary,
       height: 1.2,
     );
 
@@ -43,26 +46,29 @@ class PrimaryButton extends StatelessWidget {
           ? OutlinedButton(
               onPressed: enabled ? onPressed : null,
               style: OutlinedButton.styleFrom(
-                foregroundColor: accent,
-                disabledForegroundColor: accent.withValues(alpha: 0.4),
+                foregroundColor: color ?? AppColors.primary,
+                disabledForegroundColor:
+                    outline.withValues(alpha: 0.4),
                 side: BorderSide(
-                  color: enabled ? accent : accent.withValues(alpha: 0.4),
+                  color: enabled ? outline : outline.withValues(alpha: 0.4),
                 ),
                 shape: RoundedRectangleBorder(borderRadius: radius),
                 textStyle: textStyle,
               ),
-              child: Text(label),
+              child: Text(label, style: textStyle),
             )
           : ElevatedButton(
               onPressed: enabled ? onPressed : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor: accent,
-                disabledBackgroundColor: accent.withValues(alpha: 0.4),
-                foregroundColor: AppColors.white,
+                backgroundColor: fill,
+                disabledBackgroundColor: fill.withValues(alpha: 0.4),
+                foregroundColor: color == null
+                    ? AppColors.onPrimary
+                    : AppColors.white,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: radius,
-                  side: BorderSide(color: accent),
+                  side: BorderSide(color: fill),
                 ),
                 textStyle: textStyle,
               ),

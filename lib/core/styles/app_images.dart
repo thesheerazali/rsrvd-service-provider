@@ -17,7 +17,7 @@ abstract class AppIcons {
   static const String google = 'assets/icons/google.svg';
   static const String apple = 'assets/icons/apple.svg';
   static const String eyeClosed = 'assets/icons/eye_closed.svg';
-  static const String goldDivider = 'assets/icons/goldendivider.svg';
+  static const String goldDivider = 'assets/icons/goldendivider1.svg';
 
   static const String iconNotification = 'assets/icons/icon_notification.svg';
   static const String statMessages = 'assets/icons/nav_message.svg';
@@ -59,9 +59,11 @@ abstract class AppIcons {
   static const String iconAddService = 'assets/icons/icon_add_service.svg';
   static const String iconBoostEnergy = 'assets/icons/icon_boost_energy.svg';
   static const String iconSearch = 'assets/icons/icon_search.svg';
-  static const String iconMessageFilter = 'assets/icons/icon_message_filter.svg';
+  // static const String iconMessageFilter = 'assets/icons/icon_message_filter.svg';
+  static const String iconMessageFilterActive = 'assets/icons/filter.svg';
   static const String contractIcon = 'assets/icons/contract_icon.svg';
   static const String calendarIcon = 'assets/icons/calendar.svg';
   static const String clockIcon = 'assets/icons/clock.svg';
   static const String viewIcon = 'assets/icons/view.svg';
+  static const String downloadIcon = 'assets/icons/download.svg';
 }

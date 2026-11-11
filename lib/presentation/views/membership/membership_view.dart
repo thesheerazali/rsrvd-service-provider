@@ -12,12 +12,12 @@ import '../../../getx/membership/membership_controller.dart';
 import '../../widgets/app_background.dart';
 import '../../widgets/primary_button.dart';
 
-/// Choose A Plan — Figma Member Screen `1196:132` (single full-screen fetch).
+/// Choose A Plan — Access / Featured / National.
 class MembershipView extends GetView<MembershipController> {
   const MembershipView({super.key});
 
-  /// Badge fill `rgba(179, 137, 34, 0.05)`.
-  static const Color _badgeBg = Color(0x0DB38922);
+  /// Badge fill `rgba(201, 180, 143, 0.1)`.
+  static const Color _badgeBg = AppColors.primarySurface;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class MembershipView extends GetView<MembershipController> {
       body: AppBackground(
         glowStyle: AppGlowStyle.auth,
         child: SafeArea(
+          maintainBottomViewPadding: true,
           child: Padding(
             padding: EdgeInsets.fromLTRB(
               context.dw(AppSpacing.t30),
@@ -33,18 +34,16 @@ class MembershipView extends GetView<MembershipController> {
               context.dw(AppSpacing.t30),
               context.dw(AppSpacing.t24),
             ),
-            // Figma #1196:160 — column, gap 30, width 380.
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // #1196:161 — title stack, gap 10.
                 Text(
-                  'membership_title'.tr,
+                  'membership_title'.tr.toUpperCase(),
                   style: GoogleFonts.cinzel(
                     fontWeight: FontWeight.w700,
                     fontSize: context.dw(32),
                     height: 1.0,
-                    color: AppColors.white,
+                    color: AppColors.primary,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t10)),
@@ -53,16 +52,13 @@ class MembershipView extends GetView<MembershipController> {
                   style: GoogleFonts.darkerGrotesque(
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(20),
-                    height: 1.0,
-                    color: AppColors.text,
+                    height: 1.2,
+                    color: AppColors.accentGold,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t30)),
-                // #1196:164 — plans column, gap 10.
                 Expanded(
                   child: Obx(() {
-                    // Read rx values here (not only in itemBuilder) so Obx
-                    // tracks selection — ListView builds children lazily.
                     final selectedId = controller.selectedPlanId.value;
                     final plans = controller.plans.toList();
                     return ListView.separated(
@@ -82,13 +78,11 @@ class MembershipView extends GetView<MembershipController> {
                   }),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t30)),
-                // #1196:230 — Continue with Annual / Monthly.
                 Obx(() {
                   final selectedId = controller.selectedPlanId.value;
                   final submitting = controller.isSubmitting.value;
-                  final plan = controller.selectedPlan;
                   return PrimaryButton(
-                    label: plan?.continueCtaLabel ?? 'Continue with Annual',
+                    label: controller.continueLabel,
                     enabled: !submitting && selectedId.isNotEmpty,
                     onPressed: controller.continueWithSelectedPlan,
                   );
@@ -102,10 +96,9 @@ class MembershipView extends GetView<MembershipController> {
   }
 }
 
-/// Plan card — Figma `#1196:165` / `#1196:198`.
+/// Plan card — Access / Featured / National.
 ///
 /// Outer: pad 20, radius 20, stroke primary (selected) or `#242424`.
-/// Inner column gap 10: optional badge → title/price row → features (gap 5).
 class _PlanCard extends StatelessWidget {
   const _PlanCard({
     required this.plan,
@@ -135,55 +128,80 @@ class _PlanCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (plan.badgeLabel != null) ...[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: context.dw(AppSpacing.t15),
-                    vertical: context.dw(AppSpacing.t03),
-                  ),
-                  decoration: BoxDecoration(
-                    color: MembershipView._badgeBg,
-                    borderRadius: BorderRadius.circular(
-                      context.dw(AppSpacing.radiusPill),
-                    ),
-                  ),
-                  child: Text(
-                    plan.badgeLabel!,
-                    style: GoogleFonts.darkerGrotesque(
-                      fontWeight: FontWeight.w500,
-                      fontSize: context.dw(14),
-                      height: 1.0,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: context.dw(AppSpacing.t10)),
-            ],
-            // #1196:169 — row gap 10: title | price.
+            // Price stays top-right; badge/title stack on the left.
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Text(
-                    plan.name,
-                    style: GoogleFonts.cinzel(
-                      fontWeight: FontWeight.w500,
-                      fontSize: context.dw(20),
-                      height: 1.0,
-                      color: AppColors.primary,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (plan.badgeLabel != null) ...[
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: context.dw(AppSpacing.t15),
+                            vertical: context.dw(AppSpacing.t03),
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary.withValues(alpha: 0.05),
+                            borderRadius: BorderRadius.circular(
+                              context.dw(AppSpacing.radiusPill),
+                            ),
+                          ),
+                          child: Text(
+                            plan.badgeLabel!,
+                            style: GoogleFonts.darkerGrotesque(
+                              fontWeight: FontWeight.w500,
+                              fontSize: context.dw(14),
+                              height: 1.0,
+                              color: AppColors.accentGold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: context.dw(AppSpacing.t10)),
+                      ],
+                      Text(
+                        plan.name.toUpperCase(),
+                        style: GoogleFonts.cinzel(
+                          fontWeight: FontWeight.w600,
+                          fontSize: context.dw(20),
+                          height: 1,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                      if (plan.constraintNote != null) ...[
+                        SizedBox(height: context.dw(AppSpacing.t04)),
+                        Text(
+                          plan.constraintNote!,
+                          style: GoogleFonts.darkerGrotesque(
+                            fontWeight: FontWeight.w500,
+                            fontSize: context.dw(12),
+                            height: 1.2,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                 ),
                 SizedBox(width: context.dw(AppSpacing.t10)),
                 _PriceBlock(plan: plan),
               ],
             ),
+            if (plan.tagline != null) ...[
+              SizedBox(height: context.dw(AppSpacing.t10)),
+              Text(
+                plan.tagline!,
+                style: GoogleFonts.darkerGrotesque(
+                  fontWeight: FontWeight.w500,
+                  fontSize: context.dw(16),
+                  height: 1,
+                  color: AppColors.accentGold,
+                ),
+              ),
+            ],
             if (plan.features.isNotEmpty) ...[
               SizedBox(height: context.dw(AppSpacing.t10)),
-              // #1196:173 — features column gap 5.
               for (var i = 0; i < plan.features.length; i++) ...[
                 if (i > 0) SizedBox(height: context.dw(AppSpacing.t05)),
                 _FeatureRow(text: plan.features[i]),
@@ -196,10 +214,7 @@ class _PlanCard extends StatelessWidget {
   }
 }
 
-/// Price block — Figma `#1196:172` / `#1196:203`.
-///
-/// Base DG Bold 16 primary; amount override 24; period Medium 16;
-/// secondary line SemiBold 14 (` $450/month`).
+/// Price block — `$2,499 yearly` + `$208/month`.
 class _PriceBlock extends StatelessWidget {
   const _PriceBlock({required this.plan});
 
@@ -211,16 +226,13 @@ class _PriceBlock extends StatelessWidget {
       fontWeight: FontWeight.w700,
       fontSize: context.dw(24),
       height: 1.0,
-      color: AppColors.primary,
+      color: AppColors.accentGold,
     );
     final periodStyle = GoogleFonts.darkerGrotesque(
-      // Yearly `/year` = Medium (ts2); Monthly `/Monthly` = Bold 16 base.
-      fontWeight: plan.interval == MembershipBillingInterval.yearly
-          ? FontWeight.w500
-          : FontWeight.w700,
-      fontSize: context.dw(16),
-      height: 1.0,
-      color: AppColors.primary,
+      fontWeight: FontWeight.w500,
+      fontSize: context.dw(14),
+      height: 1.2,
+      color: AppColors.accentGold,
     );
 
     return Column(
@@ -231,19 +243,19 @@ class _PriceBlock extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(text: plan.priceFormatted, style: amountStyle),
-              TextSpan(text: plan.periodLabel, style: periodStyle),
+              TextSpan(text: plan.periodLabel, style: amountStyle),
             ],
           ),
         ),
         if (plan.secondaryPriceCents != null)
           Text(
-            ' ${plan.secondaryPriceFormatted}/month',
+            '${plan.secondaryPriceFormatted}/month',
             textAlign: TextAlign.right,
             style: GoogleFonts.darkerGrotesque(
               fontWeight: FontWeight.w600,
               fontSize: context.dw(14),
               height: 1.2,
-              color: AppColors.primary,
+              color: AppColors.accentGold,
             ),
           ),
       ],
@@ -251,7 +263,7 @@ class _PriceBlock extends StatelessWidget {
   }
 }
 
-/// Feature row — Figma `#1196:174`: pad 3 0, gap 2, sparkle 10×10 + DG Medium 14.
+/// Feature row — sparkle 10×10 + DG Medium 14.
 class _FeatureRow extends StatelessWidget {
   const _FeatureRow({required this.text});
 
@@ -262,12 +274,15 @@ class _FeatureRow extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: context.dw(AppSpacing.t03)),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SvgPicture.asset(
-            AppIcons.sparkle,
-            width: context.dw(10),
-            height: context.dw(10),
+          Padding(
+            padding: EdgeInsets.only(top: context.dw(2)),
+            child: SvgPicture.asset(
+              AppIcons.sparkle,
+              width: context.dw(10),
+              height: context.dw(10),
+            ),
           ),
           SizedBox(width: context.dw(AppSpacing.t02)),
           Expanded(
@@ -276,8 +291,8 @@ class _FeatureRow extends StatelessWidget {
               style: GoogleFonts.darkerGrotesque(
                 fontWeight: FontWeight.w500,
                 fontSize: context.dw(14),
-                height: 1.0,
-                color: AppColors.text,
+                height: 1,
+                color: AppColors.white,
               ),
             ),
           ),

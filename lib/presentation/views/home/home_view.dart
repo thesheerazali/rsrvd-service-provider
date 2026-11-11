@@ -8,6 +8,7 @@ import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_images.dart';
 import '../../../core/styles/app_spacing.dart';
 import '../../../getx/home/home_controller.dart';
+import '../../widgets/app_business_logo.dart';
 import '../../widgets/app_partner_project_card.dart';
 import '../../widgets/empty_services_block.dart';
 import '../../widgets/gold_divider.dart';
@@ -86,6 +87,12 @@ class _HomeHeader extends GetView<HomeController> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          AppBusinessLogo(
+            size: context.dw(37),
+            logoUrl: controller.businessLogoUrl,
+            initials: controller.businessInitials,
+          ),
+          SizedBox(width: context.dw(AppSpacing.t10)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +105,7 @@ class _HomeHeader extends GetView<HomeController> {
                     fontWeight: FontWeight.w600,
                     fontSize: context.dw(24),
                     height: 1.2,
-                    color: AppColors.primary,
+                    color: AppColors.accentGold,
                   ),
                 ),
                 Text(
@@ -109,7 +116,7 @@ class _HomeHeader extends GetView<HomeController> {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(18),
                     height: 1.2,
-                    color: AppColors.white.withValues(alpha: 0.8),
+                    color: AppColors.accentGold,
                   ),
                 ),
               ],
@@ -123,6 +130,7 @@ class _HomeHeader extends GetView<HomeController> {
               AppIcons.iconNotification,
               width: context.dw(37),
               height: context.dw(37),
+              color: AppColors.primary,
             ),
           ),
         ],
@@ -156,7 +164,7 @@ class _MembershipCard extends GetView<HomeController> {
                     fontWeight: FontWeight.w600,
                     fontSize: context.dw(16),
                     height: 1.0,
-                    color: AppColors.text,
+                    color: AppColors.white,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t10)),
@@ -166,7 +174,7 @@ class _MembershipCard extends GetView<HomeController> {
                     fontWeight: FontWeight.w700,
                     fontSize: context.dw(20),
                     height: 1.0,
-                    color: AppColors.white,
+                    color: AppColors.primary,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t10)),
@@ -176,7 +184,7 @@ class _MembershipCard extends GetView<HomeController> {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(16),
                     height: 1.0,
-                    color: AppColors.text,
+                    color: AppColors.white,
                   ),
                 ),
               ],
@@ -191,7 +199,7 @@ class _MembershipCard extends GetView<HomeController> {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius:
-                    BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
+                    BorderRadius.circular(context.dw(AppSpacing.radiusLg)),
                 border: Border.all(color: AppColors.primary),
               ),
               child: Text(
@@ -282,13 +290,6 @@ class _StatCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusLg)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -303,7 +304,7 @@ class _StatCard extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     fontSize: context.dw(18),
                     height: 1.0,
-                    color: AppColors.text,
+                    color: AppColors.white,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t07)),
@@ -313,7 +314,7 @@ class _StatCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(16),
                     height: 1.0,
-                    color: AppColors.text.withValues(alpha: 0.5),
+                    color: AppColors.white.withValues(alpha: 0.5),
                   ),
                 ),
               ],
@@ -323,6 +324,7 @@ class _StatCard extends StatelessWidget {
             icon,
             width: context.dw(21),
             height: context.dw(21),
+            colorFilter: ColorFilter.mode(AppColors.accentGold, BlendMode.srcIn),
           ),
         ],
       ),
@@ -362,16 +364,16 @@ class _AverageRatingCard extends GetView<HomeController> {
                         fontWeight: FontWeight.w500,
                         fontSize: context.dw(16),
                         height: 1.0,
-                        color: AppColors.text,
+                        color: AppColors.white,
                       ),
                     ),
                     SizedBox(height: context.dw(AppSpacing.t10)),
                     Row(
                       children: [
                         Icon(
-                          Icons.star_rounded,
+                          Icons.star_border,
                           size: context.dw(16),
-                          color: AppColors.primary,
+                          color: AppColors.accentGold,
                         ),
                         SizedBox(width: context.dw(AppSpacing.t05)),
                         Text(
@@ -380,7 +382,7 @@ class _AverageRatingCard extends GetView<HomeController> {
                             fontWeight: FontWeight.w500,
                             fontSize: context.dw(20),
                             height: 1.0,
-                            color: AppColors.primary,
+                            color: AppColors.accentGold,
                           ),
                         ),
                       ],
@@ -394,7 +396,7 @@ class _AverageRatingCard extends GetView<HomeController> {
                   fontWeight: FontWeight.w600,
                   fontSize: context.dw(18),
                   height: 1.2,
-                  color: AppColors.primary,
+                  color: AppColors.accentGold,
                 ),
               ),
             ],
@@ -421,7 +423,7 @@ class _NeedsAttentionSection extends GetView<HomeController> {
               fontWeight: FontWeight.w700,
               fontSize: context.dw(24),
               height: 1.2,
-              color: AppColors.white.withValues(alpha: 0.8),
+              color: AppColors.primary,
             ),
           ),
           SizedBox(height: context.dw(AppSpacing.t10)),

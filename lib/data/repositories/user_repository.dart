@@ -135,15 +135,16 @@ class UserRepository extends GetxService {
       displayName: 'Marchetti Atelier',
       email: trimmed.isEmpty ? 'studio@marchetti.io' : trimmed,
       occupation: 'Interior Design · Miami',
+      logoUrl:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
       membership: UserMembership.activeFromPlan(
         const MembershipPlan(
-          id: 'plan_annual',
-          code: 'annual',
-          name: 'Yearly Plan',
+          id: 'plan_featured',
+          code: 'featured',
+          name: 'RSRVD Featured',
           interval: MembershipBillingInterval.yearly,
-          priceCents: 550000,
+          priceCents: 449900,
           recommended: true,
-          ctaShortName: 'Annual',
         ),
         now: DateTime(2026, 8, 8),
       ),
@@ -306,6 +307,8 @@ class UserRepository extends GetxService {
       displayName: 'Alexa Miguel',
       email: trimmed.isEmpty ? 'alexa@gmail.com' : trimmed,
       occupation: 'Architect',
+      logoUrl:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
     );
     _writeUserDoc(demo);
     AppLog.i('seeded demo user for profile update', tag: _tag);

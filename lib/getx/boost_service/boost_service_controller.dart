@@ -37,9 +37,14 @@ class BoostServiceController extends GetxController {
   void onInit() {
     super.onInit();
     _hydrate();
-    if (plans.isNotEmpty) {
-      selectedPlanId.value = plans.first.id;
+    ServiceBoostPlan? recommended;
+    for (final plan in plans) {
+      if (plan.recommended) {
+        recommended = plan;
+        break;
+      }
     }
+    selectedPlanId.value = (recommended ?? plans.firstOrNull)?.id ?? '';
   }
 
   void _hydrate() {

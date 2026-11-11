@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rsrvd_service_provider/core/styles/app_colors.dart';
 
 import '../../core/styles/app_images.dart';
 import 'app_empty_state.dart';
@@ -17,6 +18,7 @@ class EmptyServicesBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppEmptyState(
       imageAsset: AppImages.emptyService,
+      titleColor: AppColors.primary,
       title: 'empty_services_title'.tr,
       body: 'empty_services_body'.tr,
       ctaLabel: 'empty_services_cta'.tr,

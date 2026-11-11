@@ -11,45 +11,70 @@ import '../../core/services/app_log.dart';
 class MembershipRepository extends GetxService {
   static const String _tag = 'MEMBERSHIP_REPO';
 
-  static const _sharedFeatures = [
-    'Verified RSRVD Partner profile',
-    'Showcase your services and portfolio',
-    'Connect with Elite Members',
-    'Manage projects through RSRVD',
-    'Access to RSRVD partner network',
-    'Trusted Partner recognition',
-  ];
-
   /// Local stand-in for `GET /membership/plans` until the API is wired.
   ///
-  /// Copy / prices from Figma Member Screen `1196:164`.
+  /// Copy / prices from Figma Member Screen (Access / Featured / National).
   List<MembershipPlan> listPlans() {
     return const [
       MembershipPlan(
-        id: 'plan_annual',
-        code: 'annual',
-        name: 'Yearly Plan',
+        id: 'plan_access',
+        code: 'access',
+        name: 'RSRVD Access',
         interval: MembershipBillingInterval.yearly,
-        priceCents: 550000,
-        secondaryPriceCents: 45000,
-        periodSuffix: '/year',
-        badgeLabel: 'Best value • Recommended',
-        ctaShortName: 'Annual',
-        features: _sharedFeatures,
-        recommended: true,
-        gatewayPriceId: 'price_annual_demo',
+        priceCents: 249900,
+        secondaryPriceCents: 20800,
+        periodSuffix: ' yearly',
+        tagline: 'Establish your presence',
+        features: [
+          'Verified RSRVD Partner profile',
+          'Showcase your services and portfolio',
+          'Connect with Elite Members directly',
+          'Manage projects through RSRVD app',
+          'Access to RSRVD partner events',
+          'Trusted Partner recognition through RSRVD member reviews.',
+        ],
+        recommended: false,
+        gatewayPriceId: 'price_access_demo',
       ),
       MembershipPlan(
-        id: 'plan_monthly',
-        code: 'monthly',
-        name: 'Monthly Plan',
-        interval: MembershipBillingInterval.monthly,
-        priceCents: 50000,
-        periodSuffix: '/Monthly',
-        ctaShortName: 'Monthly',
-        features: _sharedFeatures,
+        id: 'plan_featured',
+        code: 'featured',
+        name: 'RSRVD Featured',
+        interval: MembershipBillingInterval.yearly,
+        priceCents: 449900,
+        secondaryPriceCents: 37500,
+        periodSuffix: ' yearly',
+        badgeLabel: 'Best value · Recommended',
+        tagline: 'Stand out in your market',
+        features: [
+          'Everything included in Access.',
+          'Priority Placement within local market.',
+          'Featured visibility in relevant member feeds.',
+          'Increased exposure to local RSRVD members.',
+        ],
+        recommended: true,
+        gatewayPriceId: 'price_featured_demo',
+      ),
+      MembershipPlan(
+        id: 'plan_national',
+        code: 'national',
+        name: 'RSRVD National',
+        interval: MembershipBillingInterval.yearly,
+        priceCents: 1449900,
+        secondaryPriceCents: 120800,
+        periodSuffix: ' yearly',
+        tagline: 'Expand your reach. Unlock New Markets.',
+        constraintNote:
+            'Only 1 National Brand Membership per Service Category',
+        features: [
+          'Everything included in Featured.',
+          'Inclusion in relevant service provider searches beyond their home market.',
+          'Priority placement in eligible markets.',
+          "Expanded exposure to RSRVD's national member network.",
+          'Trusted Partner recognition',
+        ],
         recommended: false,
-        gatewayPriceId: 'price_monthly_demo',
+        gatewayPriceId: 'price_national_demo',
       ),
     ];
   }

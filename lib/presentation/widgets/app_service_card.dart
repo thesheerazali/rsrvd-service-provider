@@ -38,7 +38,7 @@ class AppServiceCard extends StatelessWidget {
 
   static const Color _publishedFill = Color(0x0D70FF85);
   static const Color _publishedText = Color(0xFF1CBF73);
-  static const Color _boostedFill = Color(0x0DB38922);
+  static const Color _boostedFill = AppColors.primarySurface;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class AppServiceCard extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: context.dw(16),
                       height: 1.0,
-                      color: AppColors.text.withValues(alpha: 0.5),
+                      color: AppColors.white.withValues(alpha: 0.5),
                     ),
                   ),
                   SizedBox(height: context.dw(AppSpacing.t05)),
@@ -78,7 +78,7 @@ class AppServiceCard extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       fontSize: context.dw(20),
                       height: 1.0,
-                      color: AppColors.text,
+                      color: AppColors.primary,
                     ),
                   ),
                   SizedBox(height: context.dw(AppSpacing.t05)),
@@ -88,7 +88,7 @@ class AppServiceCard extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: context.dw(16),
                       height: 1.0,
-                      color: AppColors.text,
+                      color: AppColors.white,
                     ),
                   ),
                   SizedBox(height: context.dw(AppSpacing.t05)),
@@ -98,7 +98,7 @@ class AppServiceCard extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       fontSize: context.dw(16),
                       height: 1.0,
-                      color: AppColors.primary,
+                      color: AppColors.accentGold,
                     ),
                   ),
                   if (showBoostButton && service.canBoost) ...[
@@ -183,6 +183,7 @@ class _BadgesRow extends StatelessWidget {
                   AppIcons.iconBoostEnergy,
                   width: context.dw(10),
                   height: context.dw(10),
+                  color: AppColors.accentGold,
                 ),
                 SizedBox(width: context.dw(AppSpacing.t02)),
                 Text(
@@ -191,7 +192,7 @@ class _BadgesRow extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     fontSize: context.dw(14),
                     height: 1.0,
-                    color: AppColors.primary,
+                    color: AppColors.accentGold,
                   ),
                 ),
               ],
@@ -217,7 +218,7 @@ class _BoostButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusPill)),
-          border: Border.all(color: AppColors.primary),
+          border: Border.all(color: AppColors.accentGold),
         ),
         child: Text(
           'Boost',
@@ -225,7 +226,7 @@ class _BoostButton extends StatelessWidget {
             fontWeight: FontWeight.w600,
             fontSize: context.dw(18),
             height: 1.2,
-            color: AppColors.primary,
+            color: AppColors.accentGold,
           ),
         ),
       ),
@@ -254,7 +255,7 @@ class _ActionColumn extends StatelessWidget {
               width: context.dw(18),
               height: context.dw(18),
               colorFilter: const ColorFilter.mode(
-                AppColors.text,
+                AppColors.white,
                 BlendMode.srcIn,
               ),
             ),
@@ -271,7 +272,7 @@ class _ActionColumn extends StatelessWidget {
               width: context.dw(18),
               height: context.dw(18),
               colorFilter: const ColorFilter.mode(
-                AppColors.text,
+                AppColors.white,
                 BlendMode.srcIn,
               ),
             ),

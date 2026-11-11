@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/styles/app_images.dart';
 
-/// Home section rule from Figma (`1001:486`).
+/// Home section rule from Figma Home (`1563:26344`).
 ///
-/// 380×3 diamond path, opacity 0.2, linear `#FFE898` → `#8D5B1A`.
+/// 380×3 gold path (`#C9B48F`) at **20%** layer opacity.
 class GoldDivider extends StatelessWidget {
   const GoldDivider({super.key});
 

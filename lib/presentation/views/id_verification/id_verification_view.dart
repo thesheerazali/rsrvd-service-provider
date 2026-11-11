@@ -39,7 +39,7 @@ class IdVerificationView extends GetView<IdVerificationController> {
                     fontSize: context.dw(32),
                     height: 1.2,
                     letterSpacing: 0,
-                    color: AppColors.white,
+                    color: AppColors.primary,
                   ),
                 ),
                 SizedBox(height: context.dw(AppSpacing.t15)),
@@ -158,7 +158,7 @@ class _OtpBox extends StatelessWidget {
           final focused = focusNode.hasFocus;
           final hasValue = controller.text.isNotEmpty;
           final borderColor = focused
-              ? AppColors.primary
+              ? AppColors.white
               : hasValue
                   ? AppColors.white
                   : AppColors.surfaceCard;
@@ -176,7 +176,7 @@ class _OtpBox extends StatelessWidget {
               fontSize: context.dw(28),
               color: AppColors.white,
             ),
-            cursorColor: AppColors.primary,
+            cursorColor: AppColors.white,
             decoration: InputDecoration(
               counterText: '',
               filled: true,
@@ -188,7 +188,7 @@ class _OtpBox extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderRadius: radius,
                 borderSide: BorderSide(
-                  color: AppColors.primary,
+                  color: AppColors.white,
                   width: borderW,
                 ),
               ),

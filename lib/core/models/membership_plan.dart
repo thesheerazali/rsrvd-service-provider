@@ -30,6 +30,8 @@ class MembershipPlan {
     this.features = const [],
     this.recommended = false,
     this.badgeLabel,
+    this.tagline,
+    this.constraintNote,
     this.secondaryPriceCents,
     this.periodSuffix,
     this.ctaShortName,
@@ -39,10 +41,10 @@ class MembershipPlan {
   /// Server plan id (stable primary key).
   final String id;
 
-  /// Stable product code — e.g. `annual`, `monthly`.
+  /// Stable product code — e.g. `access`, `featured`, `national`.
   final String code;
 
-  /// Display name — e.g. `Yearly Plan`, `Monthly Plan`.
+  /// Display name — e.g. `RSRVD Access`.
   final String name;
 
   final MembershipBillingInterval interval;
@@ -59,16 +61,22 @@ class MembershipPlan {
   /// Highlight / default selection when offered.
   final bool recommended;
 
-  /// Optional pill — e.g. `Best value • Recommended`.
+  /// Optional pill — e.g. `Best value · Recommended`.
   final String? badgeLabel;
 
-  /// Optional equivalent monthly amount for yearly cards (`$450/month`).
+  /// Short pitch under the title/price row — e.g. `Establish your presence`.
+  final String? tagline;
+
+  /// Optional constraint under the title — e.g. National exclusivity note.
+  final String? constraintNote;
+
+  /// Optional equivalent monthly amount for yearly cards (`$208/month`).
   final int? secondaryPriceCents;
 
-  /// Period suffix after price — Figma uses `/year` or `/Monthly`.
+  /// Period suffix after price — Figma uses ` yearly`.
   final String? periodSuffix;
 
-  /// Short name for CTA — Figma `Continue with Annual`.
+  /// Short name for legacy CTAs — prefer [continueCtaLabel] translation.
   final String? ctaShortName;
 
   /// Optional Stripe Price / StoreKit product id for checkout.
@@ -82,26 +90,43 @@ class MembershipPlan {
   String get periodLabel =>
       periodSuffix ??
       switch (interval) {
-        MembershipBillingInterval.yearly => '/year',
-        MembershipBillingInterval.monthly => '/Monthly',
+        MembershipBillingInterval.yearly => ' yearly',
+        MembershipBillingInterval.monthly => '/month',
       };
 
-  /// Home card line — e.g. `Membership · Yearly`.
-  String get homeLabel => switch (interval) {
-        MembershipBillingInterval.yearly => 'Membership · Yearly',
-        MembershipBillingInterval.monthly => 'Membership · Monthly',
-      };
+  /// Home card line — e.g. `Membership · Access`.
+  String get homeLabel {
+    final short = name.replaceFirst(RegExp(r'^RSRVD\s+', caseSensitive: false), '');
+    if (short.isNotEmpty) return 'Membership · $short';
+    return switch (interval) {
+      MembershipBillingInterval.yearly => 'Membership · Yearly',
+      MembershipBillingInterval.monthly => 'Membership · Monthly',
+    };
+  }
 
-  /// CTA — e.g. `Continue with Annual`.
-  String get continueCtaLabel =>
-      'Continue with ${ctaShortName ?? name}';
+  /// CTA on choose-plan — Figma `Continue to payment`.
+  String get continueCtaLabel => 'membership_continue_payment';
 
   static String _formatCents(int cents) {
     final major = cents / 100;
-    if (major == major.roundToDouble()) {
-      return '\$${major.toStringAsFixed(0)}';
+    final whole = major == major.roundToDouble()
+        ? major.toInt()
+        : null;
+    if (whole != null) {
+      return '\$${_withThousands(whole)}';
     }
     return '\$${major.toStringAsFixed(2)}';
+  }
+
+  static String _withThousands(int value) {
+    final raw = value.toString();
+    final buf = StringBuffer();
+    for (var i = 0; i < raw.length; i++) {
+      final fromEnd = raw.length - i;
+      if (i > 0 && fromEnd % 3 == 0) buf.write(',');
+      buf.write(raw[i]);
+    }
+    return buf.toString();
   }
 
   Map<String, dynamic> toJson() => {
@@ -114,6 +139,8 @@ class MembershipPlan {
         'features': features,
         'recommended': recommended,
         if (badgeLabel != null) 'badge_label': badgeLabel,
+        if (tagline != null) 'tagline': tagline,
+        if (constraintNote != null) 'constraint_note': constraintNote,
         if (secondaryPriceCents != null)
           'secondary_price_cents': secondaryPriceCents,
         if (periodSuffix != null) 'period_suffix': periodSuffix,
@@ -137,6 +164,8 @@ class MembershipPlan {
           const [],
       recommended: json['recommended'] as bool? ?? false,
       badgeLabel: json['badge_label'] as String?,
+      tagline: json['tagline'] as String?,
+      constraintNote: json['constraint_note'] as String?,
       secondaryPriceCents: (json['secondary_price_cents'] as num?)?.toInt(),
       periodSuffix: json['period_suffix'] as String?,
       ctaShortName: json['cta_short_name'] as String?,

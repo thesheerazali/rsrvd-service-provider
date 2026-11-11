@@ -24,28 +24,26 @@ class MembershipManageController extends GetxController {
   UserMembership get _membership {
     final m = _users.currentUser?.membership;
     if (m != null && m.isActive && (m.priceCents ?? 0) > 0) {
-      // Prefer Figma-facing $2,400 demo when seeded plan is still $5,500 catalog.
-      if (m.priceCents == 550000) {
-        return m.copyWith(priceCents: 240000);
-      }
       return m;
     }
-    // UI-base demo snapshot matching Partner Membership Figma.
+    // UI-base demo snapshot — Featured plan.
     return UserMembership.activeFromPlan(
       const MembershipPlan(
-        id: 'plan_annual',
-        code: 'annual',
-        name: 'Yearly Plan',
+        id: 'plan_featured',
+        code: 'featured',
+        name: 'RSRVD Featured',
         interval: MembershipBillingInterval.yearly,
-        priceCents: 240000,
+        priceCents: 449900,
         recommended: true,
-        ctaShortName: 'Annual',
       ),
       now: DateTime(2026, 8, 8),
     );
   }
 
-  String get planEyebrow => 'RSRVD Partner';
+  String get planEyebrow =>
+      _membership.planName?.isNotEmpty == true
+          ? _membership.planName!
+          : 'RSRVD Featured';
 
   String get statusLabel => _membership.statusLabel.toUpperCase();
 
@@ -54,7 +52,7 @@ class MembershipManageController extends GetxController {
     return label.isNotEmpty ? label : 'Renews Aug 08, 2027';
   }
 
-  String get feeLabel => _formatCents(_membership.priceCents ?? 240000);
+  String get feeLabel => _formatCents(_membership.priceCents ?? 449900);
 
   String get feeRowLabel =>
       _membership.interval == MembershipBillingInterval.monthly

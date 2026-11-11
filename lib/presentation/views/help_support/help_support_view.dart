@@ -71,7 +71,7 @@ class _IntroCard extends GetView<HelpSupportController> {
       width: double.infinity,
       padding: EdgeInsets.all(context.dw(AppSpacing.t20)),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: AppColors.primary.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
         border: Border.all(color: AppColors.surfaceCard),
       ),
@@ -121,7 +121,7 @@ class _FaqTile extends GetView<HelpSupportController> {
             vertical: context.dw(AppSpacing.t10),
           ),
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: AppColors.primary.withValues(alpha: 0.05),
             borderRadius:
                 BorderRadius.circular(context.dw(AppSpacing.radiusSm)),
             border: Border.all(color: AppColors.surfaceCard, width: 0.5),
@@ -149,7 +149,7 @@ class _FaqTile extends GetView<HelpSupportController> {
                         fontWeight: FontWeight.w500,
                         fontSize: context.dw(20),
                         height: 1.0,
-                        color: AppColors.text,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
@@ -165,7 +165,7 @@ class _FaqTile extends GetView<HelpSupportController> {
                       fontWeight: FontWeight.w400,
                       fontSize: context.dw(18),
                       height: 1.2,
-                      color: AppColors.text.withValues(alpha: 0.7),
+                      color: AppColors.white.withValues(alpha: 0.7),
                     ),
                   ),
                 ),
